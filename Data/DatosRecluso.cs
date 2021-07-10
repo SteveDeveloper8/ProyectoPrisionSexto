@@ -33,6 +33,7 @@ namespace Data
                     expe.Id = Convert.ToInt32(dr["Id_Expediente"]);
                     expe.Codigo = Convert.ToInt32(dr["Codigo"]);
                     expe.Cedula_recluso = dr["Cedula_Recluso"].ToString();
+                    expe.Cargos.Add
                 }
             }
             catch (Exception ex)
@@ -47,8 +48,8 @@ namespace Data
         {
             Conexion cn = new Conexion();
             string msj = cn.conectar(),mensaje="";
-            MessageBox.Show(recluso.Nombre + recluso.Apellidos);
-            string sentenciaSQL = "INSERT INTO Recluso(Codigo,Cedula,Nombres,Apellidos,Fecha_Nac,Genero,Id_Expediente)VALUES('" + recluso.Codigo + "','" + recluso.Cedula + "','" + recluso.Nombre + "','" + recluso.Apellidos + "','" + recluso.Fecha.ToString("yyyy-MM-dd") + "','" + recluso.Genero + "','" + recluso.Expediente + "')";
+            
+            string sentenciaSQL = "INSERT INTO Recluso(Codigo,Cedula,Nombres,Apellidos,Fecha_Nac,Genero,Id_Expediente)VALUES('" + recluso.Codigo + "','" + recluso.Cedula + "','" + recluso.Nombre + "','" + recluso.Apellidos + "','" + recluso.Fecha.ToString("yyyy-MM-dd") + "','" + recluso.Genero + "','" + recluso.Expediente.Id + "')";
             string RecuperarId = "Select @@identity";
 
             try
@@ -62,17 +63,61 @@ namespace Data
                 }
                 else
                 {
-                    MessageBox.Show("Error: " + msj);
+                    throw new GeneralExcepcion("Falla en la conexion");
                 }
                 
             }
             catch (SqlException xe)
             {
-               MessageBox.Show(xe.Message);
+                mensaje = "fallido";
             }
             cn.cerrar();
 
             return mensaje;
+        }
+
+        public List<Object> ConsultarReclusos()
+        {
+            string sentenciaSQL = "SELECT * from Relcuso";
+            List<Object> reclusos = ConsultarGeneral(sentenciaSQL);
+            return reclusos;
+        }
+
+        private List<Object> ConsultarGeneral(string sentenciaSQL)
+        {
+            List<Object> reclusos = new List<Object>();
+            string msj = cn.conectar(),mensaje="";
+            SqlDataReader dr = null;
+            Recluso recluso = null;
+
+            try
+            {
+                cmd.Connection = cn.Cn;
+                cmd.CommandText = sentenciaSQL;
+                dr = cmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    
+                    recluso = new Recluso();
+                    recluso.Id = Convert.ToInt32(dr["Id_Recluso"]);
+                    recluso.Codigo = dr["Codigo"].ToString();
+                    recluso.Nombre = dr["Nombres"].ToString();
+                    recluso.Apellidos = dr["Apellidos"].ToString();
+                    recluso.Cedula = dr["Cedula"].ToString();
+                    recluso.Fecha= Convert.ToDateTime(dr["Fecha_Nac"].ToString());
+                    recluso.Genero = dr["Genero"].ToString();
+                    recluso.Expediente.Id= Convert.ToInt32(dr["Id_Expediente"]);
+                    reclusos.Add(recluso);
+                }
+            }
+            catch (Exception ex)
+            {
+                mensaje = fallido;
+            }
+
+
+            return reclusos;
         }
     }
 }

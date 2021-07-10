@@ -24,13 +24,11 @@ namespace Data
                 Cn = new SqlConnection();
                 Cn.ConnectionString = cadena;
                 Cn.Open();
-                MessageBox.Show("Conexion Exitosa");
                 x = "1";
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
-                Console.WriteLine(ex.Message);
-                x = "0" + ex.Message;
+                throw new ConexionFallida("Conexion a la base de datos fallida");
             }
             return x;
         }

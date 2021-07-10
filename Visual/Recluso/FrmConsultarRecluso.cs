@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Control;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,10 +13,33 @@ namespace Visual.Recluso
 {
     public partial class FrmConsultarRecluso : Form
     {
+        ControlRecluso controlRecluso = new ControlRecluso();
         public FrmConsultarRecluso()
         {
             InitializeComponent();
+            
         }
+
+        private void consultarReclusos()
+        {
+
+            try
+            {
+                controlRecluso.
+
+            }catch (GeneralExcepcion ex)
+            {
+
+            }
+        }
+
+
+
+
+
+
+
+
 
         private void btnMinimizar_Click(object sender, EventArgs e)
         {

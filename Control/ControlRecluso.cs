@@ -56,14 +56,27 @@ namespace Control
 
         public void GuardarRecluso(string codigo, string nombre, string apellido, string genero, DateTime fecha, int idExpediente, string cedula)
         {
-            recluso = new Recluso(codigo, nombre, apellido, genero, fecha, cedula, idExpediente);
-            MessageBox.Show(nombre + apellido);
+            Expediente exp = datosRecluso.buscarExpedienteBD(cedula);
+            recluso = new Recluso(codigo, nombre, apellido, genero, fecha, cedula,exp);
             string message = datosRecluso.InsertarRecluso(recluso);
 
             if (message.Equals("fallido"))
             {
                 throw new GeneralExcepcion("Existio un error en base de datos");
             }
+        }
+
+
+        public List<Object> ListarReclusos()
+        {
+            List<Object> reclusos= datosRecluso.ConsultarReclusos();
+
+            if (reclusos.Count <= 0)
+            {
+                throw new GeneralExcepcion("No se encontraron reclusos registrados");
+            }
+            return 
+            
         }
 
         

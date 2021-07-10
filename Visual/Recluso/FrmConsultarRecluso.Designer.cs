@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.btnMinimizar = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.btnCerrar = new Guna.UI2.WinForms.Guna2CirclePictureBox();
@@ -39,15 +39,15 @@
             this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.txtCodigo = new Guna.UI2.WinForms.Guna2TextBox();
             this.dgvRecluso = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.ColNro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnInicioSesion = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.ColCod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColNom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColApe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Cedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColGen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColEd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnExpediente = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.btnInicioSesion = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecluso)).BeginInit();
@@ -144,38 +144,38 @@
             // 
             this.dgvRecluso.AllowUserToAddRows = false;
             this.dgvRecluso.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.dgvRecluso.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dgvRecluso.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvRecluso.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvRecluso.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.dgvRecluso.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgvRecluso.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvRecluso.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvRecluso.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.DarkOrange;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRecluso.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkOrange;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRecluso.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvRecluso.ColumnHeadersHeight = 21;
             this.dgvRecluso.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColNro,
             this.ColCod,
             this.ColNom,
             this.ColApe,
+            this.col_Cedula,
             this.ColGen,
             this.ColEd,
             this.BtnExpediente});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvRecluso.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvRecluso.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvRecluso.EnableHeadersVisualStyles = false;
             this.dgvRecluso.GridColor = System.Drawing.Color.White;
             this.dgvRecluso.Location = new System.Drawing.Point(29, 157);
@@ -190,7 +190,7 @@
             this.dgvRecluso.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
             this.dgvRecluso.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
             this.dgvRecluso.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.dgvRecluso.ThemeStyle.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.dgvRecluso.ThemeStyle.BackColor = System.Drawing.Color.WhiteSmoke;
             this.dgvRecluso.ThemeStyle.GridColor = System.Drawing.Color.White;
             this.dgvRecluso.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.dgvRecluso.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -206,48 +206,6 @@
             this.dgvRecluso.ThemeStyle.RowsStyle.Height = 22;
             this.dgvRecluso.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvRecluso.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            // 
-            // ColNro
-            // 
-            this.ColNro.HeaderText = "Nro";
-            this.ColNro.Name = "ColNro";
-            this.ColNro.ReadOnly = true;
-            // 
-            // ColCod
-            // 
-            this.ColCod.HeaderText = "Codigo";
-            this.ColCod.Name = "ColCod";
-            this.ColCod.ReadOnly = true;
-            // 
-            // ColNom
-            // 
-            this.ColNom.HeaderText = "Nombre";
-            this.ColNom.Name = "ColNom";
-            this.ColNom.ReadOnly = true;
-            // 
-            // ColApe
-            // 
-            this.ColApe.HeaderText = "Apellido";
-            this.ColApe.Name = "ColApe";
-            this.ColApe.ReadOnly = true;
-            // 
-            // ColGen
-            // 
-            this.ColGen.HeaderText = "Genero";
-            this.ColGen.Name = "ColGen";
-            this.ColGen.ReadOnly = true;
-            // 
-            // ColEd
-            // 
-            this.ColEd.HeaderText = "Edad";
-            this.ColEd.Name = "ColEd";
-            this.ColEd.ReadOnly = true;
-            // 
-            // BtnExpediente
-            // 
-            this.BtnExpediente.HeaderText = "Expediente";
-            this.BtnExpediente.Name = "BtnExpediente";
-            this.BtnExpediente.ReadOnly = true;
             // 
             // btnInicioSesion
             // 
@@ -288,6 +246,48 @@
             this.guna2Panel1.TabIndex = 45;
             this.guna2Panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.guna2Panel1_MouseMove);
             // 
+            // ColCod
+            // 
+            this.ColCod.HeaderText = "Codigo";
+            this.ColCod.Name = "ColCod";
+            this.ColCod.ReadOnly = true;
+            // 
+            // ColNom
+            // 
+            this.ColNom.HeaderText = "Nombres";
+            this.ColNom.Name = "ColNom";
+            this.ColNom.ReadOnly = true;
+            // 
+            // ColApe
+            // 
+            this.ColApe.HeaderText = "Apellidos";
+            this.ColApe.Name = "ColApe";
+            this.ColApe.ReadOnly = true;
+            // 
+            // col_Cedula
+            // 
+            this.col_Cedula.HeaderText = "Cédula";
+            this.col_Cedula.Name = "col_Cedula";
+            this.col_Cedula.ReadOnly = true;
+            // 
+            // ColGen
+            // 
+            this.ColGen.HeaderText = "Genero";
+            this.ColGen.Name = "ColGen";
+            this.ColGen.ReadOnly = true;
+            // 
+            // ColEd
+            // 
+            this.ColEd.HeaderText = "FechaNac";
+            this.ColEd.Name = "ColEd";
+            this.ColEd.ReadOnly = true;
+            // 
+            // BtnExpediente
+            // 
+            this.BtnExpediente.HeaderText = "Expediente";
+            this.BtnExpediente.Name = "BtnExpediente";
+            this.BtnExpediente.ReadOnly = true;
+            // 
             // FrmConsultarRecluso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -323,14 +323,14 @@
         private Guna.UI2.WinForms.Guna2TextBox txtCodigo;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
         private Guna.UI2.WinForms.Guna2DataGridView dgvRecluso;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColNro;
+        private Guna.UI2.WinForms.Guna2GradientButton btnInicioSesion;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColCod;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColNom;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColApe;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Cedula;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColGen;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColEd;
         private System.Windows.Forms.DataGridViewButtonColumn BtnExpediente;
-        private Guna.UI2.WinForms.Guna2GradientButton btnInicioSesion;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
     }
 }

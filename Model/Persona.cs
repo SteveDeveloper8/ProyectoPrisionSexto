@@ -26,6 +26,8 @@ namespace Model
             this.cedula = cedula;
         }
 
+        public Persona() { }
+
         public Persona(int id,string codigo, string nombre, string apellidos, string genero, DateTime fecha,string cedula)
         {
             this.codigo = codigo;
