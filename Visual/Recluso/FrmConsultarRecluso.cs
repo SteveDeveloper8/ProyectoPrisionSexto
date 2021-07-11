@@ -45,6 +45,8 @@ namespace Visual.Recluso
                 string cedula= (string)tipo.GetProperty("Cedula").GetValue(recluso);
                 dgvReclusos.Rows.Add(codigo, nombre, apellidos, cedula, genero, fecha, "Ver expediente");
             }
+            dgvReclusos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvReclusos.AutoResizeColumns();
         }
 
 
@@ -79,5 +81,15 @@ namespace Visual.Recluso
                 Top = Top + (e.Y - posY);
             }
         }
+
+        private void dgvReclusos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                MessageBox.Show(Convert.ToString(dgvReclusos.Rows[e.RowIndex].Cells[3].Value));
+            }
+        }   
     }
 }

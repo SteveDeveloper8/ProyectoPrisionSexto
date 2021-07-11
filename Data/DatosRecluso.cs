@@ -48,7 +48,6 @@ namespace Data
         {
             Conexion cn = new Conexion();
             string msj = cn.conectar(),mensaje="";
-            
             string sentenciaSQL = "INSERT INTO Recluso(Codigo,Cedula,Nombres,Apellidos,Fecha_Nac,Genero,Id_Expediente)VALUES('" 
                 + recluso.Codigo + "','" + recluso.Cedula + "','" + recluso.Nombre + "','" + recluso.Apellidos + "','" 
                 + recluso.Fecha.ToString("yyyy-MM-dd") + "','" + recluso.Genero + "','" + recluso.Expediente.Id + "')";
@@ -98,7 +97,7 @@ namespace Data
                 cmd.CommandText = sentenciaSQL;
                 dr = cmd.ExecuteReader();
 
-                if (dr.Read())
+                while (dr.Read())
                 {
                     
                     recluso = new Recluso();

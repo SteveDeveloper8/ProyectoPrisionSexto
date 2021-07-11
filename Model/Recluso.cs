@@ -17,6 +17,7 @@ namespace Model
         public Recluso(string nombre, string apellidos, string genero, DateTime fecha, string cedula, string codigo, Expediente expediente) : base(codigo, nombre, apellidos, genero, fecha,cedula)
         {
             this.expediente = expediente;
+            this.codigo = codigo;
         }
 
         public Recluso()
