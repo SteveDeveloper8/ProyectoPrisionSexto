@@ -31,12 +31,12 @@ namespace Data
 
         private Usuario ConsultarUser(string sentenciaSQL)
         {
-            string msj = cn.conectar();
             SqlDataReader dr = null;
             Usuario user = null;
            
             try
             {
+                cn.conectar();
                 cmd.Connection = cn.Cn;
                 cmd.CommandText = sentenciaSQL;
                 dr = cmd.ExecuteReader();
@@ -56,7 +56,7 @@ namespace Data
             }
             catch (Exception ex)
             {
-                msj = "0 " + ex.Message;
+                
             }
 
             
@@ -64,14 +64,13 @@ namespace Data
         }
         private List<Usuario> ConsultarGeneral(string sentenciaSQL)
         {
-            string msj = cn.conectar();
-     
             List<Usuario> usuarios = new List<Usuario>();
             SqlDataReader dr = null;
             Usuario user = null;
 
             try
             {
+                cn.conectar();
                 cmd.Connection = cn.Cn;
                 cmd.CommandText = sentenciaSQL;
                 dr = cmd.ExecuteReader();
@@ -93,7 +92,7 @@ namespace Data
             }
             catch (SqlException ex)
             {
-                msj = "0 " + ex.Message;
+                
             }
 
             return usuarios;

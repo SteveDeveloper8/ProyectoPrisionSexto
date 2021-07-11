@@ -78,10 +78,10 @@ namespace Visual.Recluso
                 if (!ctrl.existeCodigo(codigo))
                 {
                     string message = "";
-                    int idExpediente = 0;
                     try
                     {
-                        idExpediente = ctrl.buscarExpediente(cedula);
+                        int idExpediente = GetIdExpediente(ctrl.buscarExpediente(cedula));
+ 
                         ctrl.GuardarRecluso(codigo, nombre, apellido, genero, fecha, idExpediente, cedula);
                     }
                     catch (GeneralExcepcion ex)
@@ -126,7 +126,11 @@ namespace Visual.Recluso
                 Top = Top + (e.Y - posY);
             }
         }
-
+        private int GetIdExpediente(Object expediente)
+        {
+            Type tipo = expediente.GetType();
+            return (int)tipo.GetProperty("id").GetValue(expediente);
+        }
         private void btnDetallesExpediente_Click(object sender, EventArgs e)
         {
             string cedula = txtCedula.Text.Trim();
@@ -136,7 +140,7 @@ namespace Visual.Recluso
                 string message = "";
                 int idExpediente=0;
                 try {
-                   idExpediente= ctrl.buscarExpediente(cedula);
+                   idExpediente= GetIdExpediente(ctrl.buscarExpediente(cedula));
                 }catch(GeneralExcepcion ex)
                 {
                     message = ex.Message;
@@ -144,8 +148,8 @@ namespace Visual.Recluso
 
                 if (message == "")
                 {
-                    FrmExpedienteRecluso expediente = new FrmExpedienteRecluso(idExpediente);
-                    expediente.ShowDialog();
+                    //FrmExpedienteRecluso expediente = new FrmExpedienteRecluso(idExpediente);
+                    //expediente.ShowDialog();
                 }
                 else
                 {

@@ -17,21 +17,18 @@ namespace Data
 
         public SqlConnection Cn { get => cn; set => cn = value; }
 
-        public string conectar()
+        public void conectar()
         {
-            string x = "";
             try
             {
                 Cn = new SqlConnection();
                 Cn.ConnectionString = cadena;
                 Cn.Open();
-                x = "1";
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
                 throw new ConexionFallida();
             }
-            return x;
         }
 
         public string cerrar()

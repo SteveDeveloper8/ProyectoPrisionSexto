@@ -38,18 +38,19 @@ namespace Control
             return false;
         }
 
-        public int buscarExpediente(string cedula)
+        public Object buscarExpediente(string cedula)
         {
             Expediente expediente = null;
             expediente = datosRecluso.buscarExpedienteBD(cedula);
 
             if (expediente == null)
             {
+                MessageBox.Show("no hay expedientes");
                 throw new GeneralExcepcion("Expediente de recluso no existente");
             }
             else
             {
-                return expediente.Id;
+                return expediente;
             }
         }
 
@@ -58,12 +59,12 @@ namespace Control
         {
             Expediente exp = datosRecluso.buscarExpedienteBD(cedula);
             recluso = new Recluso(nombre, apellido, genero, fecha, cedula, codigo, exp);
-            string message = datosRecluso.InsertarRecluso(recluso);
+            datosRecluso.InsertarRecluso(recluso);
 
-            if (message.Equals("fallido"))
+            /*if (message.Equals("fallido"))
             {
                 throw new GeneralExcepcion("Existio un error en base de datos");
-            }
+            }*/
         }
 
 
@@ -77,6 +78,43 @@ namespace Control
                 return reclusos;
         }
 
-        
+        public Object BuscarRecluso(string cedula)
+        {
+            Object recluso = datosRecluso.BuscarRecluso(cedula);
+            if (recluso != null)
+                return recluso;
+            else
+                throw new Exception();
+        }
+        public List<Object> ListarCargos(string codigoExpediente)
+        {
+            List<Cargo> cargos = datosRecluso.ConsultarCargos(codigoExpediente);
+
+            if (cargos.Count <= 0)
+                throw new GeneralExcepcion("No se encontraron cargos registrados");
+            else
+                return GetListaDatosCargos(cargos);
+        }
+        public List<Object> GetListaDatosCargos(List<Cargo> cargos)
+        {
+            List<Object> cargosDatos = new List<object>();
+            foreach (Cargo cargo in cargos)
+            {
+                cargosDatos.Add(ConvertirAnonimo(cargo));
+            }
+            return cargosDatos;
+        }
+        public Object ConvertirAnonimo(Cargo cargo)
+        {
+            return new
+            {
+                delito = cargo.Delito,
+                descripcion = cargo.Descripcion,
+                fecha = cargo.FechaHechos,
+                localidad = cargo.LugarHechos.NombreLocalidad,
+                ciudad = cargo.LugarHechos.NombreCiudad,
+                pais = cargo.LugarHechos.NombrePais
+            };
+        }
     }
 }
