@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Model;
-
+using Data.Excepciones;
 namespace Data
 {
     public class DatosRecluso
@@ -33,7 +33,7 @@ namespace Data
                     expe.Id = Convert.ToInt32(dr["Id_Expediente"]);
                     expe.Codigo = Convert.ToInt32(dr["Codigo"]);
                     expe.Cedula_recluso = dr["Cedula_Recluso"].ToString();
-                    expe.Cargos.Add
+                    expe.Cargos.Add(null);
                 }
             }
             catch (Exception ex)
@@ -49,7 +49,9 @@ namespace Data
             Conexion cn = new Conexion();
             string msj = cn.conectar(),mensaje="";
             
-            string sentenciaSQL = "INSERT INTO Recluso(Codigo,Cedula,Nombres,Apellidos,Fecha_Nac,Genero,Id_Expediente)VALUES('" + recluso.Codigo + "','" + recluso.Cedula + "','" + recluso.Nombre + "','" + recluso.Apellidos + "','" + recluso.Fecha.ToString("yyyy-MM-dd") + "','" + recluso.Genero + "','" + recluso.Expediente.Id + "')";
+            string sentenciaSQL = "INSERT INTO Recluso(Codigo,Cedula,Nombres,Apellidos,Fecha_Nac,Genero,Id_Expediente)VALUES('" 
+                + recluso.Codigo + "','" + recluso.Cedula + "','" + recluso.Nombre + "','" + recluso.Apellidos + "','" 
+                + recluso.Fecha.ToString("yyyy-MM-dd") + "','" + recluso.Genero + "','" + recluso.Expediente.Id + "')";
             string RecuperarId = "Select @@identity";
 
             try
@@ -63,7 +65,7 @@ namespace Data
                 }
                 else
                 {
-                    throw new GeneralExcepcion("Falla en la conexion");
+                    throw new ConsultaFallida();
                 }
                 
             }
@@ -78,7 +80,7 @@ namespace Data
 
         public List<Object> ConsultarReclusos()
         {
-            string sentenciaSQL = "SELECT * from Relcuso";
+            string sentenciaSQL = "SELECT * from Recluso";
             List<Object> reclusos = ConsultarGeneral(sentenciaSQL);
             return reclusos;
         }
@@ -107,13 +109,13 @@ namespace Data
                     recluso.Cedula = dr["Cedula"].ToString();
                     recluso.Fecha= Convert.ToDateTime(dr["Fecha_Nac"].ToString());
                     recluso.Genero = dr["Genero"].ToString();
-                    recluso.Expediente.Id= Convert.ToInt32(dr["Id_Expediente"]);
+                    //recluso.Expediente.Id= Convert.ToInt32(dr["Id_Expediente"]);
                     reclusos.Add(recluso);
                 }
             }
             catch (Exception ex)
             {
-                mensaje = fallido;
+                mensaje = "fallido";
             }
 
 

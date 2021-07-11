@@ -8,11 +8,13 @@ namespace Model
 {
     public class Recluso : Persona
     {
+        private string codigo;
         private Expediente expediente;
 
         public Expediente Expediente { get => expediente; set => expediente = value; }
+        public string Codigo { get => codigo; set => codigo = value; }
 
-        public Recluso(string codigo, string nombre, string apellidos, string genero, DateTime fecha, string cedula,Expediente expediente) : base(codigo, nombre, apellidos, genero, fecha,cedula)
+        public Recluso(string nombre, string apellidos, string genero, DateTime fecha, string cedula, string codigo, Expediente expediente) : base(codigo, nombre, apellidos, genero, fecha,cedula)
         {
             this.expediente = expediente;
         }
@@ -22,7 +24,7 @@ namespace Model
 
         }
 
-        public Recluso(int id, string codigo, string nombre, string apellidos, string genero, DateTime fecha, string cedula,Expediente expediente) : base(id, codigo, nombre, apellidos, genero, fecha,cedula)
+        public Recluso(int id, string nombre, string apellidos, string genero, DateTime fecha, string cedula, string codigo, Expediente expediente) : base(id, codigo, nombre, apellidos, genero, fecha,cedula)
         {
             this.expediente = expediente;
         }

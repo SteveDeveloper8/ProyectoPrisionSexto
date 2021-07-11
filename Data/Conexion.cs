@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Data.Excepciones;
 
 namespace Data
 {
@@ -28,7 +29,7 @@ namespace Data
             }
             catch (SqlException ex)
             {
-                throw new ConexionFallida("Conexion a la base de datos fallida");
+                throw new ConexionFallida();
             }
             return x;
         }

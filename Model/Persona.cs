@@ -9,7 +9,6 @@ namespace Model
     public abstract class Persona
     {
         private int id;
-        private string codigo;
         private string nombre;
         private string apellidos;
         private string genero;
@@ -18,7 +17,6 @@ namespace Model
 
         public Persona(string codigo, string nombre, string apellidos, string genero, DateTime fecha,string cedula)
         {
-            this.codigo = codigo;
             this.nombre = nombre;
             this.apellidos = apellidos;
             this.genero = genero;
@@ -30,7 +28,6 @@ namespace Model
 
         public Persona(int id,string codigo, string nombre, string apellidos, string genero, DateTime fecha,string cedula)
         {
-            this.codigo = codigo;
             this.nombre = nombre;
             this.apellidos = apellidos;
             this.genero = genero;
@@ -38,7 +35,6 @@ namespace Model
             this.cedula = cedula;
         }
 
-        public string Codigo { get => codigo; set => codigo = value; }
         public string Nombre { get => nombre; set => nombre = value; }
         public string Apellidos { get => apellidos; set => apellidos = value; }
         public string Genero { get => genero; set => genero = value; }

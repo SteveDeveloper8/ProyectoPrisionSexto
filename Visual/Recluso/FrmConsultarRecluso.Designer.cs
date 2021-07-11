@@ -38,9 +38,7 @@
             this.guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.txtCodigo = new Guna.UI2.WinForms.Guna2TextBox();
-            this.dgvRecluso = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.btnInicioSesion = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.dgvReclusos = new Guna.UI2.WinForms.Guna2DataGridView();
             this.ColCod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColNom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColApe = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,9 +46,11 @@
             this.ColGen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColEd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnExpediente = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btnInicioSesion = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRecluso)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReclusos)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Elipse1
@@ -140,17 +140,17 @@
             this.txtCodigo.Size = new System.Drawing.Size(261, 36);
             this.txtCodigo.TabIndex = 38;
             // 
-            // dgvRecluso
+            // dgvReclusos
             // 
-            this.dgvRecluso.AllowUserToAddRows = false;
-            this.dgvRecluso.AllowUserToDeleteRows = false;
+            this.dgvReclusos.AllowUserToAddRows = false;
+            this.dgvReclusos.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dgvRecluso.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvRecluso.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvRecluso.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvRecluso.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgvRecluso.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvRecluso.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvReclusos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvReclusos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvReclusos.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvReclusos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvReclusos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvReclusos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkOrange;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
@@ -158,9 +158,9 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRecluso.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvRecluso.ColumnHeadersHeight = 21;
-            this.dgvRecluso.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvReclusos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvReclusos.ColumnHeadersHeight = 21;
+            this.dgvReclusos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColCod,
             this.ColNom,
             this.ColApe,
@@ -175,76 +175,37 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvRecluso.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvRecluso.EnableHeadersVisualStyles = false;
-            this.dgvRecluso.GridColor = System.Drawing.Color.White;
-            this.dgvRecluso.Location = new System.Drawing.Point(29, 157);
-            this.dgvRecluso.Name = "dgvRecluso";
-            this.dgvRecluso.ReadOnly = true;
-            this.dgvRecluso.RowHeadersVisible = false;
-            this.dgvRecluso.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRecluso.Size = new System.Drawing.Size(574, 251);
-            this.dgvRecluso.TabIndex = 39;
-            this.dgvRecluso.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgvRecluso.ThemeStyle.AlternatingRowsStyle.Font = null;
-            this.dgvRecluso.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.dgvRecluso.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.dgvRecluso.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.dgvRecluso.ThemeStyle.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvRecluso.ThemeStyle.GridColor = System.Drawing.Color.White;
-            this.dgvRecluso.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.dgvRecluso.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvRecluso.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            this.dgvRecluso.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.dgvRecluso.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.dgvRecluso.ThemeStyle.HeaderStyle.Height = 21;
-            this.dgvRecluso.ThemeStyle.ReadOnly = true;
-            this.dgvRecluso.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgvRecluso.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvRecluso.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            this.dgvRecluso.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgvRecluso.ThemeStyle.RowsStyle.Height = 22;
-            this.dgvRecluso.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvRecluso.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            // 
-            // btnInicioSesion
-            // 
-            this.btnInicioSesion.BackColor = System.Drawing.Color.Transparent;
-            this.btnInicioSesion.BorderRadius = 20;
-            this.btnInicioSesion.CheckedState.Parent = this.btnInicioSesion;
-            this.btnInicioSesion.CustomImages.Parent = this.btnInicioSesion;
-            this.btnInicioSesion.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnInicioSesion.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnInicioSesion.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnInicioSesion.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnInicioSesion.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnInicioSesion.DisabledState.Parent = this.btnInicioSesion;
-            this.btnInicioSesion.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnInicioSesion.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnInicioSesion.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
-            this.btnInicioSesion.ForeColor = System.Drawing.Color.White;
-            this.btnInicioSesion.HoverState.Parent = this.btnInicioSesion;
-            this.btnInicioSesion.Location = new System.Drawing.Point(424, 90);
-            this.btnInicioSesion.Name = "btnInicioSesion";
-            this.btnInicioSesion.ShadowDecoration.Parent = this.btnInicioSesion;
-            this.btnInicioSesion.Size = new System.Drawing.Size(125, 38);
-            this.btnInicioSesion.TabIndex = 40;
-            this.btnInicioSesion.Text = "Buscar";
-            // 
-            // guna2Panel1
-            // 
-            this.guna2Panel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Panel1.BackgroundImage = global::Visual.Properties.Resources.ReclusoBG;
-            this.guna2Panel1.BorderColor = System.Drawing.Color.White;
-            this.guna2Panel1.BorderRadius = 10;
-            this.guna2Panel1.BorderThickness = 2;
-            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
-            this.guna2Panel1.Size = new System.Drawing.Size(632, 434);
-            this.guna2Panel1.TabIndex = 45;
-            this.guna2Panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.guna2Panel1_MouseMove);
+            this.dgvReclusos.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvReclusos.EnableHeadersVisualStyles = false;
+            this.dgvReclusos.GridColor = System.Drawing.Color.White;
+            this.dgvReclusos.Location = new System.Drawing.Point(29, 157);
+            this.dgvReclusos.Name = "dgvReclusos";
+            this.dgvReclusos.ReadOnly = true;
+            this.dgvReclusos.RowHeadersVisible = false;
+            this.dgvReclusos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvReclusos.Size = new System.Drawing.Size(574, 251);
+            this.dgvReclusos.TabIndex = 39;
+            this.dgvReclusos.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvReclusos.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.dgvReclusos.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.dgvReclusos.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.dgvReclusos.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.dgvReclusos.ThemeStyle.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvReclusos.ThemeStyle.GridColor = System.Drawing.Color.White;
+            this.dgvReclusos.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.dgvReclusos.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvReclusos.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.dgvReclusos.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dgvReclusos.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.dgvReclusos.ThemeStyle.HeaderStyle.Height = 21;
+            this.dgvReclusos.ThemeStyle.ReadOnly = true;
+            this.dgvReclusos.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvReclusos.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvReclusos.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.dgvReclusos.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgvReclusos.ThemeStyle.RowsStyle.Height = 22;
+            this.dgvReclusos.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvReclusos.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
             // ColCod
             // 
@@ -288,6 +249,45 @@
             this.BtnExpediente.Name = "BtnExpediente";
             this.BtnExpediente.ReadOnly = true;
             // 
+            // btnInicioSesion
+            // 
+            this.btnInicioSesion.BackColor = System.Drawing.Color.Transparent;
+            this.btnInicioSesion.BorderRadius = 20;
+            this.btnInicioSesion.CheckedState.Parent = this.btnInicioSesion;
+            this.btnInicioSesion.CustomImages.Parent = this.btnInicioSesion;
+            this.btnInicioSesion.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnInicioSesion.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnInicioSesion.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnInicioSesion.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnInicioSesion.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnInicioSesion.DisabledState.Parent = this.btnInicioSesion;
+            this.btnInicioSesion.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnInicioSesion.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnInicioSesion.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
+            this.btnInicioSesion.ForeColor = System.Drawing.Color.White;
+            this.btnInicioSesion.HoverState.Parent = this.btnInicioSesion;
+            this.btnInicioSesion.Location = new System.Drawing.Point(424, 90);
+            this.btnInicioSesion.Name = "btnInicioSesion";
+            this.btnInicioSesion.ShadowDecoration.Parent = this.btnInicioSesion;
+            this.btnInicioSesion.Size = new System.Drawing.Size(125, 38);
+            this.btnInicioSesion.TabIndex = 40;
+            this.btnInicioSesion.Text = "Buscar";
+            // 
+            // guna2Panel1
+            // 
+            this.guna2Panel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Panel1.BackgroundImage = global::Visual.Properties.Resources.ReclusoBG;
+            this.guna2Panel1.BorderColor = System.Drawing.Color.White;
+            this.guna2Panel1.BorderRadius = 10;
+            this.guna2Panel1.BorderThickness = 2;
+            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
+            this.guna2Panel1.Size = new System.Drawing.Size(632, 434);
+            this.guna2Panel1.TabIndex = 45;
+            this.guna2Panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.guna2Panel1_MouseMove);
+            // 
             // FrmConsultarRecluso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -295,7 +295,7 @@
             this.BackgroundImage = global::Visual.Properties.Resources.ReclusoBG;
             this.ClientSize = new System.Drawing.Size(632, 434);
             this.Controls.Add(this.btnInicioSesion);
-            this.Controls.Add(this.dgvRecluso);
+            this.Controls.Add(this.dgvReclusos);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.guna2HtmlLabel3);
             this.Controls.Add(this.guna2HtmlLabel7);
@@ -308,7 +308,7 @@
             this.Text = "FrmConsultarRecluso";
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRecluso)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReclusos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -322,7 +322,7 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel7;
         private Guna.UI2.WinForms.Guna2TextBox txtCodigo;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
-        private Guna.UI2.WinForms.Guna2DataGridView dgvRecluso;
+        private Guna.UI2.WinForms.Guna2DataGridView dgvReclusos;
         private Guna.UI2.WinForms.Guna2GradientButton btnInicioSesion;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColCod;

@@ -47,6 +47,7 @@
     <Compile Include="DatosLogin.cs" />
     <Compile Include="DatosRecluso.cs" />
     <Compile Include="Excepciones\ConexionFallida.cs" />
+    <Compile Include="Excepciones\ConsultaFallida.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

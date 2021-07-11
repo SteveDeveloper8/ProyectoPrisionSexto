@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Data.Excepciones
 {
-    public class ConexionFallida : Exception
+    public class ConsultaFallida:Exception
     {
         string mensaje;
-        public ConexionFallida()
+        public ConsultaFallida()
         {
-            this.mensaje = "No se pudo establecer conexión con la base de datos.";
+            this.mensaje = "La consulta a la base de datos falló y por ende no devolvió lso resultados esperados.";
         }
 
         public string Mensaje { get => mensaje; set => mensaje = value; }

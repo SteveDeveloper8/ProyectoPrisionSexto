@@ -57,7 +57,7 @@ namespace Control
         public void GuardarRecluso(string codigo, string nombre, string apellido, string genero, DateTime fecha, int idExpediente, string cedula)
         {
             Expediente exp = datosRecluso.buscarExpedienteBD(cedula);
-            recluso = new Recluso(codigo, nombre, apellido, genero, fecha, cedula,exp);
+            recluso = new Recluso(nombre, apellido, genero, fecha, cedula, codigo, exp);
             string message = datosRecluso.InsertarRecluso(recluso);
 
             if (message.Equals("fallido"))
@@ -72,11 +72,9 @@ namespace Control
             List<Object> reclusos= datosRecluso.ConsultarReclusos();
 
             if (reclusos.Count <= 0)
-            {
                 throw new GeneralExcepcion("No se encontraron reclusos registrados");
-            }
-            return 
-            
+            else
+                return reclusos;
         }
 
         
