@@ -50,15 +50,13 @@ namespace Control
         public void GuardarUsuario(string nombre, string apellido, string usuario, string contrasena, string rol)
         {
             role = new Rol(rol);
-            user = new Usuario(nombre, apellido,usuario, contrasena, role);
-            datosLogin.InsertarUsuario(user,ObetenerRol(rol));
+            user = new Usuario(nombre, apellido,usuario, contrasena, ObtenerRol(rol));
+            datosLogin.InsertarUsuario(user);
             
         }
-        public int ObetenerRol(string rol)
+        public Rol ObtenerRol(string rol)
         {
-           Rol role= datosLogin.ConsultarRol(rol);
-
-            return role.Id;
+           return datosLogin.ConsultarRol(rol);
         }
     }
 

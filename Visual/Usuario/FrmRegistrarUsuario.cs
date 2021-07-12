@@ -19,7 +19,7 @@ namespace Visual.Usuario
             InitializeComponent();
 
         }
-        
+        //Guarda lso datos del nuevo usuario en el sistema.
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
             string nombre = txtNombre.Text.Trim();
@@ -46,15 +46,16 @@ namespace Visual.Usuario
             }
 
         }
+        //Valida que todos los campos del formulario esten llenos.
          private bool esVacio(string nombre, string apellido, string usuario, string contrasena, string confirmacion, string rol)
         {
             
             return String.IsNullOrEmpty(nombre) || String.IsNullOrEmpty(apellido) || String.IsNullOrEmpty(usuario) || String.IsNullOrEmpty(contrasena) ||
                 String.IsNullOrEmpty(confirmacion) || String.IsNullOrEmpty(rol);
         }
+        //Valida si el usuario confirmó la contraseña correctamente.
         private bool validarConfirmacion(string contrasena, string confirmacion)
         {
-
             if (contrasena.Equals(confirmacion))
                 return true;
             else

@@ -13,11 +13,13 @@ namespace Data
     {
         Conexion cn;
         SqlCommand cmd;
+        //Inicializa los objetos de cliente SQL necesarios.
         public DatosRecluso()
         {
             cn = new Conexion();
             cmd = new SqlCommand();
         }
+        //Busca el expediente que tenga el número de cédula del recluso y devuelve un objeto Expediente.
         public Expediente buscarExpedienteBD(string cedula)
         {
             string sentenciaSQL = "Select * from Expediente e Where e.Cedula_Recluso='" + cedula + "'";
@@ -44,7 +46,7 @@ namespace Data
             cn.cerrar();
             return expe;
         }
-
+        //Recibe un objeto Recluso y lo guarda en la base de datos del sistema.
         public void InsertarRecluso(Recluso recluso)
         {
             string sentenciaSQL = "INSERT INTO Recluso(Codigo,Cedula,Nombres,Apellidos,Fecha_Nac,Genero,Id_Expediente)VALUES('" 
@@ -66,13 +68,14 @@ namespace Data
             }
             cn.cerrar();
         }
-
+        //Consulta la base de datos y devuelve una lista con todos los reclusos registrados en el sistema.
         public List<Object> ConsultarReclusos()
         {
             string sentenciaSQL = "SELECT * from Recluso";
             List<Object> reclusos = ConsultarGeneral(sentenciaSQL);
             return reclusos;
         }
+        //Consulta la base de datos y devuelve una lista de cargos que pertenezcan al expediente cuyo código recibe.
         public List<Cargo> ConsultarCargos(string codigoExpediente)
         {
             string sentenciaSQL =
@@ -106,12 +109,13 @@ namespace Data
                     cargos.Add(cargo);
                 }
             }
-            catch (Exception ex)
+            catch (SqlException)
             {
-                MessageBox.Show(ex.Message);
+                throw new ConsultaFallida();
             }
             return cargos;
         }
+        //Consulta la base de datos y devuelve un objeto con los datos de un recluso cuya cédula sea igual al argumento.
         public object BuscarRecluso(string cedula)
         {
             string sentenciaSQL = "SELECT * from Recluso WHERE Cedula='"+cedula+"'";
@@ -121,7 +125,7 @@ namespace Data
             else
                 return null;
         }
-
+        //Ejecuta en la base de datos una sntencia SQL dada por parámetros y devuelve una lista de reclusos correspondiente a los reultados.
         private List<Object> ConsultarGeneral(string sentenciaSQL)
         {
             List<Object> reclusos = new List<Object>();
@@ -150,9 +154,9 @@ namespace Data
                     reclusos.Add(recluso);
                 }
             }
-            catch (Exception ex)
+            catch (SqlException)
             {
-                throw new Exception("Error en la base de datos");
+                throw new ConsultaFallida();
             }
             return reclusos;
         }

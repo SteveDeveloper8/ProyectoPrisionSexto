@@ -18,7 +18,7 @@ namespace Visual
         {
             InitializeComponent();
         }
-
+        //Envía las credenciales de acceso al sistema y si con consistenetes permite el acceso.
         private void btnInicioSesion_Click(object sender, EventArgs e)
         {
             string usuario = txtUsuario.Text.Trim();
@@ -52,7 +52,7 @@ namespace Visual
                 MessageBox.Show("Existen campos vacios");
             }
         }
-
+        //Valida que no haya campos del fromulario sin llenar.
         private bool EsVacio(String usuario, String contrasena)
         {
             return String.IsNullOrEmpty(usuario) || String.IsNullOrEmpty(contrasena);

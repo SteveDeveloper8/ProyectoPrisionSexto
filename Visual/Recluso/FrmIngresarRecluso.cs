@@ -19,9 +19,7 @@ namespace Visual.Recluso
         {
             InitializeComponent();
         }
-
-      
-
+        //INICIO- Validaciones de formulario.
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsLetter(e.KeyChar) && (e.KeyChar != Convert.ToChar(Keys.Back)) && (e.KeyChar != Convert.ToChar(Keys.Space)))
@@ -48,7 +46,6 @@ namespace Visual.Recluso
                 return;
             }
         }
-
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
@@ -58,12 +55,9 @@ namespace Visual.Recluso
         {
             this.Close();
         }
+        //Fin- Validaciones de formulario.
 
-        private void FrmIngresarRecluso_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        //Guarda un los datos del nuevo recluso en el sistema.
         private void btnGuardar_Click_1(object sender, EventArgs e)
         {
             string codigo = txtCodigo.Text.Trim();
@@ -73,12 +67,10 @@ namespace Visual.Recluso
             string genero = cmbGenero.Text.Trim();
             DateTime fecha = dtpFecha.Value.Date;
             
-
             if (!EsVacio(codigo, nombre, apellido, genero, fecha,cedula))
             {
                 if (!controlRecluso.existeCodigo(codigo))
-                {
-                    
+                { 
                     try
                     {
                         int idExpediente = GetIdExpediente(controlRecluso.buscarExpediente(cedula));
@@ -96,7 +88,7 @@ namespace Visual.Recluso
                 MessageBox.Show("Existe un campo vacio, o algún dato erróneo");
             }
         }
-
+        //Valida que ningun campo del fromulario esté vacío.
         private bool EsVacio(string codigo, string nombre, string apellido, string genero, DateTime fecha, string cedula)
         {
             return String.IsNullOrEmpty(codigo) || String.IsNullOrEmpty(nombre) || String.IsNullOrEmpty(apellido) || String.IsNullOrEmpty(genero) || fecha == null|| String.IsNullOrEmpty(cedula);
@@ -117,12 +109,13 @@ namespace Visual.Recluso
                 Top = Top + (e.Y - posY);
             }
         }
+        //Recibe un objeto gnérico y devuelve el valor de la propiedad Id de expediente de el mismo.
         private int GetIdExpediente(Object expediente)
         {
             Type tipo = expediente.GetType();
             return (int)tipo.GetProperty("Id").GetValue(expediente);
         }
-
+        //Muestra en una ventana emergente el expediente de el preso a registrar.
         private void btnDetallesExpediente_Click(object sender, EventArgs e)
         {
             string cedula = txtCedula.Text.Trim();

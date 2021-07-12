@@ -14,12 +14,13 @@ namespace Visual.Recluso
     public partial class FrmConsultarRecluso : Form
     {
         ControlRecluso controlRecluso=new ControlRecluso();
+        //Muestra los datos de todos los relusos registrados al abrir el formulario.
         public FrmConsultarRecluso()
         {
             InitializeComponent();
             consultarReclusos();
         }
-
+        //Consulta al sistema los datos de los reclusos registrados y los muestra.
         private void consultarReclusos()
         {
             List<Object> reclusos = null;
@@ -32,10 +33,12 @@ namespace Visual.Recluso
                 MessageBox.Show("No hay reclusos registrados en el sistema.");
             }
         }
+        //Borra todas las filas de la tabla dejando solo la cabecera.
         private void LimpiarTabla()
         {
             dgvReclusos.Rows.Clear();
         }
+        //Muestra  en la tabla una lista de objetos genéricos dada como argumento para ser visualizados.
         private void LlenarTablaReclusos(List<Object> reclusos)
         {
             LimpiarTabla();
@@ -46,6 +49,7 @@ namespace Visual.Recluso
             dgvReclusos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvReclusos.AutoResizeColumns();
         }
+        //Obtiene los datos de un objeto genérico en forma de datos que entienda la tabla y los inserta en la misma en forma de fila.
         private void InsertarFila(Object recluso)
         {
             Type tipo = recluso.GetType();
@@ -81,7 +85,7 @@ namespace Visual.Recluso
                 Top = Top + (e.Y - posY);
             }
         }
-
+        //Muestra el expediente de un recluso en específico en un nuevo formulario emergente.
         private void dgvReclusos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var senderGrid = (DataGridView)sender;
@@ -94,14 +98,14 @@ namespace Visual.Recluso
                 new FrmExpedienteRecluso(controlRecluso,cedula, nombres+" "+apellidos).ShowDialog();
             }
         }
-
+        //Muestra los datos de un recluso en específico que coincida con un número de cédula ingresado.
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             LimpiarTabla();
             Object recluso = controlRecluso.BuscarRecluso(txtCedula.Text);
             InsertarFila(recluso);
         }
-
+        //Muestra los dato d etodos los reclusos registrados en el sistema.
         private void btnMostrar_Click(object sender, EventArgs e)
         {
             consultarReclusos();

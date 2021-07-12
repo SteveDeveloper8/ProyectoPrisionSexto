@@ -13,6 +13,7 @@ namespace Visual.Recluso
     public partial class FrmExpedienteRecluso : Form
     {
         ControlRecluso controlRecluso;
+        //Muestra los detalles de un expedeinte específico al abrir la ventana. 
         public FrmExpedienteRecluso(ControlRecluso controlRecluso, string cedula, string nombreRecluso)
         {
             InitializeComponent();
@@ -20,7 +21,6 @@ namespace Visual.Recluso
             lblNombre.Text = nombreRecluso;
             ConsultarExpediente(cedula);
         }
-
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -30,6 +30,7 @@ namespace Visual.Recluso
         {
             this.WindowState = FormWindowState.Minimized;
         }
+        //Muestra los datos de un expediente peretneciente a un recluso cuyo número de cédula coincida con el argumento.
         private void ConsultarExpediente(string cedula)
         {
             List<Object> cargos;
@@ -38,11 +39,13 @@ namespace Visual.Recluso
             lblCodigo.Text = codigoExpediente;
             LlenarTablaCargos(cargos);
         }
+        //Recibe un objeto gnérico y devuelve el valor de la propiedad código de expediente de el mismo.
         private string GetCodigoExpediente(Object expediente)
         {
             Type tipo = expediente.GetType();
             return (string)tipo.GetProperty("Codigo").GetValue(expediente);
         }
+        //Obtiene los datos de un objeto genérico en forma de datos que entienda la tabla y los inserta en la misma en forma de fila.
         private void InsertarFila(Object cargo)
         {
             Type tipo = cargo.GetType();
@@ -54,6 +57,7 @@ namespace Visual.Recluso
             string pais = (string)tipo.GetProperty("pais").GetValue(cargo);
             dgvCargos.Rows.Add(delito, descripcion, fecha, localidad, ciudad, pais);
         }
+        //Muestra  en la tabla una lista de objetos genéricos dada como argumento para ser visualizados.
         private void LlenarTablaCargos(List<Object> cargos)
         {
             LimpiarTabla();
@@ -64,6 +68,7 @@ namespace Visual.Recluso
             dgvCargos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvCargos.AutoResizeColumns();
         }
+        //Borra todas las filas de la tabla dejando solo la cabecera.
         private void LimpiarTabla()
         {
             dgvCargos.Rows.Clear();

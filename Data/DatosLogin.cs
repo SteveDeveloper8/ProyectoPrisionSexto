@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Data.Excepciones;
 
 namespace Data
 {
@@ -14,21 +15,21 @@ namespace Data
         Conexion cn = new Conexion();
         SqlCommand cmd = new SqlCommand();
 
-
+        //Consulta la base de datos y devuelve una lista con todos los usuarios.
         public List<Usuario> Consultar()
         {
             string sentenciaSQL = "SELECT * from Usuario";
             List<Usuario> nomina = ConsultarGeneral(sentenciaSQL);
             return nomina;
         }
-
+        //Consulta la base de datos y devuelve un usuario cuyo nombre de usuario coincida con el argumento.
         public Usuario ConsultarUsuario(String  usuario)
         {
             string sentenciaSQL = "SELECT * FROM Usuario u INNER JOIN Rol r ON u.Id_Rol=r.Id_Rol  WHERE u.UserName='"+usuario+"'";
             Usuario user= ConsultarUser(sentenciaSQL);
             return user;
         }
-
+        //Ejecuta en la base de datos una sentencia SQL dada por argumento y devuelve un Usuario correspondiente a los resultados.
         private Usuario ConsultarUser(string sentenciaSQL)
         {
             SqlDataReader dr = null;
@@ -56,13 +57,13 @@ namespace Data
             }
             catch (SqlException)
             {
-                throw new Exception("Error en la base de datos");
+                throw new ConsultaFallida();
             }
 
             
             return user;
         }
-
+        //Consulta la base de datos y devuelve un rol cuyadescripción coincida con el argumento. 
         public Rol ConsultarRol(string rol)
         {
             string sentenciaSQL = "SELECT * FROM Rol  WHERE Descripcion ='" + rol + "'";
@@ -87,21 +88,19 @@ namespace Data
             }
             catch (SqlException)
             {
-                throw new Exception("Error en la base de datos");
+                throw new ConsultaFallida();
             }
 
 
             return role;
         }
-
-        public void InsertarUsuario(Usuario user, int idRol)
+        //Recibe un usuario  e inserta al usuario en la base de datos del sistema.
+        public void InsertarUsuario(Usuario user)
         {
             string sentenciaSQL = "INSERT INTO Usuario(Nombres, Apellidos, UserName,Password,Id_Rol )VALUES('" + 
-                user.Nombres + "','" + user.Apellidos + "','" + user.Username + "','" + user.Contrasena + "','" + idRol + "')";
-
+                user.Nombres + "','" + user.Apellidos + "','" + user.Username + "','" + user.Contrasena + "','" + user.Rol.Id + "')";
 
             string RecuperarId = "Select @@identity";
-
             try
             {
                 cn.conectar();
@@ -112,12 +111,11 @@ namespace Data
             }
             catch (SqlException)
             {
-                throw new Exception("Error dentro de la base de datos");
+                throw new ConsultaFallida();
             }
             cn.cerrar();
         }
-        
-
+        //Ejecuta en la base de datos una sentencia SQL dada como argumento y devuelve una lista con toods los usuarios registrados. 
         private List<Usuario> ConsultarGeneral(string sentenciaSQL)
         {
             List<Usuario> usuarios = new List<Usuario>();
@@ -141,112 +139,13 @@ namespace Data
                     user.Rol.Descripcion = dr["Descripcion"].ToString();
                     usuarios.Add(user);
                 }
-
-                             
-                
-
             }
             catch (SqlException)
             {
-                throw new Exception("Error en la bse de datos");
+                throw new ConsultaFallida();
             }
 
             return usuarios;
         }
-        /*
-        public string Insertar(Login login)
-        {
-            Conexion cn = new Conexion();
-            string msj = cn.conectar();
-
-            string sentenciaSQL = "INSERT INTO Usuario(Nombres,Apellidos,Usuario,Contrasena)VALUES('" + login.Nombres + "','" + login.Apellidos + "','" + login.Usuario + "','" + login.Contrasena + "')";
-            string RecuperarId = "Select @@identity";
-
-            try
-            {
-                if (msj[0] == '1')
-                {
-                    cmd.Connection = cn.Cn;
-                    cmd.CommandText = sentenciaSQL;
-                    cmd.ExecuteNonQuery();
-                    cmd.CommandText = RecuperarId;
-                    msj = "1";
-                    MessageBox.Show("Insertado con exito");
-                }
-                else
-                {
-                    MessageBox.Show("Error: " + msj);
-                }
-                cn.cerrar();
-            }
-            catch (SqlException ex)
-            {
-                msj = "0 " + ex.Message;
-            }
-            return msj;
-        }
-
-        public List<Login> ConsultarApellido(string apellidos)
-        {
-            string sentenciaSQL = "SELECT * from Usuario Where Usuario.Apellidos Like '%" + apellidos + "%'";
-            List<Login> nomina = ConsultarGeneral(sentenciaSQL);
-            return nomina;
-        }
-
-        public string Actualizar(Login login, int id)
-        {
-            Conexion cn = new Conexion();
-            string msj = cn.conectar();
-
-
-            string sentenciaSQL = "UPDATE Usuario SET Usuario.Nombres='" + login.Nombres + "', Usuario.Apellidos='" + login.Apellidos + "', Usuario.Usuario= '" + login.Usuario + "', Usuario.Contrasena= '" + login.Contrasena + "' WHERE Usuario.Id='" + id + "'";
-
-            try
-            {
-                cmd.Connection = cn.Cn;
-                cmd.CommandText = sentenciaSQL;
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Actualizado Usuario");
-                msj = "1";
-            }
-            catch (SqlException ex)
-            {
-                msj = "0 " + ex.Message;
-                cn.cerrar();
-            }
-            return msj;
-        }
-
-
-
-        public string Eliminar(int id)
-        {
-            Conexion cn = new Conexion();
-            string sentenciaSQL = "DELETE FROM Usuario WHERE Id=" + id;
-            string msj = cn.conectar();
-            try
-            {
-                if (msj[0] == '1')
-                {
-                    cmd.Connection = cn.Cn;
-                    cmd.CommandText = sentenciaSQL;
-                    cmd.ExecuteNonQuery();
-                    msj = "1";
-                    MessageBox.Show("Eliminado con exito");
-                }
-                else
-                {
-                    cn.cerrar();
-                }
-            }
-            catch (SqlException ex)
-            {
-                msj = "0 " + ex.Message;
-            }
-            return msj;
-        }
-
-       */
-
     }
 }
