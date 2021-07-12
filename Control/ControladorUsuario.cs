@@ -27,11 +27,9 @@ namespace Control
             {
                 throw new GeneralExcepcion("Usuario y/o contrasena incorrecta");
             }
-            else { 
-                if (user.Contrasena!=contrasena)
-                {
+            else if (user.Contrasena!=contrasena)
+            {
                 throw new GeneralExcepcion("Contrasena incorrecta");
-                }
             }
         }
 
