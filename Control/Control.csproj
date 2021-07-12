@@ -45,6 +45,7 @@
     <Compile Include="ControladorUsuario.cs" />
     <Compile Include="ControlRecluso.cs" />
     <Compile Include="Excepcion.cs" />
+    <Compile Include="Excepciones\CedulaRepetidaException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

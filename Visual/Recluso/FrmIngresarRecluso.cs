@@ -82,18 +82,13 @@ namespace Visual.Recluso
                     try
                     {
                         int idExpediente = GetIdExpediente(controlRecluso.buscarExpediente(cedula));
-
-                        
                         controlRecluso.GuardarRecluso(codigo, nombre, apellido, genero, fecha, idExpediente, cedula);
                         MessageBox.Show("Recluso Guardado con Exito");
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-
-                    
-                    
+                    }          
                 }
             }
             else
@@ -133,29 +128,16 @@ namespace Visual.Recluso
             string cedula = txtCedula.Text.Trim();
 
             if (!String.IsNullOrEmpty(cedula))
-            {
-                string message = "";
-                
+            {                
                 try {
-                    controlRecluso.ValidarRecluso(cedula);
-                   
-                }catch(Exception ex)
-                {
-                    message = ex.Message;
-                }
-
-                if (message == "")
-                {
-                    
                     string nombres = txtNombre.Text;
                     string apellidos = txtApellido.Text;
                     new FrmExpedienteRecluso(controlRecluso, cedula, nombres + " " + apellidos).ShowDialog();
                 }
-                else
+                catch(Exception ex)
                 {
-                    MessageBox.Show(message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
             }
             else
             {

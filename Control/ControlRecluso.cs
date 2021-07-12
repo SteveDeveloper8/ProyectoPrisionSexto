@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Control.Excepciones;
 
 namespace Control
 {
@@ -59,14 +60,12 @@ namespace Control
         {
             if (BuscarRecluso(cedula) == null)
             {
-
                 Expediente exp = datosRecluso.buscarExpedienteBD(cedula);
                 recluso = new Recluso(nombre, apellido, genero, fecha, cedula, codigo, exp);
                 datosRecluso.InsertarRecluso(recluso);
             }
             else {
-                throw new Exception("Cedula Repetida");
-
+                throw new CedulaRepetidaException();
             }
 
             /*if (message.Equals("fallido"))
@@ -88,11 +87,7 @@ namespace Control
 
         public Object BuscarRecluso(string cedula)
         {
-            Object recluso = datosRecluso.BuscarRecluso(cedula);
-            if (recluso != null)
-                return recluso;
-            else
-                throw new Exception();
+            return datosRecluso.BuscarRecluso(cedula);
         }
         public void ValidarRecluso(string cedula)
         {

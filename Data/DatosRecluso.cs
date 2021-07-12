@@ -47,9 +47,10 @@ namespace Data
 
         public void InsertarRecluso(Recluso recluso)
         {
+            MessageBox.Show("Llego");
             string sentenciaSQL = "INSERT INTO Recluso(Codigo,Cedula,Nombres,Apellidos,Fecha_Nac,Genero,Id_Expediente)VALUES('" 
                 + recluso.Codigo + "','" + recluso.Cedula + "','" + recluso.Nombre + "','" + recluso.Apellidos + "','" 
-                + recluso.Fecha.ToString("yyyy-MM-dd") + "','" + recluso.Genero + "','" + recluso.Expediente.Id + "')";
+                + recluso.Fecha.ToString("yyyy-MM-dd") + "','" + recluso.Genero + "'," + recluso.Expediente.Id + ")";
             string RecuperarId = "Select @@identity";
 
             try
@@ -114,9 +115,12 @@ namespace Data
         }
         public object BuscarRecluso(string cedula)
         {
-            string sentenciaSQL = "SELECT * from Recluso WHERE Cedula='"+cedula+"';";
-            Object recluso = ConsultarGeneral(sentenciaSQL)[0];
-            return recluso;
+            string sentenciaSQL = "SELECT * from Recluso WHERE Cedula='"+cedula+"'";
+            List<Object> reclusos = ConsultarGeneral(sentenciaSQL);
+            if (reclusos.Count > 0)
+                return reclusos[0];
+            else
+                return null;
         }
 
         private List<Object> ConsultarGeneral(string sentenciaSQL)
@@ -133,7 +137,7 @@ namespace Data
                 dr = cmd.ExecuteReader();
 
                 while (dr.Read())
-                {   
+                {
                     recluso = new Recluso();
                     recluso.Expediente = new Expediente();
                     recluso.Id = Convert.ToInt32(dr["Id_Recluso"]);
