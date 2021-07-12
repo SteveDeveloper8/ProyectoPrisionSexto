@@ -30,6 +30,16 @@ namespace Model
         {
         }
 
+        public Usuario(string nombres, string apellidos, string username, string contrasena, Rol rol)
+        {
+            this.nombres = nombres;
+            this.apellidos = apellidos;
+            this.username = username;
+            this.contrasena = contrasena;
+            Rol = rol;
+            
+        }
+
         public int Id { get => id; set => id = value; }
         public string Nombres { get => nombres; set => nombres = value; }
         public string Apellidos { get => apellidos; set => apellidos = value; }

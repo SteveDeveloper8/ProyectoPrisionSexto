@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvCargos = new Guna.UI2.WinForms.Guna2DataGridView();
             this.colDelito = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,7 +42,7 @@
             this.guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnBuscar = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.btnRegresar = new Guna.UI2.WinForms.Guna2GradientButton();
             this.lblCodigo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lblNombre = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -59,21 +59,21 @@
             // 
             this.dgvCargos.AllowUserToAddRows = false;
             this.dgvCargos.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dgvCargos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.dgvCargos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvCargos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCargos.BackgroundColor = System.Drawing.Color.White;
             this.dgvCargos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvCargos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvCargos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkOrange;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCargos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.DarkOrange;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCargos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvCargos.ColumnHeadersHeight = 21;
             this.dgvCargos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colDelito,
@@ -82,14 +82,14 @@
             this.colLocalidad,
             this.colCiudad,
             this.colPais});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCargos.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCargos.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvCargos.EnableHeadersVisualStyles = false;
             this.dgvCargos.GridColor = System.Drawing.Color.White;
             this.dgvCargos.Location = new System.Drawing.Point(40, 163);
@@ -181,7 +181,7 @@
             this.guna2Panel1.BorderColor = System.Drawing.Color.White;
             this.guna2Panel1.BorderRadius = 10;
             this.guna2Panel1.BorderThickness = 2;
-            this.guna2Panel1.Controls.Add(this.btnBuscar);
+            this.guna2Panel1.Controls.Add(this.btnRegresar);
             this.guna2Panel1.Controls.Add(this.lblCodigo);
             this.guna2Panel1.Controls.Add(this.guna2HtmlLabel4);
             this.guna2Panel1.Controls.Add(this.lblNombre);
@@ -197,29 +197,30 @@
             this.guna2Panel1.Size = new System.Drawing.Size(646, 402);
             this.guna2Panel1.TabIndex = 46;
             // 
-            // btnBuscar
+            // btnRegresar
             // 
-            this.btnBuscar.BackColor = System.Drawing.Color.Transparent;
-            this.btnBuscar.BorderRadius = 20;
-            this.btnBuscar.CheckedState.Parent = this.btnBuscar;
-            this.btnBuscar.CustomImages.Parent = this.btnBuscar;
-            this.btnBuscar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnBuscar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnBuscar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnBuscar.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnBuscar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnBuscar.DisabledState.Parent = this.btnBuscar;
-            this.btnBuscar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnBuscar.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnBuscar.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
-            this.btnBuscar.ForeColor = System.Drawing.Color.White;
-            this.btnBuscar.HoverState.Parent = this.btnBuscar;
-            this.btnBuscar.Location = new System.Drawing.Point(261, 352);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.ShadowDecoration.Parent = this.btnBuscar;
-            this.btnBuscar.Size = new System.Drawing.Size(125, 38);
-            this.btnBuscar.TabIndex = 50;
-            this.btnBuscar.Text = "Regresar";
+            this.btnRegresar.BackColor = System.Drawing.Color.Transparent;
+            this.btnRegresar.BorderRadius = 20;
+            this.btnRegresar.CheckedState.Parent = this.btnRegresar;
+            this.btnRegresar.CustomImages.Parent = this.btnRegresar;
+            this.btnRegresar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnRegresar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnRegresar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnRegresar.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnRegresar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnRegresar.DisabledState.Parent = this.btnRegresar;
+            this.btnRegresar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnRegresar.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnRegresar.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
+            this.btnRegresar.ForeColor = System.Drawing.Color.White;
+            this.btnRegresar.HoverState.Parent = this.btnRegresar;
+            this.btnRegresar.Location = new System.Drawing.Point(261, 352);
+            this.btnRegresar.Name = "btnRegresar";
+            this.btnRegresar.ShadowDecoration.Parent = this.btnRegresar;
+            this.btnRegresar.Size = new System.Drawing.Size(125, 38);
+            this.btnRegresar.TabIndex = 50;
+            this.btnRegresar.Text = "Regresar";
+            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
             // lblCodigo
             // 
@@ -331,7 +332,7 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblNombre;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
-        private Guna.UI2.WinForms.Guna2GradientButton btnBuscar;
+        private Guna.UI2.WinForms.Guna2GradientButton btnRegresar;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDelito;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDescripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFecha;

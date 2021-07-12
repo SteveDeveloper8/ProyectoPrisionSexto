@@ -39,7 +39,7 @@
             this.actualizarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuRegistrarUsuario = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnMinimizar = new Guna.UI2.WinForms.Guna2CirclePictureBox();
@@ -86,7 +86,7 @@
             // 
             this.MenuRegistrar.BackColor = System.Drawing.Color.DarkKhaki;
             this.MenuRegistrar.Name = "MenuRegistrar";
-            this.MenuRegistrar.Size = new System.Drawing.Size(180, 24);
+            this.MenuRegistrar.Size = new System.Drawing.Size(148, 24);
             this.MenuRegistrar.Text = "Registrar";
             this.MenuRegistrar.Click += new System.EventHandler(this.MenuRegistrar_Click);
             // 
@@ -94,14 +94,14 @@
             // 
             this.toolStripMenuItem3.BackColor = System.Drawing.Color.DarkKhaki;
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 24);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(148, 24);
             this.toolStripMenuItem3.Text = "Actualizar";
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.BackColor = System.Drawing.Color.DarkKhaki;
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(180, 24);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(148, 24);
             this.toolStripMenuItem4.Text = "Consultar";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.consultarToolStripMenuItem_Click);
             // 
@@ -122,7 +122,7 @@
             // 
             this.registrarToolStripMenuItem.BackColor = System.Drawing.Color.DarkKhaki;
             this.registrarToolStripMenuItem.Name = "registrarToolStripMenuItem";
-            this.registrarToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.registrarToolStripMenuItem.Size = new System.Drawing.Size(148, 24);
             this.registrarToolStripMenuItem.Text = "Registrar";
             this.registrarToolStripMenuItem.Click += new System.EventHandler(this.registrarToolStripMenuItem_Click);
             // 
@@ -130,14 +130,14 @@
             // 
             this.actualizarToolStripMenuItem.BackColor = System.Drawing.Color.DarkKhaki;
             this.actualizarToolStripMenuItem.Name = "actualizarToolStripMenuItem";
-            this.actualizarToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.actualizarToolStripMenuItem.Size = new System.Drawing.Size(148, 24);
             this.actualizarToolStripMenuItem.Text = "Actualizar";
             // 
             // consultarToolStripMenuItem
             // 
             this.consultarToolStripMenuItem.BackColor = System.Drawing.Color.DarkKhaki;
             this.consultarToolStripMenuItem.Name = "consultarToolStripMenuItem";
-            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(148, 24);
             this.consultarToolStripMenuItem.Text = "Consultar";
             this.consultarToolStripMenuItem.Click += new System.EventHandler(this.consultarToolStripMenuItem_Click);
             // 
@@ -145,7 +145,7 @@
             // 
             this.toolStripMenuItem5.BackColor = System.Drawing.Color.Gray;
             this.toolStripMenuItem5.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem6,
+            this.MenuRegistrarUsuario,
             this.toolStripMenuItem7,
             this.toolStripMenuItem8});
             this.toolStripMenuItem5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -154,25 +154,26 @@
             this.toolStripMenuItem5.Size = new System.Drawing.Size(75, 24);
             this.toolStripMenuItem5.Text = "Usuario";
             // 
-            // toolStripMenuItem6
+            // MenuRegistrarUsuario
             // 
-            this.toolStripMenuItem6.BackColor = System.Drawing.Color.DarkKhaki;
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(148, 24);
-            this.toolStripMenuItem6.Text = "Registrar";
+            this.MenuRegistrarUsuario.BackColor = System.Drawing.Color.DarkKhaki;
+            this.MenuRegistrarUsuario.Name = "MenuRegistrarUsuario";
+            this.MenuRegistrarUsuario.Size = new System.Drawing.Size(180, 24);
+            this.MenuRegistrarUsuario.Text = "Registrar";
+            this.MenuRegistrarUsuario.Click += new System.EventHandler(this.MenuRegistrarUsuario_Click);
             // 
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.BackColor = System.Drawing.Color.DarkKhaki;
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(148, 24);
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(180, 24);
             this.toolStripMenuItem7.Text = "Actualizar";
             // 
             // toolStripMenuItem8
             // 
             this.toolStripMenuItem8.BackColor = System.Drawing.Color.DarkKhaki;
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(148, 24);
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(180, 24);
             this.toolStripMenuItem8.Text = "Consultar";
             // 
             // btnMinimizar
@@ -189,6 +190,7 @@
             this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnMinimizar.TabIndex = 18;
             this.btnMinimizar.TabStop = false;
+            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
             // 
             // btnCerrar
             // 
@@ -300,7 +302,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
+        private System.Windows.Forms.ToolStripMenuItem MenuRegistrarUsuario;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
     }

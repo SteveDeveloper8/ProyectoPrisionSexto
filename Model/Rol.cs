@@ -21,6 +21,11 @@ namespace Model
         {
         }
 
+        public Rol(string descripcion)
+        {
+            this.descripcion = descripcion;
+        }
+
         public int Id { get => id; set => id = value; }
         public string Descripcion { get => descripcion; set => descripcion = value; }
     }

@@ -13,14 +13,15 @@ namespace Control
     public class ControladorUsuario
     {
         List<Usuario> usuarios = new List<Usuario>();
-        DatosLogin loginBD = new DatosLogin();
-
+        DatosLogin datosLogin = new DatosLogin();
+        Usuario user = null;
+        Rol role = null;
 
         public void validarLogin(string usuario, string contrasena)
         {
 
             Usuario user = null;
-            user = loginBD.ConsultarUsuario(usuario);
+            user = datosLogin.ConsultarUsuario(usuario);
 
             if (user == null)
             {
@@ -34,7 +35,31 @@ namespace Control
             }
         }
 
+       
 
+        public void usuarioRepetido(string usuario)
+        {
+            Usuario user = null;
+            user = datosLogin.ConsultarUsuario(usuario);
+            if (user != null)
+            {
+                throw new Exception("Usuario ya registrado");
+            }
+        }
+
+        public void GuardarUsuario(string nombre, string apellido, string usuario, string contrasena, string rol)
+        {
+            role = new Rol(rol);
+            user = new Usuario(nombre, apellido,usuario, contrasena, role);
+            datosLogin.InsertarUsuario(user,ObetenerRol(rol));
+            
+        }
+        public int ObetenerRol(string rol)
+        {
+           Rol role= datosLogin.ConsultarRol(rol);
+
+            return role.Id;
+        }
     }
 
 }

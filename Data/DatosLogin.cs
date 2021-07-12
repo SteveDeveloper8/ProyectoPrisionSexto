@@ -43,7 +43,7 @@ namespace Data
 
                 if (dr.Read())
                 {
-                    MessageBox.Show("Entro a leer");
+                   
                     user = new Usuario();
                     user.Id = Convert.ToInt32(dr["Id_Usuario"]);
                     user.Nombres = dr["Nombres"].ToString();
@@ -54,14 +54,70 @@ namespace Data
                     
                 }
             }
-            catch (Exception ex)
+            catch (SqlException)
             {
-                
+                throw new Exception("Error en la base de datos");
             }
 
             
             return user;
         }
+
+        public Rol ConsultarRol(string rol)
+        {
+            string sentenciaSQL = "SELECT * FROM Rol  WHERE Descripcion ='" + rol + "'";
+            SqlDataReader dr = null;
+            Rol role = null;
+
+            try
+            {
+                cn.conectar();
+                cmd.Connection = cn.Cn;
+                cmd.CommandText = sentenciaSQL;
+                dr = cmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+
+                    role = new Rol();
+                    role.Id = Convert.ToInt32(dr["Id_Rol"]);
+                    role.Descripcion = dr["Descripcion"].ToString();
+
+                }
+            }
+            catch (SqlException)
+            {
+                throw new Exception("Error en la base de datos");
+            }
+
+
+            return role;
+        }
+
+        public void InsertarUsuario(Usuario user, int idRol)
+        {
+            string sentenciaSQL = "INSERT INTO Usuario(Nombres, Apellidos, UserName,Password,Id_Rol )VALUES('" + 
+                user.Nombres + "','" + user.Apellidos + "','" + user.Username + "','" + user.Contrasena + "','" + idRol + "')";
+
+
+            string RecuperarId = "Select @@identity";
+
+            try
+            {
+                cn.conectar();
+                cmd.Connection = cn.Cn;
+                cmd.CommandText = sentenciaSQL;
+                cmd.ExecuteNonQuery();
+                cmd.CommandText = RecuperarId;
+            }
+            catch (SqlException)
+            {
+                throw new Exception("Error dentro de la base de datos");
+            }
+            cn.cerrar();
+        }
+        
+
         private List<Usuario> ConsultarGeneral(string sentenciaSQL)
         {
             List<Usuario> usuarios = new List<Usuario>();
@@ -90,9 +146,9 @@ namespace Data
                 
 
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
-                
+                throw new Exception("Error en la bse de datos");
             }
 
             return usuarios;

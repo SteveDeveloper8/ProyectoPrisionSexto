@@ -149,7 +149,7 @@ namespace Data
             }
             catch (Exception ex)
             {
-               
+                throw new Exception("Error en la base de datos");
             }
             return reclusos;
         }

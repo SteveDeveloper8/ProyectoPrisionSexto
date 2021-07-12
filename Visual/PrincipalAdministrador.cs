@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Visual.Recluso;
+using Visual.Usuario;
 
 namespace Visual
 {
@@ -81,6 +82,17 @@ namespace Visual
         {
             FrmIngresarRecluso ingresar = new FrmIngresarRecluso();
             ingresar.ShowDialog();
+        }
+
+        private void MenuRegistrarUsuario_Click(object sender, EventArgs e)
+        {
+            FrmRegistrarUsuario registrar = new FrmRegistrarUsuario();
+            registrar.ShowDialog();
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

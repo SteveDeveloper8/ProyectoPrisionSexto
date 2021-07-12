@@ -30,26 +30,30 @@
         {
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnRegistrar = new Guna.UI2.WinForms.Guna2Button();
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.txtNombre = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.txtApellido = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
-            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtConfimacion = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.txtContrasena = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.cmbGenero = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.cmbRol = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.txtUsuario = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.btnMinimizar = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            this.btnCerrar = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.guna2Panel1.SuspendLayout();
             this.guna2GroupBox1.SuspendLayout();
             this.guna2GroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -59,8 +63,10 @@
             this.guna2Panel1.BorderColor = System.Drawing.Color.White;
             this.guna2Panel1.BorderRadius = 10;
             this.guna2Panel1.BorderThickness = 2;
+            this.guna2Panel1.Controls.Add(this.btnMinimizar);
+            this.guna2Panel1.Controls.Add(this.btnCerrar);
             this.guna2Panel1.Controls.Add(this.guna2HtmlLabel7);
-            this.guna2Panel1.Controls.Add(this.guna2Button1);
+            this.guna2Panel1.Controls.Add(this.btnRegistrar);
             this.guna2Panel1.Controls.Add(this.guna2GroupBox1);
             this.guna2Panel1.Controls.Add(this.guna2GroupBox2);
             this.guna2Panel1.Controls.Add(this.guna2PictureBox1);
@@ -83,25 +89,26 @@
             this.guna2HtmlLabel7.Text = "Registro de Usuario";
             this.guna2HtmlLabel7.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
             // 
-            // guna2Button1
+            // btnRegistrar
             // 
-            this.guna2Button1.BorderRadius = 10;
-            this.guna2Button1.CheckedState.Parent = this.guna2Button1;
-            this.guna2Button1.CustomImages.Parent = this.guna2Button1;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.DisabledState.Parent = this.guna2Button1;
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.HoverState.Parent = this.guna2Button1;
-            this.guna2Button1.Location = new System.Drawing.Point(334, 433);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.ShadowDecoration.Parent = this.guna2Button1;
-            this.guna2Button1.Size = new System.Drawing.Size(135, 33);
-            this.guna2Button1.TabIndex = 29;
-            this.guna2Button1.Text = "Registrar";
+            this.btnRegistrar.BorderRadius = 10;
+            this.btnRegistrar.CheckedState.Parent = this.btnRegistrar;
+            this.btnRegistrar.CustomImages.Parent = this.btnRegistrar;
+            this.btnRegistrar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnRegistrar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnRegistrar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnRegistrar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnRegistrar.DisabledState.Parent = this.btnRegistrar;
+            this.btnRegistrar.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrar.ForeColor = System.Drawing.Color.White;
+            this.btnRegistrar.HoverState.Parent = this.btnRegistrar;
+            this.btnRegistrar.Location = new System.Drawing.Point(334, 433);
+            this.btnRegistrar.Name = "btnRegistrar";
+            this.btnRegistrar.ShadowDecoration.Parent = this.btnRegistrar;
+            this.btnRegistrar.Size = new System.Drawing.Size(135, 33);
+            this.btnRegistrar.TabIndex = 29;
+            this.btnRegistrar.Text = "Registrar";
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // guna2GroupBox1
             // 
@@ -188,7 +195,7 @@
             this.txtApellido.Location = new System.Drawing.Point(234, 69);
             this.txtApellido.Margin = new System.Windows.Forms.Padding(4);
             this.txtApellido.Name = "txtApellido";
-            this.txtApellido.PasswordChar = '*';
+            this.txtApellido.PasswordChar = '\0';
             this.txtApellido.PlaceholderText = "Apellidos";
             this.txtApellido.SelectedText = "";
             this.txtApellido.ShadowDecoration.Parent = this.txtApellido;
@@ -198,11 +205,11 @@
             // guna2GroupBox2
             // 
             this.guna2GroupBox2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2GroupBox2.Controls.Add(this.guna2TextBox1);
+            this.guna2GroupBox2.Controls.Add(this.txtConfimacion);
             this.guna2GroupBox2.Controls.Add(this.guna2HtmlLabel6);
             this.guna2GroupBox2.Controls.Add(this.txtContrasena);
             this.guna2GroupBox2.Controls.Add(this.guna2HtmlLabel1);
-            this.guna2GroupBox2.Controls.Add(this.cmbGenero);
+            this.guna2GroupBox2.Controls.Add(this.cmbRol);
             this.guna2GroupBox2.Controls.Add(this.guna2HtmlLabel4);
             this.guna2GroupBox2.Controls.Add(this.txtUsuario);
             this.guna2GroupBox2.Controls.Add(this.guna2HtmlLabel5);
@@ -218,31 +225,31 @@
             this.guna2GroupBox2.TabIndex = 47;
             this.guna2GroupBox2.Text = "Datos Usuario";
             // 
-            // guna2TextBox1
+            // txtConfimacion
             // 
-            this.guna2TextBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2TextBox1.BorderRadius = 5;
-            this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox1.DefaultText = "";
-            this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.DisabledState.Parent = this.guna2TextBox1;
-            this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.FocusedState.Parent = this.guna2TextBox1;
-            this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.HoverState.Parent = this.guna2TextBox1;
-            this.guna2TextBox1.Location = new System.Drawing.Point(13, 187);
-            this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.guna2TextBox1.Name = "guna2TextBox1";
-            this.guna2TextBox1.PasswordChar = '*';
-            this.guna2TextBox1.PlaceholderText = "Confirmación Contraseña";
-            this.guna2TextBox1.SelectedText = "";
-            this.guna2TextBox1.ShadowDecoration.Parent = this.guna2TextBox1;
-            this.guna2TextBox1.Size = new System.Drawing.Size(185, 27);
-            this.guna2TextBox1.TabIndex = 24;
+            this.txtConfimacion.BackColor = System.Drawing.Color.Transparent;
+            this.txtConfimacion.BorderRadius = 5;
+            this.txtConfimacion.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtConfimacion.DefaultText = "";
+            this.txtConfimacion.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtConfimacion.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtConfimacion.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtConfimacion.DisabledState.Parent = this.txtConfimacion;
+            this.txtConfimacion.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtConfimacion.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtConfimacion.FocusedState.Parent = this.txtConfimacion;
+            this.txtConfimacion.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtConfimacion.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtConfimacion.HoverState.Parent = this.txtConfimacion;
+            this.txtConfimacion.Location = new System.Drawing.Point(13, 187);
+            this.txtConfimacion.Margin = new System.Windows.Forms.Padding(4);
+            this.txtConfimacion.Name = "txtConfimacion";
+            this.txtConfimacion.PasswordChar = '*';
+            this.txtConfimacion.PlaceholderText = "Confirmación Contraseña";
+            this.txtConfimacion.SelectedText = "";
+            this.txtConfimacion.ShadowDecoration.Parent = this.txtConfimacion;
+            this.txtConfimacion.Size = new System.Drawing.Size(185, 27);
+            this.txtConfimacion.TabIndex = 24;
             // 
             // guna2HtmlLabel6
             // 
@@ -292,29 +299,30 @@
             this.guna2HtmlLabel1.TabIndex = 17;
             this.guna2HtmlLabel1.Text = "Contraseña:";
             // 
-            // cmbGenero
+            // cmbRol
             // 
-            this.cmbGenero.BackColor = System.Drawing.Color.Transparent;
-            this.cmbGenero.BorderRadius = 5;
-            this.cmbGenero.BorderThickness = 0;
-            this.cmbGenero.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbGenero.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbGenero.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmbGenero.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmbGenero.FocusedState.Parent = this.cmbGenero;
-            this.cmbGenero.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmbGenero.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbGenero.HoverState.Parent = this.cmbGenero;
-            this.cmbGenero.ItemHeight = 30;
-            this.cmbGenero.Items.AddRange(new object[] {
-            "Masculino",
-            "Femenino"});
-            this.cmbGenero.ItemsAppearance.Parent = this.cmbGenero;
-            this.cmbGenero.Location = new System.Drawing.Point(234, 120);
-            this.cmbGenero.Name = "cmbGenero";
-            this.cmbGenero.ShadowDecoration.Parent = this.cmbGenero;
-            this.cmbGenero.Size = new System.Drawing.Size(185, 36);
-            this.cmbGenero.TabIndex = 22;
+            this.cmbRol.BackColor = System.Drawing.Color.Transparent;
+            this.cmbRol.BorderRadius = 5;
+            this.cmbRol.BorderThickness = 0;
+            this.cmbRol.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbRol.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbRol.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbRol.FocusedState.Parent = this.cmbRol;
+            this.cmbRol.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbRol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmbRol.HoverState.Parent = this.cmbRol;
+            this.cmbRol.ItemHeight = 30;
+            this.cmbRol.Items.AddRange(new object[] {
+            "Administrador",
+            "Alcaide",
+            "Docente"});
+            this.cmbRol.ItemsAppearance.Parent = this.cmbRol;
+            this.cmbRol.Location = new System.Drawing.Point(234, 120);
+            this.cmbRol.Name = "cmbRol";
+            this.cmbRol.ShadowDecoration.Parent = this.cmbRol;
+            this.cmbRol.Size = new System.Drawing.Size(185, 36);
+            this.cmbRol.TabIndex = 22;
             // 
             // guna2HtmlLabel4
             // 
@@ -348,7 +356,7 @@
             this.txtUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.PasswordChar = '\0';
-            this.txtUsuario.PlaceholderText = "Username";
+            this.txtUsuario.PlaceholderText = "Nombre de Usuario";
             this.txtUsuario.SelectedText = "";
             this.txtUsuario.ShadowDecoration.Parent = this.txtUsuario;
             this.txtUsuario.Size = new System.Drawing.Size(185, 27);
@@ -361,9 +369,9 @@
             this.guna2HtmlLabel5.ForeColor = System.Drawing.Color.White;
             this.guna2HtmlLabel5.Location = new System.Drawing.Point(13, 43);
             this.guna2HtmlLabel5.Name = "guna2HtmlLabel5";
-            this.guna2HtmlLabel5.Size = new System.Drawing.Size(77, 23);
+            this.guna2HtmlLabel5.Size = new System.Drawing.Size(60, 23);
             this.guna2HtmlLabel5.TabIndex = 15;
-            this.guna2HtmlLabel5.Text = "Username:";
+            this.guna2HtmlLabel5.Text = "Usuario:";
             // 
             // guna2PictureBox1
             // 
@@ -378,6 +386,38 @@
             this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.guna2PictureBox1.TabIndex = 30;
             this.guna2PictureBox1.TabStop = false;
+            // 
+            // btnMinimizar
+            // 
+            this.btnMinimizar.BackColor = System.Drawing.Color.Transparent;
+            this.btnMinimizar.FillColor = System.Drawing.Color.Transparent;
+            this.btnMinimizar.Image = global::Visual.Properties.Resources.minimize_32;
+            this.btnMinimizar.ImageRotate = 0F;
+            this.btnMinimizar.Location = new System.Drawing.Point(441, 2);
+            this.btnMinimizar.Name = "btnMinimizar";
+            this.btnMinimizar.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.btnMinimizar.ShadowDecoration.Parent = this.btnMinimizar;
+            this.btnMinimizar.Size = new System.Drawing.Size(29, 27);
+            this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnMinimizar.TabIndex = 49;
+            this.btnMinimizar.TabStop = false;
+            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.BackColor = System.Drawing.Color.Transparent;
+            this.btnCerrar.FillColor = System.Drawing.Color.Transparent;
+            this.btnCerrar.Image = global::Visual.Properties.Resources.close_32;
+            this.btnCerrar.ImageRotate = 0F;
+            this.btnCerrar.Location = new System.Drawing.Point(470, 3);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.btnCerrar.ShadowDecoration.Parent = this.btnCerrar;
+            this.btnCerrar.Size = new System.Drawing.Size(24, 24);
+            this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnCerrar.TabIndex = 48;
+            this.btnCerrar.TabStop = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // FrmRegistrarUsuario
             // 
@@ -396,6 +436,8 @@
             this.guna2GroupBox2.ResumeLayout(false);
             this.guna2GroupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -407,18 +449,20 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2TextBox txtNombre;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
-        private Guna.UI2.WinForms.Guna2ComboBox cmbGenero;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbRol;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
         private Guna.UI2.WinForms.Guna2TextBox txtApellido;
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox2;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button btnRegistrar;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private Guna.UI2.WinForms.Guna2TextBox txtConfimacion;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel6;
         private Guna.UI2.WinForms.Guna2TextBox txtContrasena;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2TextBox txtUsuario;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel5;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox btnMinimizar;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox btnCerrar;
     }
 }
