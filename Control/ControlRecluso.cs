@@ -67,11 +67,6 @@ namespace Control
             else {
                 throw new CedulaRepetidaException();
             }
-
-            /*if (message.Equals("fallido"))
-            {
-                throw new GeneralExcepcion("Existio un error en base de datos");
-            }*/
         }
 
 

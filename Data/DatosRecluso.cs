@@ -37,9 +37,9 @@ namespace Data
                     expe.Codigo = (dr["Codigo"]).ToString();
                 }
             }
-            catch (Exception ex)
+            catch (SqlException)
             {
-                //msj = "0 " + ex.Message;
+                throw new ConsultaFallida();
             }
             cn.cerrar();
             return expe;
@@ -47,7 +47,6 @@ namespace Data
 
         public void InsertarRecluso(Recluso recluso)
         {
-            MessageBox.Show("Llego");
             string sentenciaSQL = "INSERT INTO Recluso(Codigo,Cedula,Nombres,Apellidos,Fecha_Nac,Genero,Id_Expediente)VALUES('" 
                 + recluso.Codigo + "','" + recluso.Cedula + "','" + recluso.Nombre + "','" + recluso.Apellidos + "','" 
                 + recluso.Fecha.ToString("yyyy-MM-dd") + "','" + recluso.Genero + "'," + recluso.Expediente.Id + ")";
