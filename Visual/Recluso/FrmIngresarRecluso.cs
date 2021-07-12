@@ -13,7 +13,8 @@ namespace Visual.Recluso
 {
     public partial class FrmIngresarRecluso : Form
     {
-        ControlRecluso ctrl = new ControlRecluso();
+        ControlRecluso controlRecluso = new ControlRecluso();
+        
         public FrmIngresarRecluso()
         {
             InitializeComponent();
@@ -75,28 +76,23 @@ namespace Visual.Recluso
 
             if (!EsVacio(codigo, nombre, apellido, genero, fecha,cedula))
             {
-                if (!ctrl.existeCodigo(codigo))
+                if (!controlRecluso.existeCodigo(codigo))
                 {
-                    string message = "";
+                    
                     try
                     {
-                        int idExpediente = GetIdExpediente(ctrl.buscarExpediente(cedula));
- 
-                        ctrl.GuardarRecluso(codigo, nombre, apellido, genero, fecha, idExpediente, cedula);
-                    }
-                    catch (GeneralExcepcion ex)
-                    {
-                        message = ex.Message;
-                    }
+                        int idExpediente = GetIdExpediente(controlRecluso.buscarExpediente(cedula));
 
-                    if (message == "")
-                    {
+                        
+                        controlRecluso.GuardarRecluso(codigo, nombre, apellido, genero, fecha, idExpediente, cedula);
                         MessageBox.Show("Recluso Guardado con Exito");
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show(message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
+
+                    
                     
                 }
             }
@@ -129,8 +125,9 @@ namespace Visual.Recluso
         private int GetIdExpediente(Object expediente)
         {
             Type tipo = expediente.GetType();
-            return (int)tipo.GetProperty("id").GetValue(expediente);
+            return (int)tipo.GetProperty("Id").GetValue(expediente);
         }
+
         private void btnDetallesExpediente_Click(object sender, EventArgs e)
         {
             string cedula = txtCedula.Text.Trim();
@@ -138,18 +135,21 @@ namespace Visual.Recluso
             if (!String.IsNullOrEmpty(cedula))
             {
                 string message = "";
-                int idExpediente=0;
+                
                 try {
-                   idExpediente= GetIdExpediente(ctrl.buscarExpediente(cedula));
-                }catch(GeneralExcepcion ex)
+                    controlRecluso.ValidarRecluso(cedula);
+                   
+                }catch(Exception ex)
                 {
                     message = ex.Message;
                 }
 
                 if (message == "")
                 {
-                    //FrmExpedienteRecluso expediente = new FrmExpedienteRecluso(idExpediente);
-                    //expediente.ShowDialog();
+                    
+                    string nombres = txtNombre.Text;
+                    string apellidos = txtApellido.Text;
+                    new FrmExpedienteRecluso(controlRecluso, cedula, nombres + " " + apellidos).ShowDialog();
                 }
                 else
                 {

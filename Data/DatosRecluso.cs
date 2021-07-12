@@ -78,7 +78,7 @@ namespace Data
             string sentenciaSQL =
                 "SELECT c.Delito, c.Descripcion, c.Fecha, l.Nombre_Localidad," +
                 "ci.Nombre_Ciudad, p.Nombre_Pais " +
-                "FROM Expediente As e , CArgo As c, Localidad As l, Ciudad As ci, Pais As p" +
+                "FROM Expediente As e , Cargo As c, Localidad As l, Ciudad As ci, Pais As p" +
                 " WHERE e.Codigo= '" + codigoExpediente +"' AND " +
                 " e.Id_Expediente = c.Id_Expediente AND c.Id_Localidad = l.Id_Localidad" +
                 " AND l.Id_Ciudad=ci.Id_Ciudad AND ci.Id_Pais=p.Id_Pais;";

@@ -57,9 +57,17 @@ namespace Control
 
         public void GuardarRecluso(string codigo, string nombre, string apellido, string genero, DateTime fecha, int idExpediente, string cedula)
         {
-            Expediente exp = datosRecluso.buscarExpedienteBD(cedula);
-            recluso = new Recluso(nombre, apellido, genero, fecha, cedula, codigo, exp);
-            datosRecluso.InsertarRecluso(recluso);
+            if (BuscarRecluso(cedula) == null)
+            {
+
+                Expediente exp = datosRecluso.buscarExpedienteBD(cedula);
+                recluso = new Recluso(nombre, apellido, genero, fecha, cedula, codigo, exp);
+                datosRecluso.InsertarRecluso(recluso);
+            }
+            else {
+                throw new Exception("Cedula Repetida");
+
+            }
 
             /*if (message.Equals("fallido"))
             {
@@ -85,6 +93,12 @@ namespace Control
                 return recluso;
             else
                 throw new Exception();
+        }
+        public void ValidarRecluso(string cedula)
+        {
+            if (BuscarRecluso(cedula)!=null) {
+                throw new Exception("Cedula Repetida");
+            }
         }
         public List<Object> ListarCargos(string codigoExpediente)
         {
@@ -116,5 +130,7 @@ namespace Control
                 pais = cargo.LugarHechos.NombrePais
             };
         }
+
+        
     }
 }
