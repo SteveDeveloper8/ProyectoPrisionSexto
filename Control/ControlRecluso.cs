@@ -56,15 +56,17 @@ namespace Control
         }
 
 
-        public void GuardarRecluso(string codigo, string nombre, string apellido, string genero, DateTime fecha, int idExpediente, string cedula)
+        public bool GuardarRecluso(string codigo, string nombre, string apellido, string genero, DateTime fecha, int idExpediente, string cedula)
         {
             if (BuscarRecluso(cedula) == null)
             {
                 Expediente exp = datosRecluso.buscarExpedienteBD(cedula);
                 recluso = new Recluso(nombre, apellido, genero, fecha, cedula, codigo, exp);
                 datosRecluso.InsertarRecluso(recluso);
+                return true;
             }
             else {
+                return false;
                 throw new CedulaRepetidaException();
             }
         }

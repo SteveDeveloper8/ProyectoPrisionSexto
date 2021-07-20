@@ -17,7 +17,11 @@ namespace Control
         Usuario user = null;
         Rol role = null;
 
-        public void validarLogin(string usuario, string contrasena)
+        public ControladorUsuario()
+        {
+        }
+
+        public bool validarLogin(string usuario, string contrasena)
         {
 
             Usuario user = null;
@@ -25,34 +29,46 @@ namespace Control
 
             if (user == null)
             {
+                return false;
                 throw new GeneralExcepcion("Usuario y/o contrasena incorrecta");
             }
             else { 
                 if (user.Contrasena!=contrasena)
                 {
-                throw new GeneralExcepcion("Contrasena incorrecta");
+                    return false;
+                    throw new GeneralExcepcion("Contrasena incorrecta");
                 }
             }
+            return true;
         }
 
        
 
-        public void usuarioRepetido(string usuario)
+        public Object BuscarUsuario(string usuario)
         {
-            Usuario user = null;
-            user = datosLogin.ConsultarUsuario(usuario);
-            if (user != null)
-            {
-                throw new Exception("Usuario ya registrado");
-            }
+            return datosLogin.ConsultarUsuario(usuario);
         }
 
-        public void GuardarUsuario(string nombre, string apellido, string usuario, string contrasena, string rol)
+        public bool prueba()
         {
-            role = new Rol(rol);
-            user = new Usuario(nombre, apellido,usuario, contrasena, ObtenerRol(rol));
-            datosLogin.InsertarUsuario(user);
-            
+            return true;
+        }
+
+        public bool GuardarUsuario(string nombre, string apellido, string usuario, string contrasena, string rol)
+        {
+            bool guarda = false;
+            if (BuscarUsuario(usuario) == null)
+            {
+                role = new Rol(rol);
+                user = new Usuario(nombre, apellido, usuario, contrasena, ObtenerRol(rol));
+                datosLogin.InsertarUsuario(user);
+                guarda = true;
+            }else
+            {
+                throw new Exception("Usuario ya existe");
+            }
+            return guarda;
+
         }
         public Rol ObtenerRol(string rol)
         {

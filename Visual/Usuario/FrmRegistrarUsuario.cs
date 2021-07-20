@@ -33,7 +33,6 @@ namespace Visual.Usuario
             {
                 try
                 {
-                    controlUsuario.usuarioRepetido(usuario);
                     if (validarConfirmacion(contrasena, confirmacion)) {
                         controlUsuario.GuardarUsuario(nombre, apellido, usuario, contrasena, rol);
                         MessageBox.Show("Usuario Registrado");
