@@ -17,7 +17,7 @@ namespace Data
 
         public SqlConnection Cn { get => cn; set => cn = value; }
 
-        public void conectar()
+        public void Conectar()
         {
             try
             {
@@ -31,7 +31,7 @@ namespace Data
             }
         }
 
-        public string cerrar()
+        public string Cerrar()
         {
             string x = "";
             try

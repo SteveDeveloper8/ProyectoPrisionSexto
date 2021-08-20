@@ -37,7 +37,7 @@ namespace Data
            
             try
             {
-                cn.conectar();
+                cn.Conectar();
                 cmd.Connection = cn.Cn;
                 cmd.CommandText = sentenciaSQL;
                 dr = cmd.ExecuteReader();
@@ -72,7 +72,7 @@ namespace Data
 
             try
             {
-                cn.conectar();
+                cn.Conectar();
                 cmd.Connection = cn.Cn;
                 cmd.CommandText = sentenciaSQL;
                 dr = cmd.ExecuteReader();
@@ -103,7 +103,7 @@ namespace Data
             string RecuperarId = "Select @@identity";
             try
             {
-                cn.conectar();
+                cn.Conectar();
                 cmd.Connection = cn.Cn;
                 cmd.CommandText = sentenciaSQL;
                 cmd.ExecuteNonQuery();
@@ -113,7 +113,7 @@ namespace Data
             {
                 throw new ConsultaFallida();
             }
-            cn.cerrar();
+            cn.Cerrar();
         }
         //Ejecuta en la base de datos una sentencia SQL dada como argumento y devuelve una lista con toods los usuarios registrados. 
         private List<Usuario> ConsultarGeneral(string sentenciaSQL)
@@ -124,7 +124,7 @@ namespace Data
 
             try
             {
-                cn.conectar();
+                cn.Conectar();
                 cmd.Connection = cn.Cn;
                 cmd.CommandText = sentenciaSQL;
                 dr = cmd.ExecuteReader();

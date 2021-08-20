@@ -11,26 +11,25 @@ namespace Data
 {
     public class DatosRecluso
     {
-        Conexion cn;
-        SqlCommand cmd;
+        Conexion conexion;
         //Inicializa los objetos de cliente SQL necesarios.
         public DatosRecluso()
         {
-            cn = new Conexion();
-            cmd = new SqlCommand();
+            conexion = new Conexion();
         }
         //Busca el expediente que tenga el número de cédula del recluso y devuelve un objeto Expediente.
         public Expediente buscarExpedienteBD(string cedula)
         {
             string sentenciaSQL = "Select * from Expediente e Where e.Cedula_Recluso='" + cedula + "'";
-            cn.conectar();
+            conexion.Conectar();
             SqlDataReader dr = null;
             Expediente expe = null;
+            SqlCommand comando = new SqlCommand();
             try
             {
-                cmd.Connection = cn.Cn;
-                cmd.CommandText = sentenciaSQL;
-                dr = cmd.ExecuteReader();
+                comando.Connection = conexion.Cn;
+                comando.CommandText = sentenciaSQL;
+                dr = comando.ExecuteReader();
 
                 if (dr.Read())
                 {
@@ -43,7 +42,7 @@ namespace Data
             {
                 throw new ConsultaFallida();
             }
-            cn.cerrar();
+            conexion.Cerrar();
             return expe;
         }
         //Recibe un objeto Recluso y lo guarda en la base de datos del sistema.
@@ -53,26 +52,25 @@ namespace Data
                 + recluso.Codigo + "','" + recluso.Cedula + "','" + recluso.Nombre + "','" + recluso.Apellidos + "','" 
                 + recluso.Fecha.ToString("yyyy-MM-dd") + "','" + recluso.Genero + "'," + recluso.Expediente.Id + ")";
             string RecuperarId = "Select @@identity";
-
+            SqlCommand comando = new SqlCommand();
             try
-            {   
-                    cn.conectar();
-                    cmd.Connection = cn.Cn;
-                    cmd.CommandText = sentenciaSQL;
-                    cmd.ExecuteNonQuery();
-                    cmd.CommandText = RecuperarId;      
+            {
+                    conexion.Conectar();
+                    comando.Connection = conexion.Cn;
+                    comando.CommandText = sentenciaSQL;
+                    comando.ExecuteNonQuery();
+                    comando.CommandText = RecuperarId;      
             }
             catch (SqlException)
             {
                 throw new ConsultaFallida();
             }
-            cn.cerrar();
+            conexion.Cerrar();
         }
         //Consulta la base de datos y devuelve una lista con todos los reclusos registrados en el sistema.
         public List<Object> ConsultarReclusos()
         {
-            string sentenciaSQL = "SELECT * from Recluso";
-            List<Object> reclusos = ConsultarGeneral(sentenciaSQL);
+            List<Object> reclusos = ConsultarGeneral();
             return reclusos;
         }
         //Consulta la base de datos y devuelve una lista de cargos que pertenezcan al expediente cuyo código recibe.
@@ -88,13 +86,13 @@ namespace Data
             List<Cargo> cargos = new List<Cargo>();
             SqlDataReader dr = null;
             Cargo cargo= null;
-
+            SqlCommand comando = new SqlCommand();
             try
             {
-                cn.conectar();
-                cmd.Connection = cn.Cn;
-                cmd.CommandText = sentenciaSQL;
-                dr = cmd.ExecuteReader();
+                conexion.Conectar();
+                comando.Connection = conexion.Cn;
+                comando.CommandText = sentenciaSQL;
+                dr = comando.ExecuteReader();
 
                 while (dr.Read())
                 {
@@ -118,47 +116,77 @@ namespace Data
         //Consulta la base de datos y devuelve un objeto con los datos de un recluso cuya cédula sea igual al argumento.
         public object BuscarRecluso(string cedula)
         {
-            string sentenciaSQL = "SELECT * from Recluso WHERE Cedula='"+cedula+"'";
-            List<Object> reclusos = ConsultarGeneral(sentenciaSQL);
+            List<Object> reclusos = ConsultarBusqueda(cedula);
             if (reclusos.Count > 0)
                 return reclusos[0];
             else
                 return null;
         }
         //Ejecuta en la base de datos una sntencia SQL dada por parámetros y devuelve una lista de reclusos correspondiente a los reultados.
-        private List<Object> ConsultarGeneral(string sentenciaSQL)
+        private List<Object> ConsultarGeneral()
         {
-            List<Object> reclusos = new List<Object>();
             SqlDataReader dr = null;
-            Recluso recluso = null;
-
+            SqlCommand comando = new SqlCommand();
+            comando.CommandText = "spr_consultar_reclusos";
+            comando.CommandType = System.Data.CommandType.StoredProcedure;
             try
             {
-                cn.conectar();
-                cmd.Connection = cn.Cn;
-                cmd.CommandText = sentenciaSQL;
-                dr = cmd.ExecuteReader();
+                conexion.Conectar();
+                comando.Connection = conexion.Cn;
+                dr = comando.ExecuteReader();
 
-                while (dr.Read())
-                {
-                    recluso = new Recluso();
-                    recluso.Expediente = new Expediente();
-                    recluso.Id = Convert.ToInt32(dr["Id_Recluso"]);
-                    recluso.Codigo = dr["Codigo"].ToString();
-                    recluso.Nombre = dr["Nombres"].ToString();
-                    recluso.Apellidos = dr["Apellidos"].ToString();
-                    recluso.Cedula = dr["Cedula"].ToString();
-                    recluso.Fecha= Convert.ToDateTime(dr["Fecha_Nac"].ToString());
-                    recluso.Genero = dr["Genero"].ToString();
-                    recluso.Expediente.Id= Convert.ToInt32(dr["Id_Expediente"]);
-                    reclusos.Add(recluso);
-                }
+                return LeerResultados(dr);
+
             }
             catch (SqlException)
             {
                 throw new ConsultaFallida();
             }
+        }
+        private List<Object> LeerResultados(SqlDataReader datos)
+        {
+            List<Object> reclusos = new List<Object>();
+            while (datos.Read())
+            {
+               Recluso recluso = new Recluso();
+               recluso.Expediente = new Expediente();
+               recluso.Id = Convert.ToInt32(datos["Id_Recluso"]);
+               recluso.Codigo = datos["Codigo"].ToString();
+               recluso.Nombre = datos["Nombres"].ToString();
+               recluso.Apellidos = datos["Apellidos"].ToString();
+               recluso.Cedula = datos["Cedula"].ToString();
+               recluso.Fecha = Convert.ToDateTime(datos["Fecha_Nac"].ToString());
+               recluso.Genero = datos["Genero"].ToString();
+               recluso.Expediente.Id = Convert.ToInt32(datos["Id_Expediente"]);
+               reclusos.Add(recluso);
+            }
             return reclusos;
+        }
+        private List<Object> ConsultarBusqueda(string cedula)
+        {
+            SqlDataReader dr = null;
+            SqlCommand comando = new SqlCommand();
+            comando.CommandText = "spr_buscar_recluso";
+            comando.CommandType = System.Data.CommandType.StoredProcedure;
+            SqlParameter parametroCedula = new SqlParameter();
+            parametroCedula.ParameterName = "@cedula_rec";
+            parametroCedula.SqlDbType = System.Data.SqlDbType.VarChar;
+            parametroCedula.Direction = System.Data.ParameterDirection.Input;
+            parametroCedula.Value = cedula;
+            comando.Parameters.Add(parametroCedula);
+            try
+            {
+                conexion.Conectar();
+                comando.Connection = conexion.Cn;
+                dr = comando.ExecuteReader();
+
+                return LeerResultados(dr);
+
+            }
+            catch (SqlException)
+            {
+                throw new ConsultaFallida();
+            }
         }
     }
 }
