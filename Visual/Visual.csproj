@@ -93,6 +93,12 @@
     <Compile Include="Usuario\FrmActualizarUsuario.Designer.cs">
       <DependentUpon>FrmActualizarUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Usuario\FrmConsultarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuario\FrmConsultarUsuario.Designer.cs">
+      <DependentUpon>FrmConsultarUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Usuario\FrmRegistrarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Usuario\FrmActualizarUsuario.resx">
       <DependentUpon>FrmActualizarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuario\FrmConsultarUsuario.resx">
+      <DependentUpon>FrmConsultarUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usuario\FrmRegistrarUsuario.resx">
       <DependentUpon>FrmRegistrarUsuario.cs</DependentUpon>
