@@ -46,8 +46,6 @@
     <Compile Include="ActividadPractica.cs" />
     <Compile Include="Cargo.cs" />
     <Compile Include="Curso.cs" />
-    <Compile Include="CursoDistancia.cs" />
-    <Compile Include="CursoInterno.cs" />
     <Compile Include="EquipoTrabajo.cs" />
     <Compile Include="Expediente.cs" />
     <Compile Include="GrupoActividad.cs" />

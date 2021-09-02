@@ -49,23 +49,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EstudioRegistro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EstudioRegistro.Designer.cs">
+      <DependentUpon>EstudioRegistro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDistancia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDistancia.Designer.cs">
+      <DependentUpon>FrmDistancia.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmProfesional.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProfesional.Designer.cs">
+      <DependentUpon>FrmProfesional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTalleres.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTalleres.Designer.cs">
+      <DependentUpon>FrmTalleres.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTrabajo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTrabajo.Designer.cs">
+      <DependentUpon>FrmTrabajo.cs</DependentUpon>
+    </Compile>
     <Compile Include="PrincipalAdministrador.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PrincipalAdministrador.Designer.cs">
       <DependentUpon>PrincipalAdministrador.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PrincipalAlcaide.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PrincipalAlcaide.Designer.cs">
-      <DependentUpon>PrincipalAlcaide.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -105,14 +129,26 @@
     <Compile Include="Usuario\FrmRegistrarUsuario.Designer.cs">
       <DependentUpon>FrmRegistrarUsuario.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="EstudioRegistro.resx">
+      <DependentUpon>EstudioRegistro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDistancia.resx">
+      <DependentUpon>FrmDistancia.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmProfesional.resx">
+      <DependentUpon>FrmProfesional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTalleres.resx">
+      <DependentUpon>FrmTalleres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTrabajo.resx">
+      <DependentUpon>FrmTrabajo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PrincipalAdministrador.resx">
       <DependentUpon>PrincipalAdministrador.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PrincipalAlcaide.resx">
-      <DependentUpon>PrincipalAlcaide.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -191,6 +227,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\estudio1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\estudio2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\estudio3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\estudio4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lupa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eliminar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\guardar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buscar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

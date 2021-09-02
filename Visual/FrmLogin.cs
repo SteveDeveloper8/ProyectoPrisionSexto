@@ -24,33 +24,44 @@ namespace Visual
             string usuario = txtUsuario.Text.Trim();
             string contrasena = txtContrasena.Text.Trim();
 
-            if (!EsVacio(usuario,contrasena))
+            Login(usuario, contrasena);
+           
+        }
+
+        private void Login(string usuario, string contrasena)
+        {
+            if (!EsVacio(usuario, contrasena))
             {
-                string message = "";
                 try
                 {
                     controlUser.validarLogin(usuario, contrasena);
+                    AbrirMenu(usuario);
                 }
                 catch (GeneralExcepcion ex)
                 {
-                    message = ex.Message;
-                }
-
-                if (message.Equals(""))
-                {
-                    this.Hide();
-                    PrincipalAdministrador principal = new PrincipalAdministrador();
-                    principal.ShowDialog();
-                }
-                else
-                {
-                    MessageBox.Show(message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
             {
                 MessageBox.Show("Existen campos vacios");
             }
+        }
+
+        private void AbrirMenu(string usuario)
+        {
+            this.Hide();
+            if (controlUser.RetornaRol(usuario).Equals("Administrador")) 
+            {
+                PrincipalAdministrador principal = new PrincipalAdministrador();
+                principal.ShowDialog();
+            }
+            else if(controlUser.RetornaRol(usuario).Equals("Alcaide"))
+            {
+                EstudioRegistro alcaide = new EstudioRegistro();
+                alcaide.ShowDialog();
+            }
+            
         }
         //Valida que no haya campos del fromulario sin llenar.
         private bool EsVacio(String usuario, String contrasena)

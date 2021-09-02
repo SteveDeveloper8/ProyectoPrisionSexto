@@ -33,6 +33,14 @@ namespace Control
             }
         }
 
+        public string RetornaRol(string usuario)
+        {
+            Usuario user = null;
+            user = datosLogin.ConsultarUsuario(usuario);
+
+            return user.Rol.Descripcion;
+        }
+
        
 
         public void usuarioRepetido(string usuario)

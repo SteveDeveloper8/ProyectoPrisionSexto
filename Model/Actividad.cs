@@ -9,18 +9,31 @@ namespace Model
     public abstract class Actividad
     {
         private int id;
-        private string nombre;
+        private int cupos;
         private string descripcion;
-
-        protected Actividad(int id, string nombre, string descripcion)
-        {
-            this.id = id;
-            this.nombre = nombre;
-            this.descripcion = descripcion;
-        }
+        private int remisionCondena;
 
         public int Id { get => id; set => id = value; }
-        public string Nombre { get => nombre; set => nombre = value; }
+        public int Cupos { get => cupos; set => cupos = value; }
         public string Descripcion { get => descripcion; set => descripcion = value; }
+        public int RemisionCondena { get => remisionCondena; set => remisionCondena = value; }
+
+        public Actividad(int id, int cupos, string descripcion, int remisionCondena)
+        {
+            this.cupos = cupos;
+            this.descripcion = descripcion;
+            this.remisionCondena = remisionCondena;
+        }
+
+        public  Actividad(int cupos, string descripcion, int remisionCondena)
+        {
+            this.cupos = cupos;
+            this.descripcion = descripcion;
+            this.remisionCondena = remisionCondena;
+        }
+
+
+
+
     }
 }

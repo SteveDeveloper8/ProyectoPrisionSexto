@@ -94,5 +94,10 @@ namespace Visual
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void toolStripMenuItem8_Click(object sender, EventArgs e)
+        {
+         
+        }
     }
 }

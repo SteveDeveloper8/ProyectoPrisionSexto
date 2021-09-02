@@ -8,8 +8,14 @@ namespace Model
 {
     public abstract class ActividadPractica : Actividad
     {
-        public ActividadPractica(int id, string nombre, string descripcion) : base(id, nombre, descripcion)
+        public ActividadPractica(int cupos, string descripcion, int remisionCondena) : base(cupos, descripcion, remisionCondena)
         {
+            
+        }
+
+        public ActividadPractica(int id, int cupos, string descripcion, int remisionCondena) : base(id, cupos, descripcion, remisionCondena)
+        {
+           
         }
     }
 }
