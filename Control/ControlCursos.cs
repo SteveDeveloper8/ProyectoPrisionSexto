@@ -26,14 +26,15 @@ namespace Control
         public Object FiltrarDesccripcion(string descripcion)
         {
 
-            Object distancia= datosCurso.BuscarDescripcionEstudio(descripcion);
+            /*Object distancia= datosCurso.BuscarDescripcionEstudio(descripcion);
 
             if (distancia == null)
             {
                 throw new GeneralExcepcion("Curso no existe");
             }
 
-            return distancia;
+            return distancia;*/
+            return null;
         }
     }
 }

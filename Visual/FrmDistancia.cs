@@ -97,8 +97,8 @@ namespace Visual
             int cupos = (int)tipo.GetProperty("descripcion").GetValue(distancia);
             string descripcion = (string)tipo.GetProperty("Nombre").GetValue(distancia);
             int remisionCondena = (int)tipo.GetProperty("Apellidos").GetValue(distancia);
-            DateTime fechaInicio = (tipo.GetProperty("fechaInicio").GetValue(distancia)).ToString("dd/MM/yyyy");
-            DateTime fechaFin = (tipo.GetProperty("fechaFin").GetValue(distancia)).ToString("dd/MM/yyyy");
+            string fechaInicio = ((DateTime)(tipo.GetProperty("fechaInicio").GetValue(distancia))).ToString("dd/MM/yyyy");
+            string fechaFin = ((DateTime)(tipo.GetProperty("fechaFin").GetValue(distancia))).ToString("dd/MM/yyyy");
            
             dgvDistancia.Rows.Add(descripcion,cupos, fechaInicio, fechaFin, remisionCondena);
         }
@@ -109,5 +109,4 @@ namespace Visual
             return String.IsNullOrEmpty(descripcion);
         }
     }
-}
 }

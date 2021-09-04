@@ -18,24 +18,29 @@ namespace Data
             conexion = new Conexion();
         }
         //Busca el expediente que tenga el número de cédula del recluso y devuelve un objeto Expediente.
-        public Expediente buscarExpedienteBD(string cedula)
+        public Expediente BuscarExpediente(string cedula)
         {
-            string sentenciaSQL = "Select * from Expediente e Where e.Cedula_Recluso='" + cedula + "'";
-            conexion.Conectar();
             SqlDataReader dr = null;
-            Expediente expe = null;
             SqlCommand comando = new SqlCommand();
+            Expediente expediente = null;
+            comando.CommandText = "spr_consultar_expediente";
+            comando.CommandType = System.Data.CommandType.StoredProcedure;
+            SqlParameter parametroCedula = new SqlParameter();
+            parametroCedula.ParameterName = "@cedula_recluso";
+            parametroCedula.SqlDbType = System.Data.SqlDbType.VarChar;
+            parametroCedula.Direction = System.Data.ParameterDirection.Input;
+            parametroCedula.Value = cedula;
+            comando.Parameters.Add(parametroCedula);
             try
             {
                 comando.Connection = conexion.Cn;
-                comando.CommandText = sentenciaSQL;
                 dr = comando.ExecuteReader();
 
                 if (dr.Read())
                 {
-                    expe = new Expediente();
-                    expe.Id = Convert.ToInt32(dr["Id_Expediente"]);
-                    expe.Codigo = (dr["Codigo"]).ToString();
+                    expediente = new Expediente();
+                    expediente.Id = Convert.ToInt32(dr["Id_Expediente"]);
+                    expediente.Codigo = (dr["Codigo"]).ToString();
                 }
             }
             catch (SqlException)
@@ -43,23 +48,64 @@ namespace Data
                 throw new ConsultaFallida();
             }
             conexion.Cerrar();
-            return expe;
+            return expediente;
         }
         //Recibe un objeto Recluso y lo guarda en la base de datos del sistema.
         public void InsertarRecluso(Recluso recluso)
         {
-            string sentenciaSQL = "INSERT INTO Recluso(Codigo,Cedula,Nombres,Apellidos,Fecha_Nac,Genero,Id_Expediente)VALUES('" 
-                + recluso.Codigo + "','" + recluso.Cedula + "','" + recluso.Nombre + "','" + recluso.Apellidos + "','" 
-                + recluso.Fecha.ToString("yyyy-MM-dd") + "','" + recluso.Genero + "'," + recluso.Expediente.Id + ")";
-            string RecuperarId = "Select @@identity";
+            //Crear comando para procedimeitnos almacenados.
             SqlCommand comando = new SqlCommand();
+            comando.CommandText = "spr_ingresar_recluso";
+            comando.CommandType = System.Data.CommandType.StoredProcedure;
+            //Lista de parámetros para el procedimeinto almacenado
+            SqlParameter parametroCodigo = new SqlParameter();
+            parametroCodigo.ParameterName = "@codigo";
+            parametroCodigo.SqlDbType = System.Data.SqlDbType.VarChar;
+            parametroCodigo.Direction = System.Data.ParameterDirection.Input;
+            parametroCodigo.Value = recluso.Codigo;
+            comando.Parameters.Add(parametroCodigo);
+            SqlParameter parametroCedula = new SqlParameter();
+            parametroCedula.ParameterName = "@cedula";
+            parametroCedula.SqlDbType = System.Data.SqlDbType.VarChar;
+            parametroCedula.Direction = System.Data.ParameterDirection.Input;
+            parametroCedula.Value = recluso.Cedula;
+            comando.Parameters.Add(parametroCedula);
+            SqlParameter parametroNombre = new SqlParameter();
+            parametroNombre.ParameterName = "@nombres";
+            parametroNombre.SqlDbType = System.Data.SqlDbType.VarChar;
+            parametroNombre.Direction = System.Data.ParameterDirection.Input;
+            parametroNombre.Value = recluso.Nombre;
+            comando.Parameters.Add(parametroNombre);
+            SqlParameter parametroApellido = new SqlParameter();
+            parametroApellido.ParameterName = "@apellidos";
+            parametroApellido.SqlDbType = System.Data.SqlDbType.VarChar;
+            parametroApellido.Direction = System.Data.ParameterDirection.Input;
+            parametroApellido.Value = recluso.Apellidos;
+            comando.Parameters.Add(parametroApellido);
+            SqlParameter parametroFecha = new SqlParameter();
+            parametroFecha.ParameterName = "@fecha_Nac";
+            parametroFecha.SqlDbType = System.Data.SqlDbType.DateTime;
+            parametroFecha.Direction = System.Data.ParameterDirection.Input;
+            parametroFecha.Value = recluso.Fecha;
+            comando.Parameters.Add(parametroFecha);
+            SqlParameter parametroGenero = new SqlParameter();
+            parametroGenero.ParameterName = "@genero";
+            parametroGenero.SqlDbType = System.Data.SqlDbType.VarChar;
+            parametroGenero.Direction = System.Data.ParameterDirection.Input;
+            parametroGenero.Value = recluso.Genero;
+            comando.Parameters.Add(parametroGenero);
+            SqlParameter parametroExpediente = new SqlParameter();
+            parametroExpediente.ParameterName = "@id_Expediente";
+            parametroExpediente.SqlDbType = System.Data.SqlDbType.Int;
+            parametroExpediente.Direction = System.Data.ParameterDirection.Input;
+            parametroExpediente.Value = recluso.Expediente.Id;
+            comando.Parameters.Add(parametroExpediente);
+
             try
             {
-                    conexion.Conectar();
-                    comando.Connection = conexion.Cn;
-                    comando.CommandText = sentenciaSQL;
-                    comando.ExecuteNonQuery();
-                    comando.CommandText = RecuperarId;      
+                conexion.Conectar();
+                comando.Connection = conexion.Cn;
+                comando.ExecuteNonQuery();
             }
             catch (SqlException)
             {
@@ -76,22 +122,22 @@ namespace Data
         //Consulta la base de datos y devuelve una lista de cargos que pertenezcan al expediente cuyo código recibe.
         public List<Cargo> ConsultarCargos(string codigoExpediente)
         {
-            string sentenciaSQL =
-                "SELECT c.Delito, c.Descripcion, c.Fecha, l.Nombre_Localidad," +
-                "ci.Nombre_Ciudad, p.Nombre_Pais " +
-                "FROM Expediente As e , Cargo As c, Localidad As l, Ciudad As ci, Pais As p" +
-                " WHERE e.Codigo= '" + codigoExpediente +"' AND " +
-                " e.Id_Expediente = c.Id_Expediente AND c.Id_Localidad = l.Id_Localidad" +
-                " AND l.Id_Ciudad=ci.Id_Ciudad AND ci.Id_Pais=p.Id_Pais;";
-            List<Cargo> cargos = new List<Cargo>();
             SqlDataReader dr = null;
-            Cargo cargo= null;
             SqlCommand comando = new SqlCommand();
+            comando.CommandText = "spr_consultar_cargos";
+            comando.CommandType = System.Data.CommandType.StoredProcedure;
+            SqlParameter parametroCedula = new SqlParameter();
+            parametroCedula.ParameterName = "@codigo_expediente";
+            parametroCedula.SqlDbType = System.Data.SqlDbType.NChar;
+            parametroCedula.Direction = System.Data.ParameterDirection.Input;
+            parametroCedula.Value = codigoExpediente;
+            comando.Parameters.Add(parametroCedula);
+            List<Cargo> cargos = new List<Cargo>();
+            Cargo cargo= null;
             try
             {
                 conexion.Conectar();
                 comando.Connection = conexion.Cn;
-                comando.CommandText = sentenciaSQL;
                 dr = comando.ExecuteReader();
 
                 while (dr.Read())
@@ -101,9 +147,9 @@ namespace Data
                     cargo.Delito = dr["Delito"].ToString();
                     cargo.Descripcion = dr["Descripcion"].ToString();
                     cargo.FechaHechos = Convert.ToDateTime(dr["Fecha"].ToString());
-                    cargo.LugarHechos.NombreLocalidad = dr["Nombre_Localidad"].ToString();
-                    cargo.LugarHechos.NombreCiudad = dr["Nombre_Ciudad"].ToString();
-                    cargo.LugarHechos.NombrePais = dr["Nombre_Pais"].ToString();
+                    cargo.LugarHechos.NombreLocalidad = dr["Localidad"].ToString();
+                    cargo.LugarHechos.NombreCiudad = dr["Ciudad"].ToString();
+                    cargo.LugarHechos.NombrePais = dr["Pais"].ToString();
                     cargos.Add(cargo);
                 }
             }
@@ -143,6 +189,7 @@ namespace Data
                 throw new ConsultaFallida();
             }
         }
+        //Lee un DataReader lleno con datos de una consulta a la tabla de reclusos y devuelve una lista de Reclusos recuperados.
         private List<Object> LeerResultados(SqlDataReader datos)
         {
             List<Object> reclusos = new List<Object>();
@@ -162,6 +209,7 @@ namespace Data
             }
             return reclusos;
         }
+        //Busca un recluso por su número de cédula en la base de datos y devuelve un objeto recluso.
         private List<Object> ConsultarBusqueda(string cedula)
         {
             SqlDataReader dr = null;

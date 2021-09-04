@@ -42,7 +42,7 @@ namespace Control
         public Object buscarExpediente(string cedula)
         {
             Expediente expediente = null;
-            expediente = datosRecluso.buscarExpedienteBD(cedula);
+            expediente = datosRecluso.BuscarExpediente(cedula);
 
             if (expediente == null)
             {
@@ -60,7 +60,7 @@ namespace Control
         {
             if (BuscarRecluso(cedula) == null)
             {
-                Expediente exp = datosRecluso.buscarExpedienteBD(cedula);
+                Expediente exp = datosRecluso.BuscarExpediente(cedula);
                 recluso = new Recluso(nombre, apellido, genero, fecha, cedula, codigo, exp);
                 datosRecluso.InsertarRecluso(recluso);
                 return true;
