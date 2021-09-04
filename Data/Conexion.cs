@@ -12,7 +12,7 @@ namespace Data
 {
     public class Conexion
     {
-        private static string cadena = "Data Source=sql5085.site4now.net;Initial Catalog=db_a77147_prisionbd;Persist Security Info=True;User ID=db_a77147_prisionbd_admin;Password=PrisionBD2021";
+        private static string cadena = "Data Source=sql5059.site4now.net;Initial Catalog=db_a7961c_prision2p;Persist Security Info=True;User ID=db_a7961c_prision2p_admin;Password=prision123";
 
         private SqlConnection cn = null;
         public SqlConnection Cn { get => cn; set => cn = value; }

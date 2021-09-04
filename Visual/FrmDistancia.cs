@@ -17,6 +17,37 @@ namespace Visual
         public FrmDistancia()
         {
             InitializeComponent();
+            consultarCursos();
+        }
+
+        private void consultarCursos()
+        {
+            List<Object> reclusos = null;
+            try
+            {
+                reclusos = controlCursos.ListarCursosDistancia();
+                LlenarTablaCursosDistancia(reclusos);
+            }
+            catch (GeneralExcepcion ex)
+            {
+                MessageBox.Show("No hay reclusos registrados en el sistema.");
+            }
+        }
+
+        private void LlenarTablaCursosDistancia(List<object> cursoDistancia)
+        {
+            LimpiarTabla();
+            foreach (var curso in cursoDistancia)
+            {
+                InsertarFila(curso);
+            }
+            dgvDistancia.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvDistancia.AutoResizeColumns();
+        }
+
+        private void LimpiarTabla()
+        {
+            dgvDistancia.Rows.Clear();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)

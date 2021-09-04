@@ -16,7 +16,18 @@ namespace Data
 
         public void EliminarEstudio(string estudioDelete)
         {
-            throw new NotImplementedException();
+            
+        }
+
+        public object BuscarDescripcionEstudio(string descripcion)
+        {
+            //aqui haz el procedimeinto almacenado con LIKE para que busque por las primeras letras que vaya ingresando el usuario.
+            return null;
+        }
+
+        public List<object> ConsultarCursosDistancia()
+        {
+            return null;
         }
     }
 }

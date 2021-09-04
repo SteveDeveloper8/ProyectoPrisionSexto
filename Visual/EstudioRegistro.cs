@@ -30,9 +30,12 @@ namespace Visual
             {
                 formulario = new MiForm();
                 formulario.TopLevel = false;
+                formulario.FormBorderStyle = FormBorderStyle.None;
+                formulario.Dock = DockStyle.Fill;
                 panelPrincipal.Controls.Add(formulario);
                 panelPrincipal.Tag = formulario;
                 formulario.Show();
+                formulario.BringToFront();
             }
             else
             {
@@ -101,5 +104,9 @@ namespace Visual
             }
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
