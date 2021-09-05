@@ -9,12 +9,12 @@ namespace Data
 {
     public class DatosCurso
     {
-        public void InsertarEstudio(ActividadCurricular curricular)
+        public void InsertarEstudio(ActividadCurricular curricular, string modalidad)
         {
            
         }
 
-        public void EliminarEstudio(string estudioDelete)
+        public void EliminarEstudio(string estudioDelete, string modalidad)
         {
             
         }

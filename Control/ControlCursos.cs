@@ -31,19 +31,19 @@ namespace Control
         ///<param name= "remision"> Numero de dias de remision de condena </param>
         ///<param name= "fechaInicio"> Fecha de inicio del curso </param>
         ///<param name= "fechaFin"> Fecha de fin del curso</param>
-        public void GuardarEstudio(int cupos, string descripcion, int remision, DateTime fechaInicio, DateTime fechaFin)
+        public void GuardarEstudio(int cupos, string descripcion, int remision, DateTime fechaInicio, DateTime fechaFin, string modalidad)
         {
             curricular = new ActividadCurricular(cupos, descripcion, remision, fechaInicio, fechaFin);
-            datosCurso.InsertarEstudio(curricular);
+            datosCurso.InsertarEstudio(curricular,modalidad);
         }
 
         ///<summary>
         ///Metodo que se encarga de eliminar un curso especifico
         ///</summary>
         ///<param name= "estudioDelete"> Nombre del curso </param>
-        public void EliminarEstudio(string estudioDelete)
+        public void EliminarEstudio(string estudioDelete, string modalidad)
         {
-            datosCurso.EliminarEstudio(estudioDelete);
+            datosCurso.EliminarEstudio(estudioDelete,modalidad);
         }
 
         public Object FiltrarDesccripcion(string descripcion)
@@ -57,6 +57,11 @@ namespace Control
             }
 
             return distancia;
+        }
+
+        public object FiltrarModalidad(object modalidad)
+        {
+            throw new NotImplementedException();
         }
     }
 }

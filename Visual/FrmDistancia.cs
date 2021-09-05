@@ -50,37 +50,9 @@ namespace Visual
             dgvDistancia.Rows.Clear();
         }
 
-        private void btnGuardar_Click(object sender, EventArgs e)
+        private bool EsVacio(int cupos, string descripcion, int remision, DateTime fechaInicio, DateTime fechaFin,string modalidad)
         {
-            int cupos = Convert.ToInt32(txtCupos.Text.Trim());
-            string descripcion = txtDescripcion.Text.Trim();
-            int remision = Convert.ToInt32(txtRemision.Text.Trim());
-            DateTime fechaInicio = dtpFechaInicio.Value.Date;
-            DateTime fechaFin = dtpFechaFin.Value.Date;
-
-            if (!EsVacio(cupos, descripcion, remision, fechaInicio, fechaFin))
-            {
-                try
-                {
-                    controlCursos.GuardarEstudio(cupos, descripcion, remision, fechaInicio, fechaFin);
-                    MessageBox.Show("Curso Guardado con Exito");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-
-            }
-            else
-            {
-                MessageBox.Show("Existe un campo vacio, o algún dato erróneo");
-            }
-
-        }
-
-        private bool EsVacio(int cupos, string descripcion, int remision, DateTime fechaInicio, DateTime fechaFin)
-        {
-            return String.IsNullOrEmpty(cupos+"") || String.IsNullOrEmpty(descripcion) || String.IsNullOrEmpty(remision+"") || fechaInicio==null || fechaFin==null;
+            return String.IsNullOrEmpty(cupos+"") || String.IsNullOrEmpty(descripcion) || String.IsNullOrEmpty(remision+"") || fechaInicio==null || fechaFin==null || String.IsNullOrEmpty(modalidad);
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -90,7 +62,8 @@ namespace Visual
             {
                 pos = dgvDistancia.CurrentRow.Index;
                 string estudioDelete = dgvDistancia.CurrentRow.Cells[0].Value.ToString();
-                controlCursos.EliminarEstudio(estudioDelete);
+                string modalidad = dgvDistancia.CurrentRow.Cells[1].Value.ToString();
+                controlCursos.EliminarEstudio(estudioDelete,modalidad);
                 dgvDistancia.Rows.RemoveAt(pos);
             }
             else
@@ -102,23 +75,35 @@ namespace Visual
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             string descripcion = txtBuscarDescripcion.Text.Trim();
+            string modalidad = cmbFiltrar.Text.Trim();
 
-            if (!EsVacioBusqueda(descripcion))
+            if (EsVacioBusqueda(descripcion,modalidad))
+            {
+                MessageBox.Show("No existen datos a buscar");
+            }
+            else if(modalidad.CompareTo("Filtrar...")==0)
             {
                 try
                 {
                     dgvDistancia.Rows.Clear();
-                    Object distancia=controlCursos.FiltrarDesccripcion(descripcion);
-                   
+                    Object distancia = controlCursos.FiltrarDesccripcion(descripcion);
+
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
-            }
-            else
+            }else if(descripcion.CompareTo("") == 0)
             {
-                MessageBox.Show("No existen datos a buscar");
+                try
+                {
+                    dgvDistancia.Rows.Clear();
+                    //Object modalidad = controlCursos.FiltrarModalidad(modalidad);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
@@ -135,9 +120,43 @@ namespace Visual
         }
 
 
-        private bool EsVacioBusqueda(string descripcion)
+        private bool EsVacioBusqueda(string descripcion,string modalidad)
         {
-            return String.IsNullOrEmpty(descripcion);
+            return String.IsNullOrEmpty(descripcion)&&String.IsNullOrEmpty(modalidad);
+        }
+
+        private void FrmDistancia_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGuardar_Click_1(object sender, EventArgs e)
+        {
+            int cupos = Convert.ToInt32(txtCupos.Text.Trim());
+            string descripcion = txtDescripcion.Text.Trim();
+            int remision = Convert.ToInt32(txtRemision.Text.Trim());
+            DateTime fechaInicio = dtpFechaInicio.Value.Date;
+            DateTime fechaFin = dtpFechaFin.Value.Date;
+            string modalidad = cmbModalidad.Text.Trim();
+
+            if (!EsVacio(cupos, descripcion, remision, fechaInicio, fechaFin,modalidad))
+            {
+                try
+                {
+                    controlCursos.GuardarEstudio(cupos, descripcion, remision, fechaInicio, fechaFin,modalidad);
+                    MessageBox.Show("Curso Guardado con Exito");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Existe un campo vacio, o algún dato erróneo");
+            }
+
         }
     }
 }

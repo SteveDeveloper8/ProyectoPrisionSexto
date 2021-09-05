@@ -43,25 +43,7 @@ namespace Visual
             }
         }
 
-        private void BtnRegistrar_Click(object sender, EventArgs e)
-        {
-            abrirFormulario<FrmDistancia>();
-        }
 
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-            abrirFormulario<FrmProfesional>();
-        }
-
-        private void guna2Button2_Click(object sender, EventArgs e)
-        {
-            abrirFormulario<FrmTrabajo>();
-        }
-
-        private void guna2Button3_Click(object sender, EventArgs e)
-        {
-            abrirFormulario<FrmTalleres>();
-        }
         private void InsertarFila(Object recluso)
         {
             Type tipo = recluso.GetType();
@@ -104,9 +86,16 @@ namespace Visual
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void guna2Button3_Click(object sender, EventArgs e)
         {
-
+            abrirFormulario<FrmTalleres>();
         }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            abrirFormulario<FrmDistancia>();
+        }
+
+
     }
 }

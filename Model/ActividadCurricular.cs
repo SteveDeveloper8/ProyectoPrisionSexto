@@ -10,17 +10,20 @@ namespace Model
     {
         private DateTime fechaInicio;
         private DateTime fechaFin;
+        private int remisionTotal;
 
-        public ActividadCurricular(int cupos, string descripcion,int remisionCondena,DateTime fechaInicio, DateTime fechaFin): base(cupos,descripcion,remisionCondena)
+        public ActividadCurricular(int cupos, string descripcion,int remisionTotal, DateTime fechaInicio, DateTime fechaFin): base(cupos,descripcion)
         {
             this.fechaInicio = fechaInicio;
             this.fechaFin = fechaFin;
+            this.remisionTotal = remisionTotal;
         }
 
-        public  ActividadCurricular(int id,int cupos, string descripcion, int remisionCondena, DateTime fechaInicio, DateTime fechaFin) : base(id,cupos, descripcion, remisionCondena)
+        public ActividadCurricular(int id, int cupos, string descripcion, int remisionTotal, DateTime fechaInicio, DateTime fechaFin) : base(cupos, descripcion)
         {
             this.fechaInicio = fechaInicio;
             this.fechaFin = fechaFin;
+            this.remisionTotal = remisionTotal;
         }
 
         public DateTime FechaInicio { get => fechaInicio; set => fechaInicio = value; }

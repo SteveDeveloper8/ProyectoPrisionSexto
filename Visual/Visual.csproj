@@ -67,23 +67,11 @@
     <Compile Include="FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmProfesional.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmProfesional.Designer.cs">
-      <DependentUpon>FrmProfesional.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmTalleres.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmTalleres.Designer.cs">
       <DependentUpon>FrmTalleres.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmTrabajo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmTrabajo.Designer.cs">
-      <DependentUpon>FrmTrabajo.cs</DependentUpon>
     </Compile>
     <Compile Include="PrincipalAdministrador.cs">
       <SubType>Form</SubType>
@@ -138,14 +126,8 @@
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmProfesional.resx">
-      <DependentUpon>FrmProfesional.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmTalleres.resx">
       <DependentUpon>FrmTalleres.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmTrabajo.resx">
-      <DependentUpon>FrmTrabajo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrincipalAdministrador.resx">
       <DependentUpon>PrincipalAdministrador.cs</DependentUpon>
