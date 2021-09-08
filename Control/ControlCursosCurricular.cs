@@ -94,12 +94,12 @@ namespace Control
         ///<return>Retorna una lista de cursos </return>
         public List<Object> FiltrarModalidad(string modalidad)
         {
-            List<Object> CursosCurriculares = datosCurso.BuscarModalidadEstudio(modalidad);
+            List<ActividadCurricular> CursosCurriculares = datosCurso.BuscarModalidadEstudio(modalidad);
             if (CursosCurriculares == null)
             {
                 throw new GeneralExcepcion("No existen cursos con dicha modalidad");
             }
-            return CursosCurriculares;
+            return GetListaDatosCursos(CursosCurriculares);
         }
 
 
@@ -109,14 +109,14 @@ namespace Control
         ///<param name= "descripcion"> Descripcion del curso </param>
         ///<param name= "modalidad"> Modalidad del curso </param>
         ///<return>Retorna una lista de cursos </return>
-        public List<object> FiltrarDescripcionModalidad(string descripcion, string modalidad)
+        public List<Object> FiltrarDescripcionModalidad(string descripcion, string modalidad)
         {
-            List<Object> CursosCurriculares = datosCurso.BuscarDescripcionModalidadEstudio(descripcion,modalidad);
+            List<ActividadCurricular> CursosCurriculares = datosCurso.BuscarDescripcionModalidadEstudio(descripcion,modalidad);
             if (CursosCurriculares == null)
             {
                 throw new GeneralExcepcion("Curso no existe");
             }
-            return CursosCurriculares;
+            return GetListaDatosCursos(CursosCurriculares);
         }
     }
 }

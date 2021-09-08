@@ -18,14 +18,14 @@ namespace Control
         ///Metodo que se encarga de consultar actividades existentes.
         ///</summary>
         ///<return>Retorna una lista de actividades</return>
-        public List<object> ListarActividadesPracticas()
+        public List<Object> ListarActividadesPracticas()
         {
-            List<Object> actividades = datosActividad.ConsultarActvidadPractica();
+            List<ActividadPractica> actividades = datosActividad.ConsultarActvidadPractica();
 
             if (actividades.Count <= 0)
                 throw new GeneralExcepcion("No se encontraron actividades registrados");
             else
-                return actividades;
+                return GetListaDatosActividades(actividades);
         }
 
         ///<summary>
@@ -60,12 +60,12 @@ namespace Control
         //////<return>Retorna una lista de actividades </return>
         public List<Object> FiltrarDesccripcion(string descripcion)
         {
-            List<Object> ActividadPractica = datosActividad.BuscarDescripcionActividad(descripcion);
-            if (ActividadPractica == null)
+            List<ActividadPractica> actividad = datosActividad.BuscarDescripcionActividad(descripcion);
+            if (actividad == null)
             {
                 throw new GeneralExcepcion("Actividad no existe con esa descripcion");
             }
-            return ActividadPractica;
+            return GetListaDatosActividades(actividad);
         }
 
 
@@ -76,12 +76,12 @@ namespace Control
         ///<return>Retorna una lista de actividades </return>
         public List<Object> FiltrarModalidad(string modalidad)
         {
-            List<Object> ActividadPractica = datosActividad.BuscarModalidadActividad(modalidad);
-            if (ActividadPractica == null)
+            List<ActividadPractica> actividad = datosActividad.BuscarModalidadActividad(modalidad);
+            if (actividad == null)
             {
                 throw new GeneralExcepcion("No existen actividades con dicha modalidad");
             }
-            return ActividadPractica;
+            return GetListaDatosActividades(actividad);
         }
 
         ///<summary>
@@ -90,16 +90,33 @@ namespace Control
         ///<param name= "descripcion"> Descripcion de la actividad </param>
         ///<param name= "modalidad"> Modalidad de la actividad </param>
         ///<return>Retorna una lista de actividades </return>
-        public List<object> FiltrarDescripcionModalidad(string descripcion, string modalidad)
+        public List<Object> FiltrarDescripcionModalidad(string descripcion, string modalidad)
         {
-            List<Object> ActividadPractica = datosActividad.BuscarDescripcionModalidadActividad(descripcion, modalidad);
-            if (ActividadPractica == null)
+            List<ActividadPractica> actividad = datosActividad.BuscarDescripcionModalidadActividad(descripcion, modalidad);
+            if (actividad == null)
             {
                 throw new GeneralExcepcion("Actividad no existe");
             }
-            return ActividadPractica;
+            return GetListaDatosActividades(actividad);
         }
-
-   
+        private List<Object> GetListaDatosActividades(List<ActividadPractica> actividades)
+        {
+            List<Object> cargosDatos = new List<object>();
+            foreach (ActividadPractica actividad in actividades)
+            {
+                cargosDatos.Add(ConvertirAnonimo(actividad));
+            }
+            return cargosDatos;
+        }
+        private Object ConvertirAnonimo(ActividadPractica actividad)
+        {
+            return new
+            {
+                cupos = actividad.Cupos,
+                descripcion = actividad.Descripcion,
+                modalidad = actividad.Modalidad,
+                remisionTotal = actividad.RemisionDiaria
+            };
+        }
     }
 }
