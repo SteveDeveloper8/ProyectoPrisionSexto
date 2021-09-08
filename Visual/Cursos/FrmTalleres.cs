@@ -117,10 +117,10 @@ namespace Visual
         private void InsertarFila(Object actividad)
         {
             Type tipo = actividad.GetType();
-            int cupos = (int)tipo.GetProperty("Cupos").GetValue(actividad);
-            string descripcion = (string)tipo.GetProperty("Descripcion").GetValue(actividad);
-            string modalidad = (string)tipo.GetProperty("Modalidad").GetValue(actividad);
-            int remisionDiaria = (int)tipo.GetProperty("RemisionDiaria").GetValue(actividad);
+            int cupos = (int)tipo.GetProperty("cupos").GetValue(actividad);
+            string descripcion = (string)tipo.GetProperty("descripcion").GetValue(actividad);
+            string modalidad = (string)tipo.GetProperty("modalidad").GetValue(actividad);
+            int remisionDiaria = (int)tipo.GetProperty("remisionDiaria").GetValue(actividad);
 
             dgvActividades.Rows.Add(descripcion, modalidad, cupos, remisionDiaria);
         }

@@ -202,12 +202,12 @@ namespace Visual
         private void InsertarFila(Object curso)
         {
             Type tipo = curso.GetType();
-            int cupos = (int)tipo.GetProperty("Cupos").GetValue(curso);
-            string descripcion = (string)tipo.GetProperty("Descripcion").GetValue(curso);
-            string modalidad = (string)tipo.GetProperty("Modalidad").GetValue(curso);
-            int remisionTotal = (int)tipo.GetProperty("RemisionTotal").GetValue(curso);
-            string fechaInicio = ((DateTime)(tipo.GetProperty("FechaInicio").GetValue(curso))).ToString("dd/MM/yyyy");
-            string fechaFin = ((DateTime)(tipo.GetProperty("FechaFin").GetValue(curso))).ToString("dd/MM/yyyy");
+            int cupos = (int)tipo.GetProperty("cupos").GetValue(curso);
+            string descripcion = (string)tipo.GetProperty("descripcion").GetValue(curso);
+            string modalidad = (string)tipo.GetProperty("modalidad").GetValue(curso);
+            int remisionTotal = (int)tipo.GetProperty("remisionTotal").GetValue(curso);
+            string fechaInicio = ((DateTime)(tipo.GetProperty("fechaInicio").GetValue(curso))).ToString("dd/MM/yyyy");
+            string fechaFin = ((DateTime)(tipo.GetProperty("fechaFin").GetValue(curso))).ToString("dd/MM/yyyy");
            
             dgvDistancia.Rows.Add(descripcion,modalidad, fechaInicio, fechaFin,cupos, remisionTotal);
         }
