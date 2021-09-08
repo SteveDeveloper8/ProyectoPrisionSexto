@@ -123,6 +123,16 @@ namespace Visual.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap estudio11 {
+            get {
+                object obj = ResourceManager.GetObject("estudio11", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap estudio2 {
             get {
                 object obj = ResourceManager.GetObject("estudio2", resourceCulture);
@@ -136,6 +146,16 @@ namespace Visual.Properties {
         internal static System.Drawing.Bitmap estudio3 {
             get {
                 object obj = ResourceManager.GetObject("estudio3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap estudio31 {
+            get {
+                object obj = ResourceManager.GetObject("estudio31", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -176,6 +196,16 @@ namespace Visual.Properties {
         internal static System.Drawing.Bitmap icons8_sign_out_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8_sign_out_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap inscripcion {
+            get {
+                object obj = ResourceManager.GetObject("inscripcion", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -286,6 +316,16 @@ namespace Visual.Properties {
         internal static System.Drawing.Bitmap ReclusoBG5 {
             get {
                 object obj = ResourceManager.GetObject("ReclusoBG5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ReclusoBG6 {
+            get {
+                object obj = ResourceManager.GetObject("ReclusoBG6", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

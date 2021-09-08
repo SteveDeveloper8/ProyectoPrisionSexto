@@ -20,10 +20,6 @@ namespace Visual
             CerrarSesion.Visible = false;
         }
 
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
         {

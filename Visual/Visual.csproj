@@ -49,16 +49,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EstudioRegistro.cs">
+    <Compile Include="Cursos\FrmHome.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EstudioRegistro.Designer.cs">
+    <Compile Include="Cursos\FrmHome.Designer.cs">
+      <DependentUpon>FrmHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inscripcion\FrmConsultarInscripcion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inscripcion\FrmConsultarInscripcion.Designer.cs">
+      <DependentUpon>FrmConsultarInscripcion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inscripcion\FrmEliminarInscripcion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inscripcion\FrmEliminarInscripcion.Designer.cs">
+      <DependentUpon>FrmEliminarInscripcion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inscripcion\FrmInscripcion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inscripcion\FrmInscripcion.Designer.cs">
+      <DependentUpon>FrmInscripcion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Principales\EstudioRegistro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Principales\EstudioRegistro.Designer.cs">
       <DependentUpon>EstudioRegistro.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmDistancia.cs">
+    <Compile Include="Cursos\FrmDistancia.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmDistancia.Designer.cs">
+    <Compile Include="Cursos\FrmDistancia.Designer.cs">
       <DependentUpon>FrmDistancia.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmLogin.cs">
@@ -67,16 +91,16 @@
     <Compile Include="FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmTalleres.cs">
+    <Compile Include="Cursos\FrmTalleres.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmTalleres.Designer.cs">
+    <Compile Include="Cursos\FrmTalleres.Designer.cs">
       <DependentUpon>FrmTalleres.cs</DependentUpon>
     </Compile>
-    <Compile Include="PrincipalAdministrador.cs">
+    <Compile Include="Principales\PrincipalAdministrador.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PrincipalAdministrador.Designer.cs">
+    <Compile Include="Principales\PrincipalAdministrador.Designer.cs">
       <DependentUpon>PrincipalAdministrador.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -117,19 +141,25 @@
     <Compile Include="Usuario\FrmRegistrarUsuario.Designer.cs">
       <DependentUpon>FrmRegistrarUsuario.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="EstudioRegistro.resx">
+    <EmbeddedResource Include="Cursos\FrmHome.resx">
+      <DependentUpon>FrmHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inscripcion\FrmInscripcion.resx">
+      <DependentUpon>FrmInscripcion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Principales\EstudioRegistro.resx">
       <DependentUpon>EstudioRegistro.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmDistancia.resx">
+    <EmbeddedResource Include="Cursos\FrmDistancia.resx">
       <DependentUpon>FrmDistancia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmTalleres.resx">
+    <EmbeddedResource Include="Cursos\FrmTalleres.resx">
       <DependentUpon>FrmTalleres.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PrincipalAdministrador.resx">
+    <EmbeddedResource Include="Principales\PrincipalAdministrador.resx">
       <DependentUpon>PrincipalAdministrador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -242,6 +272,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ReclusoBG1.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\estudio31.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\estudio11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ReclusoBG2.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\inscripcion.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

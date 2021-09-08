@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cmbFiltrar = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbModalidad = new System.Windows.Forms.ComboBox();
             this.txtBuscarDescripcion = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnBuscar = new Guna.UI2.WinForms.Guna2Button();
             this.btnEliminar = new Guna.UI2.WinForms.Guna2Button();
@@ -39,28 +39,34 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtRemision = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtDescripcion = new Guna.UI2.WinForms.Guna2TextBox();
-            this.dgvDistancia = new System.Windows.Forms.DataGridView();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.dgvActividades = new System.Windows.Forms.DataGridView();
             this.colDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colModalidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCupos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDiasCondena = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDistancia)).BeginInit();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnLimpiar = new Guna.UI2.WinForms.Guna2Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvActividades)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.guna2GroupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // comboBox2
+            // cmbFiltrar
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "Taller",
-            "Trabajo"});
-            this.comboBox2.Location = new System.Drawing.Point(254, 180);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(113, 21);
-            this.comboBox2.TabIndex = 72;
-            this.comboBox2.Text = "Filtrar...";
+            this.cmbFiltrar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFiltrar.FormattingEnabled = true;
+            this.cmbFiltrar.Items.AddRange(new object[] {
+            "Filtrar...",
+            "Trabajo",
+            "Taller"});
+            this.cmbFiltrar.Location = new System.Drawing.Point(193, 41);
+            this.cmbFiltrar.Name = "cmbFiltrar";
+            this.cmbFiltrar.Size = new System.Drawing.Size(113, 23);
+            this.cmbFiltrar.TabIndex = 72;
             // 
             // label5
             // 
@@ -68,22 +74,23 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(293, 56);
+            this.label5.Location = new System.Drawing.Point(327, 96);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(89, 20);
             this.label5.TabIndex = 71;
             this.label5.Text = "Modalidad :";
             // 
-            // comboBox1
+            // cmbModalidad
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cmbModalidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbModalidad.FormattingEnabled = true;
+            this.cmbModalidad.Items.AddRange(new object[] {
             "Taller",
             "Trabajo"});
-            this.comboBox1.Location = new System.Drawing.Point(388, 56);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(116, 21);
-            this.comboBox1.TabIndex = 70;
+            this.cmbModalidad.Location = new System.Drawing.Point(422, 95);
+            this.cmbModalidad.Name = "cmbModalidad";
+            this.cmbModalidad.Size = new System.Drawing.Size(116, 21);
+            this.cmbModalidad.TabIndex = 70;
             // 
             // txtBuscarDescripcion
             // 
@@ -102,7 +109,7 @@
             this.txtBuscarDescripcion.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtBuscarDescripcion.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBuscarDescripcion.HoverState.Parent = this.txtBuscarDescripcion;
-            this.txtBuscarDescripcion.Location = new System.Drawing.Point(32, 181);
+            this.txtBuscarDescripcion.Location = new System.Drawing.Point(17, 41);
             this.txtBuscarDescripcion.Name = "txtBuscarDescripcion";
             this.txtBuscarDescripcion.PasswordChar = '\0';
             this.txtBuscarDescripcion.PlaceholderText = "Descripcion";
@@ -128,12 +135,13 @@
             this.btnBuscar.HoverState.Parent = this.btnBuscar;
             this.btnBuscar.Image = global::Visual.Properties.Resources.buscar;
             this.btnBuscar.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnBuscar.Location = new System.Drawing.Point(208, 178);
+            this.btnBuscar.Location = new System.Drawing.Point(310, 38);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.ShadowDecoration.Parent = this.btnBuscar;
             this.btnBuscar.Size = new System.Drawing.Size(40, 24);
             this.btnBuscar.TabIndex = 68;
             this.btnBuscar.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click_1);
             // 
             // btnEliminar
             // 
@@ -151,11 +159,12 @@
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
             this.btnEliminar.HoverState.Parent = this.btnEliminar;
             this.btnEliminar.Image = global::Visual.Properties.Resources.eliminar;
-            this.btnEliminar.Location = new System.Drawing.Point(435, 178);
+            this.btnEliminar.Location = new System.Drawing.Point(467, 36);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.ShadowDecoration.Parent = this.btnEliminar;
             this.btnEliminar.Size = new System.Drawing.Size(39, 26);
             this.btnEliminar.TabIndex = 67;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click_1);
             // 
             // btnGuardar
             // 
@@ -174,12 +183,13 @@
             this.btnGuardar.HoverState.Parent = this.btnGuardar;
             this.btnGuardar.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnGuardar.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnGuardar.Location = new System.Drawing.Point(217, 127);
+            this.btnGuardar.Location = new System.Drawing.Point(239, 164);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.ShadowDecoration.Parent = this.btnGuardar;
-            this.btnGuardar.Size = new System.Drawing.Size(104, 26);
+            this.btnGuardar.Size = new System.Drawing.Size(99, 26);
             this.btnGuardar.TabIndex = 66;
             this.btnGuardar.Text = "Registrar";
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // txtCupos
             // 
@@ -197,7 +207,7 @@
             this.txtCupos.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtCupos.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCupos.HoverState.Parent = this.txtCupos;
-            this.txtCupos.Location = new System.Drawing.Point(84, 58);
+            this.txtCupos.Location = new System.Drawing.Point(139, 98);
             this.txtCupos.Name = "txtCupos";
             this.txtCupos.PasswordChar = '\0';
             this.txtCupos.PlaceholderText = "";
@@ -212,7 +222,7 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(27, 57);
+            this.label7.Location = new System.Drawing.Point(84, 97);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 20);
             this.label7.TabIndex = 64;
@@ -234,7 +244,7 @@
             this.txtRemision.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtRemision.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtRemision.HoverState.Parent = this.txtRemision;
-            this.txtRemision.Location = new System.Drawing.Point(388, 89);
+            this.txtRemision.Location = new System.Drawing.Point(422, 131);
             this.txtRemision.Name = "txtRemision";
             this.txtRemision.PasswordChar = '\0';
             this.txtRemision.PlaceholderText = "";
@@ -259,7 +269,7 @@
             this.txtDescripcion.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtDescripcion.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDescripcion.HoverState.Parent = this.txtDescripcion;
-            this.txtDescripcion.Location = new System.Drawing.Point(116, 90);
+            this.txtDescripcion.Location = new System.Drawing.Point(139, 130);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.PasswordChar = '\0';
             this.txtDescripcion.PlaceholderText = "";
@@ -268,64 +278,29 @@
             this.txtDescripcion.Size = new System.Drawing.Size(140, 19);
             this.txtDescripcion.TabIndex = 59;
             // 
-            // dgvDistancia
+            // dgvActividades
             // 
-            this.dgvDistancia.AllowUserToAddRows = false;
-            this.dgvDistancia.AllowUserToDeleteRows = false;
-            this.dgvDistancia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDistancia.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvActividades.AllowUserToAddRows = false;
+            this.dgvActividades.AllowUserToDeleteRows = false;
+            this.dgvActividades.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvActividades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvActividades.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colDescripcion,
             this.colModalidad,
             this.colCupos,
             this.colDiasCondena});
-            this.dgvDistancia.Location = new System.Drawing.Point(28, 207);
-            this.dgvDistancia.Name = "dgvDistancia";
-            this.dgvDistancia.ReadOnly = true;
-            this.dgvDistancia.Size = new System.Drawing.Size(446, 143);
-            this.dgvDistancia.TabIndex = 58;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(265, 90);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(117, 20);
-            this.label4.TabIndex = 57;
-            this.label4.Text = "Remision Diaria:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(27, 90);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 20);
-            this.label2.TabIndex = 55;
-            this.label2.Text = "Descripcion:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(172, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(171, 21);
-            this.label1.TabIndex = 54;
-            this.label1.Text = "Actividades Practicas";
+            this.dgvActividades.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dgvActividades.Location = new System.Drawing.Point(17, 68);
+            this.dgvActividades.Name = "dgvActividades";
+            this.dgvActividades.ReadOnly = true;
+            this.dgvActividades.Size = new System.Drawing.Size(489, 143);
+            this.dgvActividades.TabIndex = 58;
             // 
             // colDescripcion
             // 
             this.colDescripcion.HeaderText = "Descripcion";
             this.colDescripcion.Name = "colDescripcion";
             this.colDescripcion.ReadOnly = true;
-            this.colDescripcion.Width = 120;
             // 
             // colModalidad
             // 
@@ -338,7 +313,6 @@
             this.colCupos.HeaderText = "Cupos";
             this.colCupos.Name = "colCupos";
             this.colCupos.ReadOnly = true;
-            this.colCupos.Width = 80;
             // 
             // colDiasCondena
             // 
@@ -346,31 +320,123 @@
             this.colDiasCondena.Name = "colDiasCondena";
             this.colDiasCondena.ReadOnly = true;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(299, 130);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(117, 20);
+            this.label4.TabIndex = 57;
+            this.label4.Text = "Remision Diaria:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(47, 130);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(90, 20);
+            this.label2.TabIndex = 55;
+            this.label2.Text = "Descripcion:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(198, 36);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(218, 30);
+            this.label1.TabIndex = 54;
+            this.label1.Text = "Actividades Practicas";
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.BackColor = System.Drawing.Color.Transparent;
+            this.btnLimpiar.BorderRadius = 5;
+            this.btnLimpiar.CheckedState.Parent = this.btnLimpiar;
+            this.btnLimpiar.CustomImages.Parent = this.btnLimpiar;
+            this.btnLimpiar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnLimpiar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnLimpiar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLimpiar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnLimpiar.DisabledState.Parent = this.btnLimpiar;
+            this.btnLimpiar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.ForeColor = System.Drawing.Color.Black;
+            this.btnLimpiar.HoverState.Parent = this.btnLimpiar;
+            this.btnLimpiar.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnLimpiar.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnLimpiar.Location = new System.Drawing.Point(356, 39);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.ShadowDecoration.Parent = this.btnLimpiar;
+            this.btnLimpiar.Size = new System.Drawing.Size(80, 23);
+            this.btnLimpiar.TabIndex = 73;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::Visual.Properties.Resources.estudio31;
+            this.pictureBox1.Location = new System.Drawing.Point(137, 27);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(55, 49);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 74;
+            this.pictureBox1.TabStop = false;
+            // 
+            // guna2GroupBox2
+            // 
+            this.guna2GroupBox2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2GroupBox2.Controls.Add(this.dgvActividades);
+            this.guna2GroupBox2.Controls.Add(this.btnEliminar);
+            this.guna2GroupBox2.Controls.Add(this.btnLimpiar);
+            this.guna2GroupBox2.Controls.Add(this.btnBuscar);
+            this.guna2GroupBox2.Controls.Add(this.cmbFiltrar);
+            this.guna2GroupBox2.Controls.Add(this.txtBuscarDescripcion);
+            this.guna2GroupBox2.CustomBorderColor = System.Drawing.Color.LightGray;
+            this.guna2GroupBox2.CustomBorderThickness = new System.Windows.Forms.Padding(0, 30, 0, 0);
+            this.guna2GroupBox2.FillColor = System.Drawing.Color.Transparent;
+            this.guna2GroupBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2GroupBox2.ForeColor = System.Drawing.Color.Black;
+            this.guna2GroupBox2.Location = new System.Drawing.Point(32, 199);
+            this.guna2GroupBox2.Name = "guna2GroupBox2";
+            this.guna2GroupBox2.ShadowDecoration.Parent = this.guna2GroupBox2;
+            this.guna2GroupBox2.Size = new System.Drawing.Size(524, 222);
+            this.guna2GroupBox2.TabIndex = 75;
+            this.guna2GroupBox2.Text = "Consultas";
+            // 
             // FrmTalleres
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Visual.Properties.Resources.ReclusoBG3;
-            this.ClientSize = new System.Drawing.Size(524, 362);
-            this.Controls.Add(this.comboBox2);
+            this.ClientSize = new System.Drawing.Size(579, 436);
+            this.Controls.Add(this.guna2GroupBox2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.txtBuscarDescripcion);
-            this.Controls.Add(this.btnBuscar);
-            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.cmbModalidad);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.txtCupos);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtRemision);
             this.Controls.Add(this.txtDescripcion);
-            this.Controls.Add(this.dgvDistancia);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmTalleres";
             this.Text = "FrmTalleres";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDistancia)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvActividades)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.guna2GroupBox2.ResumeLayout(false);
+            this.guna2GroupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -378,9 +444,9 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cmbFiltrar;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbModalidad;
         private Guna.UI2.WinForms.Guna2TextBox txtBuscarDescripcion;
         private Guna.UI2.WinForms.Guna2Button btnBuscar;
         private Guna.UI2.WinForms.Guna2Button btnEliminar;
@@ -389,7 +455,7 @@
         private System.Windows.Forms.Label label7;
         private Guna.UI2.WinForms.Guna2TextBox txtRemision;
         private Guna.UI2.WinForms.Guna2TextBox txtDescripcion;
-        private System.Windows.Forms.DataGridView dgvDistancia;
+        private System.Windows.Forms.DataGridView dgvActividades;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -397,5 +463,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colModalidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCupos;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDiasCondena;
+        private Guna.UI2.WinForms.Guna2Button btnLimpiar;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox2;
     }
 }

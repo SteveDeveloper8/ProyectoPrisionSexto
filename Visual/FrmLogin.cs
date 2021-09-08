@@ -58,7 +58,7 @@ namespace Visual
             }
             else if(controlUser.RetornaRol(usuario).Equals("Alcaide"))
             {
-                EstudioRegistro alcaide = new EstudioRegistro();
+                EstudioRegistro alcaide = new EstudioRegistro(usuario);
                 alcaide.ShowDialog();
             }
             

@@ -49,7 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conexion.cs" />
-    <Compile Include="DatosCurso.cs" />
+    <Compile Include="DatosActividadPractica.cs" />
+    <Compile Include="DatosCursoCurricular.cs" />
     <Compile Include="DatosLogin.cs" />
     <Compile Include="DatosRecluso.cs" />
     <Compile Include="Excepciones\ConexionFallida.cs" />

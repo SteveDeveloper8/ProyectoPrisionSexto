@@ -43,9 +43,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControladorUsuario.cs" />
-    <Compile Include="ControlCursos.cs" />
+    <Compile Include="ControlCursosCurricular.cs" />
+    <Compile Include="ControlActividadPractica.cs" />
     <Compile Include="ControlRecluso.cs" />
-    <Compile Include="Excepcion.cs" />
+    <Compile Include="Excepciones\Excepcion.cs" />
     <Compile Include="Excepciones\CedulaRepetidaException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

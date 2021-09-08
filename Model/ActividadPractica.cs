@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public abstract class ActividadPractica : Actividad
+    public class ActividadPractica : Actividad
     {
         private int remisionDiaria;
-        public ActividadPractica(int cupos, string descripcion, int remisionDiaria) : base(cupos, descripcion)
+        public ActividadPractica(int cupos, string descripcion,string modalidad, int remisionDiaria) : base(cupos, descripcion,modalidad)
         {
             this.remisionDiaria = remisionDiaria;
         }
 
-        public ActividadPractica(int id, int cupos, string descripcion, int remisionDiaria) : base(id, cupos, descripcion)
+        public ActividadPractica(int id, int cupos, string descripcion,string modalidad,int remisionDiaria) : base(id, cupos, descripcion,modalidad)
         {
             this.remisionDiaria = remisionDiaria;
         }

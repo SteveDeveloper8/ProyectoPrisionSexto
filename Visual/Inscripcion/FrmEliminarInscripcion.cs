@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Visual
+namespace Visual.Inscripcion
 {
-    public partial class FrmTalleres : Form
+    public partial class FrmEliminarInscripcion : Form
     {
-        public FrmTalleres()
+        public FrmEliminarInscripcion()
         {
             InitializeComponent();
         }

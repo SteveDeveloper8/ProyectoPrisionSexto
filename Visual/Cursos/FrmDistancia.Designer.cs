@@ -33,6 +33,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.dgvDistancia = new System.Windows.Forms.DataGridView();
+            this.colDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colModalidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFechaIni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFechaFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCupos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDiasCondena = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtDescripcion = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtRemision = new Guna.UI2.WinForms.Guna2TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -47,24 +53,23 @@
             this.label5 = new System.Windows.Forms.Label();
             this.cmbFiltrar = new System.Windows.Forms.ComboBox();
             this.btnGuardar = new Guna.UI2.WinForms.Guna2Button();
-            this.colDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colModalidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colFechaIni = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colFechaFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCupos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDiasCondena = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnLimpiar = new Guna.UI2.WinForms.Guna2Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDistancia)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.guna2GroupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(144, 9);
+            this.label1.Location = new System.Drawing.Point(158, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(194, 21);
+            this.label1.Size = new System.Drawing.Size(248, 30);
             this.label1.TabIndex = 0;
             this.label1.Text = "Actividades Curriculares";
             // 
@@ -74,7 +79,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(38, 79);
+            this.label2.Location = new System.Drawing.Point(9, 106);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(90, 20);
             this.label2.TabIndex = 1;
@@ -86,7 +91,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(38, 114);
+            this.label3.Location = new System.Drawing.Point(9, 141);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 20);
             this.label3.TabIndex = 2;
@@ -98,7 +103,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(276, 79);
+            this.label4.Location = new System.Drawing.Point(297, 107);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(110, 20);
             this.label4.TabIndex = 3;
@@ -108,6 +113,9 @@
             // 
             this.dgvDistancia.AllowUserToAddRows = false;
             this.dgvDistancia.AllowUserToDeleteRows = false;
+            this.dgvDistancia.AllowUserToResizeRows = false;
+            this.dgvDistancia.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvDistancia.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvDistancia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDistancia.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colDescripcion,
@@ -116,11 +124,53 @@
             this.colFechaFin,
             this.colCupos,
             this.colDiasCondena});
-            this.dgvDistancia.Location = new System.Drawing.Point(12, 231);
+            this.dgvDistancia.Location = new System.Drawing.Point(8, 68);
             this.dgvDistancia.Name = "dgvDistancia";
             this.dgvDistancia.ReadOnly = true;
-            this.dgvDistancia.Size = new System.Drawing.Size(551, 157);
+            this.dgvDistancia.Size = new System.Drawing.Size(551, 141);
             this.dgvDistancia.TabIndex = 10;
+            // 
+            // colDescripcion
+            // 
+            this.colDescripcion.HeaderText = "Descripcion";
+            this.colDescripcion.Name = "colDescripcion";
+            this.colDescripcion.ReadOnly = true;
+            this.colDescripcion.Width = 94;
+            // 
+            // colModalidad
+            // 
+            this.colModalidad.HeaderText = "Modalidad";
+            this.colModalidad.Name = "colModalidad";
+            this.colModalidad.ReadOnly = true;
+            this.colModalidad.Width = 89;
+            // 
+            // colFechaIni
+            // 
+            this.colFechaIni.HeaderText = "FechaInicio";
+            this.colFechaIni.Name = "colFechaIni";
+            this.colFechaIni.ReadOnly = true;
+            this.colFechaIni.Width = 92;
+            // 
+            // colFechaFin
+            // 
+            this.colFechaFin.HeaderText = "FechaFin";
+            this.colFechaFin.Name = "colFechaFin";
+            this.colFechaFin.ReadOnly = true;
+            this.colFechaFin.Width = 79;
+            // 
+            // colCupos
+            // 
+            this.colCupos.HeaderText = "Cupos";
+            this.colCupos.Name = "colCupos";
+            this.colCupos.ReadOnly = true;
+            this.colCupos.Width = 66;
+            // 
+            // colDiasCondena
+            // 
+            this.colDiasCondena.HeaderText = "RemisionTotal";
+            this.colDiasCondena.Name = "colDiasCondena";
+            this.colDiasCondena.ReadOnly = true;
+            this.colDiasCondena.Width = 106;
             // 
             // txtDescripcion
             // 
@@ -138,7 +188,7 @@
             this.txtDescripcion.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtDescripcion.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDescripcion.HoverState.Parent = this.txtDescripcion;
-            this.txtDescripcion.Location = new System.Drawing.Point(127, 79);
+            this.txtDescripcion.Location = new System.Drawing.Point(105, 106);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.PasswordChar = '\0';
             this.txtDescripcion.PlaceholderText = "";
@@ -163,7 +213,7 @@
             this.txtRemision.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtRemision.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtRemision.HoverState.Parent = this.txtRemision;
-            this.txtRemision.Location = new System.Drawing.Point(392, 79);
+            this.txtRemision.Location = new System.Drawing.Point(413, 107);
             this.txtRemision.Name = "txtRemision";
             this.txtRemision.PasswordChar = '\0';
             this.txtRemision.PlaceholderText = "";
@@ -178,7 +228,7 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(313, 113);
+            this.label6.Location = new System.Drawing.Point(334, 141);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(73, 20);
             this.label6.TabIndex = 18;
@@ -191,7 +241,7 @@
             this.dtpFechaInicio.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFechaInicio.HoverState.Parent = this.dtpFechaInicio;
-            this.dtpFechaInicio.Location = new System.Drawing.Point(127, 115);
+            this.dtpFechaInicio.Location = new System.Drawing.Point(105, 142);
             this.dtpFechaInicio.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpFechaInicio.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpFechaInicio.Name = "dtpFechaInicio";
@@ -207,7 +257,7 @@
             this.dtpFechaFin.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFechaFin.HoverState.Parent = this.dtpFechaFin;
-            this.dtpFechaFin.Location = new System.Drawing.Point(392, 113);
+            this.dtpFechaFin.Location = new System.Drawing.Point(413, 141);
             this.dtpFechaFin.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpFechaFin.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpFechaFin.Name = "dtpFechaFin";
@@ -222,7 +272,7 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(38, 46);
+            this.label7.Location = new System.Drawing.Point(46, 73);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 20);
             this.label7.TabIndex = 21;
@@ -244,7 +294,7 @@
             this.txtCupos.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtCupos.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCupos.HoverState.Parent = this.txtCupos;
-            this.txtCupos.Location = new System.Drawing.Point(95, 47);
+            this.txtCupos.Location = new System.Drawing.Point(105, 74);
             this.txtCupos.Name = "txtCupos";
             this.txtCupos.PasswordChar = '\0';
             this.txtCupos.PlaceholderText = "";
@@ -270,7 +320,7 @@
             this.btnBuscar.HoverState.Parent = this.btnBuscar;
             this.btnBuscar.Image = global::Visual.Properties.Resources.buscar;
             this.btnBuscar.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnBuscar.Location = new System.Drawing.Point(192, 202);
+            this.btnBuscar.Location = new System.Drawing.Point(307, 39);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.ShadowDecoration.Parent = this.btnBuscar;
             this.btnBuscar.Size = new System.Drawing.Size(40, 24);
@@ -294,7 +344,7 @@
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
             this.btnEliminar.HoverState.Parent = this.btnEliminar;
             this.btnEliminar.Image = global::Visual.Properties.Resources.eliminar;
-            this.btnEliminar.Location = new System.Drawing.Point(524, 202);
+            this.btnEliminar.Location = new System.Drawing.Point(520, 39);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.ShadowDecoration.Parent = this.btnEliminar;
             this.btnEliminar.Size = new System.Drawing.Size(39, 26);
@@ -318,7 +368,7 @@
             this.txtBuscarDescripcion.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtBuscarDescripcion.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBuscarDescripcion.HoverState.Parent = this.txtBuscarDescripcion;
-            this.txtBuscarDescripcion.Location = new System.Drawing.Point(16, 205);
+            this.txtBuscarDescripcion.Location = new System.Drawing.Point(12, 41);
             this.txtBuscarDescripcion.Name = "txtBuscarDescripcion";
             this.txtBuscarDescripcion.PasswordChar = '\0';
             this.txtBuscarDescripcion.PlaceholderText = "Descripcion";
@@ -326,14 +376,16 @@
             this.txtBuscarDescripcion.ShadowDecoration.Parent = this.txtBuscarDescripcion;
             this.txtBuscarDescripcion.Size = new System.Drawing.Size(170, 21);
             this.txtBuscarDescripcion.TabIndex = 50;
+            this.txtBuscarDescripcion.TextChanged += new System.EventHandler(this.txtBuscarDescripcion_TextChanged);
             // 
             // cmbModalidad
             // 
+            this.cmbModalidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbModalidad.FormattingEnabled = true;
             this.cmbModalidad.Items.AddRange(new object[] {
             "Distancia",
             "Presencial"});
-            this.cmbModalidad.Location = new System.Drawing.Point(392, 44);
+            this.cmbModalidad.Location = new System.Drawing.Point(413, 72);
             this.cmbModalidad.Name = "cmbModalidad";
             this.cmbModalidad.Size = new System.Drawing.Size(134, 21);
             this.cmbModalidad.TabIndex = 51;
@@ -344,7 +396,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(297, 45);
+            this.label5.Location = new System.Drawing.Point(318, 73);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(89, 20);
             this.label5.TabIndex = 52;
@@ -352,15 +404,16 @@
             // 
             // cmbFiltrar
             // 
+            this.cmbFiltrar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFiltrar.FormattingEnabled = true;
             this.cmbFiltrar.Items.AddRange(new object[] {
+            "Filtrar...",
             "Distancia",
             "Presencial"});
-            this.cmbFiltrar.Location = new System.Drawing.Point(238, 204);
+            this.cmbFiltrar.Location = new System.Drawing.Point(188, 41);
             this.cmbFiltrar.Name = "cmbFiltrar";
-            this.cmbFiltrar.Size = new System.Drawing.Size(113, 21);
+            this.cmbFiltrar.Size = new System.Drawing.Size(113, 23);
             this.cmbFiltrar.TabIndex = 53;
-            this.cmbFiltrar.Text = "Filtrar...";
             // 
             // btnGuardar
             // 
@@ -379,67 +432,81 @@
             this.btnGuardar.HoverState.Parent = this.btnGuardar;
             this.btnGuardar.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnGuardar.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnGuardar.Location = new System.Drawing.Point(247, 149);
+            this.btnGuardar.Location = new System.Drawing.Point(251, 170);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.ShadowDecoration.Parent = this.btnGuardar;
-            this.btnGuardar.Size = new System.Drawing.Size(104, 26);
+            this.btnGuardar.Size = new System.Drawing.Size(92, 26);
             this.btnGuardar.TabIndex = 67;
             this.btnGuardar.Text = "Registrar";
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click_1);
             // 
-            // colDescripcion
+            // btnLimpiar
             // 
-            this.colDescripcion.HeaderText = "Descripcion";
-            this.colDescripcion.Name = "colDescripcion";
-            this.colDescripcion.ReadOnly = true;
-            this.colDescripcion.Width = 120;
+            this.btnLimpiar.BackColor = System.Drawing.Color.Transparent;
+            this.btnLimpiar.BorderRadius = 5;
+            this.btnLimpiar.CheckedState.Parent = this.btnLimpiar;
+            this.btnLimpiar.CustomImages.Parent = this.btnLimpiar;
+            this.btnLimpiar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnLimpiar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnLimpiar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLimpiar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnLimpiar.DisabledState.Parent = this.btnLimpiar;
+            this.btnLimpiar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnLimpiar.ForeColor = System.Drawing.Color.Black;
+            this.btnLimpiar.HoverState.Parent = this.btnLimpiar;
+            this.btnLimpiar.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnLimpiar.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnLimpiar.Location = new System.Drawing.Point(353, 40);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.ShadowDecoration.Parent = this.btnLimpiar;
+            this.btnLimpiar.Size = new System.Drawing.Size(80, 23);
+            this.btnLimpiar.TabIndex = 68;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
-            // colModalidad
+            // pictureBox1
             // 
-            this.colModalidad.HeaderText = "Modalidad";
-            this.colModalidad.Name = "colModalidad";
-            this.colModalidad.ReadOnly = true;
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::Visual.Properties.Resources.estudio11;
+            this.pictureBox1.Location = new System.Drawing.Point(115, 9);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(46, 44);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 75;
+            this.pictureBox1.TabStop = false;
             // 
-            // colFechaIni
+            // guna2GroupBox2
             // 
-            this.colFechaIni.HeaderText = "FechaInicio";
-            this.colFechaIni.Name = "colFechaIni";
-            this.colFechaIni.ReadOnly = true;
-            this.colFechaIni.Width = 80;
-            // 
-            // colFechaFin
-            // 
-            this.colFechaFin.HeaderText = "FechaFin";
-            this.colFechaFin.Name = "colFechaFin";
-            this.colFechaFin.ReadOnly = true;
-            this.colFechaFin.Width = 80;
-            // 
-            // colCupos
-            // 
-            this.colCupos.HeaderText = "Cupos";
-            this.colCupos.Name = "colCupos";
-            this.colCupos.ReadOnly = true;
-            this.colCupos.Width = 50;
-            // 
-            // colDiasCondena
-            // 
-            this.colDiasCondena.HeaderText = "RemisionTotal";
-            this.colDiasCondena.Name = "colDiasCondena";
-            this.colDiasCondena.ReadOnly = true;
+            this.guna2GroupBox2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2GroupBox2.Controls.Add(this.dgvDistancia);
+            this.guna2GroupBox2.Controls.Add(this.btnEliminar);
+            this.guna2GroupBox2.Controls.Add(this.btnLimpiar);
+            this.guna2GroupBox2.Controls.Add(this.btnBuscar);
+            this.guna2GroupBox2.Controls.Add(this.txtBuscarDescripcion);
+            this.guna2GroupBox2.Controls.Add(this.cmbFiltrar);
+            this.guna2GroupBox2.CustomBorderColor = System.Drawing.Color.LightGray;
+            this.guna2GroupBox2.CustomBorderThickness = new System.Windows.Forms.Padding(0, 30, 0, 0);
+            this.guna2GroupBox2.FillColor = System.Drawing.Color.Transparent;
+            this.guna2GroupBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2GroupBox2.ForeColor = System.Drawing.Color.Black;
+            this.guna2GroupBox2.Location = new System.Drawing.Point(8, 211);
+            this.guna2GroupBox2.Name = "guna2GroupBox2";
+            this.guna2GroupBox2.ShadowDecoration.Parent = this.guna2GroupBox2;
+            this.guna2GroupBox2.Size = new System.Drawing.Size(570, 222);
+            this.guna2GroupBox2.TabIndex = 76;
+            this.guna2GroupBox2.Text = "Consultas";
             // 
             // FrmDistancia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Visual.Properties.Resources.ReclusoBG1;
-            this.ClientSize = new System.Drawing.Size(579, 400);
+            this.ClientSize = new System.Drawing.Size(586, 444);
+            this.Controls.Add(this.guna2GroupBox2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnGuardar);
-            this.Controls.Add(this.cmbFiltrar);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cmbModalidad);
-            this.Controls.Add(this.txtBuscarDescripcion);
-            this.Controls.Add(this.btnBuscar);
-            this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.txtCupos);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.dtpFechaFin);
@@ -447,7 +514,6 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtRemision);
             this.Controls.Add(this.txtDescripcion);
-            this.Controls.Add(this.dgvDistancia);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -455,8 +521,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmDistancia";
             this.Text = "FrmDistancia";
-            this.Load += new System.EventHandler(this.FrmDistancia_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDistancia)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.guna2GroupBox2.ResumeLayout(false);
+            this.guna2GroupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -489,5 +557,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colFechaFin;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCupos;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDiasCondena;
+        private Guna.UI2.WinForms.Guna2Button btnLimpiar;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox2;
     }
 }
