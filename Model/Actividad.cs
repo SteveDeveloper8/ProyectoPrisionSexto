@@ -32,7 +32,7 @@ namespace Model
             this.descripcion = descripcion;
             this.modalidad = modalidad;
         }
-
+        public Actividad() { }
 
 
 

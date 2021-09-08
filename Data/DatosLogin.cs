@@ -25,18 +25,16 @@ namespace Data
             return nomina;
         }
         //Consulta la base de datos y devuelve un usuario cuyo nombre de usuario coincida con el argumento.
-        public Usuario ConsultarUsuario(String usuario)
+        public Usuario ConsultarUsuario(String username)
         {
             SqlDataReader dr = null;
             Usuario user = null;
             SqlCommand comando = new SqlCommand();
             comando.CommandText = "spr_buscar_usuario";
             comando.CommandType = System.Data.CommandType.StoredProcedure;
-            SqlParameter parametroUsuario = new SqlParameter();
-            parametroUsuario.ParameterName = "@nombre_usuario";
-            parametroUsuario.SqlDbType = System.Data.SqlDbType.VarChar;
+            SqlParameter parametroUsuario = new SqlParameter("@nombre_usuario", System.Data.SqlDbType.VarChar);
             parametroUsuario.Direction = System.Data.ParameterDirection.Input;
-            parametroUsuario.Value = usuario;
+            parametroUsuario.Value = username;
             comando.Parameters.Add(parametroUsuario);
             try
             {
@@ -77,9 +75,7 @@ namespace Data
             SqlCommand comando = new SqlCommand();
             comando.CommandText = "spr_buscar_rol";
             comando.CommandType = System.Data.CommandType.StoredProcedure;
-            SqlParameter parametroRol = new SqlParameter();
-            parametroRol.ParameterName = "@nombre_rol";
-            parametroRol.SqlDbType = System.Data.SqlDbType.VarChar;
+            SqlParameter parametroRol = new SqlParameter("@nombre_rol", System.Data.SqlDbType.VarChar);
             parametroRol.Direction = System.Data.ParameterDirection.Input;
             parametroRol.Value = rol;
             comando.Parameters.Add(parametroRol);
@@ -115,33 +111,23 @@ namespace Data
             comando.CommandText = "spr_ingresar_usuario";
             comando.CommandType = System.Data.CommandType.StoredProcedure;
             //Lista de parámetros para el procedimeinto almacenado
-            SqlParameter parametroNombre = new SqlParameter();
-            parametroNombre.ParameterName = "@nombres";
-            parametroNombre.SqlDbType = System.Data.SqlDbType.VarChar;
+            SqlParameter parametroNombre = new SqlParameter("@nombres", System.Data.SqlDbType.VarChar);
             parametroNombre.Direction = System.Data.ParameterDirection.Input;
             parametroNombre.Value = user.Nombres;
             comando.Parameters.Add(parametroNombre);
-            SqlParameter parametroApellido = new SqlParameter();
-            parametroApellido.ParameterName = "@apellido";
-            parametroApellido.SqlDbType = System.Data.SqlDbType.VarChar;
+            SqlParameter parametroApellido = new SqlParameter("@apellido", System.Data.SqlDbType.VarChar);
             parametroApellido.Direction = System.Data.ParameterDirection.Input;
             parametroApellido.Value = user.Apellidos;
             comando.Parameters.Add(parametroApellido);
-            SqlParameter parametroUsername = new SqlParameter();
-            parametroUsername.ParameterName = "@username";
-            parametroUsername.SqlDbType = System.Data.SqlDbType.VarChar;
+            SqlParameter parametroUsername = new SqlParameter("@username", System.Data.SqlDbType.VarChar);
             parametroUsername.Direction = System.Data.ParameterDirection.Input;
             parametroUsername.Value = user.Username;
             comando.Parameters.Add(parametroUsername);
-            SqlParameter parametroPassword = new SqlParameter();
-            parametroPassword.ParameterName = "@password";
-            parametroPassword.SqlDbType = System.Data.SqlDbType.VarChar;
+            SqlParameter parametroPassword = new SqlParameter("@password", System.Data.SqlDbType.VarChar);
             parametroPassword.Direction = System.Data.ParameterDirection.Input;
             parametroPassword.Value = user.Contrasena;
             comando.Parameters.Add(parametroPassword);
-            SqlParameter parametroRol = new SqlParameter();
-            parametroRol.ParameterName = "@id_rol";
-            parametroRol.SqlDbType = System.Data.SqlDbType.Int;
+            SqlParameter parametroRol = new SqlParameter("@id_rol", System.Data.SqlDbType.Int);
             parametroRol.Direction = System.Data.ParameterDirection.Input;
             parametroRol.Value = user.Rol.Id;
             comando.Parameters.Add(parametroRol);

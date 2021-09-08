@@ -12,6 +12,7 @@ namespace Model
         private DateTime fechaFin;
         private int remisionTotal;
 
+        public ActividadCurricular() {}
         public ActividadCurricular(int cupos, string descripcion,string modalidad,int remisionTotal, DateTime fechaInicio, DateTime fechaFin): base(cupos,descripcion,modalidad)
         {
             this.fechaInicio = fechaInicio;

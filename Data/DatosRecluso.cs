@@ -25,9 +25,7 @@ namespace Data
             Expediente expediente = null;
             comando.CommandText = "spr_consultar_expediente";
             comando.CommandType = System.Data.CommandType.StoredProcedure;
-            SqlParameter parametroCedula = new SqlParameter();
-            parametroCedula.ParameterName = "@cedula_recluso";
-            parametroCedula.SqlDbType = System.Data.SqlDbType.VarChar;
+            SqlParameter parametroCedula = new SqlParameter("@cedula_recluso", System.Data.SqlDbType.VarChar);
             parametroCedula.Direction = System.Data.ParameterDirection.Input;
             parametroCedula.Value = cedula;
             comando.Parameters.Add(parametroCedula);
@@ -58,45 +56,31 @@ namespace Data
             comando.CommandText = "spr_ingresar_recluso";
             comando.CommandType = System.Data.CommandType.StoredProcedure;
             //Lista de parámetros para el procedimeinto almacenado
-            SqlParameter parametroCodigo = new SqlParameter();
-            parametroCodigo.ParameterName = "@codigo";
-            parametroCodigo.SqlDbType = System.Data.SqlDbType.VarChar;
+            SqlParameter parametroCodigo = new SqlParameter("@codigo", System.Data.SqlDbType.VarChar);
             parametroCodigo.Direction = System.Data.ParameterDirection.Input;
             parametroCodigo.Value = recluso.Codigo;
             comando.Parameters.Add(parametroCodigo);
-            SqlParameter parametroCedula = new SqlParameter();
-            parametroCedula.ParameterName = "@cedula";
-            parametroCedula.SqlDbType = System.Data.SqlDbType.VarChar;
+            SqlParameter parametroCedula = new SqlParameter("@cedula", System.Data.SqlDbType.VarChar);
             parametroCedula.Direction = System.Data.ParameterDirection.Input;
             parametroCedula.Value = recluso.Cedula;
             comando.Parameters.Add(parametroCedula);
-            SqlParameter parametroNombre = new SqlParameter();
-            parametroNombre.ParameterName = "@nombres";
-            parametroNombre.SqlDbType = System.Data.SqlDbType.VarChar;
+            SqlParameter parametroNombre = new SqlParameter("@nombres", System.Data.SqlDbType.VarChar);
             parametroNombre.Direction = System.Data.ParameterDirection.Input;
             parametroNombre.Value = recluso.Nombre;
             comando.Parameters.Add(parametroNombre);
-            SqlParameter parametroApellido = new SqlParameter();
-            parametroApellido.ParameterName = "@apellidos";
-            parametroApellido.SqlDbType = System.Data.SqlDbType.VarChar;
+            SqlParameter parametroApellido = new SqlParameter("@apellidos", System.Data.SqlDbType.VarChar);
             parametroApellido.Direction = System.Data.ParameterDirection.Input;
             parametroApellido.Value = recluso.Apellidos;
             comando.Parameters.Add(parametroApellido);
-            SqlParameter parametroFecha = new SqlParameter();
-            parametroFecha.ParameterName = "@fecha_Nac";
-            parametroFecha.SqlDbType = System.Data.SqlDbType.DateTime;
+            SqlParameter parametroFecha = new SqlParameter("@fecha_Nac", System.Data.SqlDbType.DateTime);
             parametroFecha.Direction = System.Data.ParameterDirection.Input;
             parametroFecha.Value = recluso.Fecha;
             comando.Parameters.Add(parametroFecha);
-            SqlParameter parametroGenero = new SqlParameter();
-            parametroGenero.ParameterName = "@genero";
-            parametroGenero.SqlDbType = System.Data.SqlDbType.VarChar;
+            SqlParameter parametroGenero = new SqlParameter("@genero", System.Data.SqlDbType.VarChar);
             parametroGenero.Direction = System.Data.ParameterDirection.Input;
             parametroGenero.Value = recluso.Genero;
             comando.Parameters.Add(parametroGenero);
-            SqlParameter parametroExpediente = new SqlParameter();
-            parametroExpediente.ParameterName = "@id_Expediente";
-            parametroExpediente.SqlDbType = System.Data.SqlDbType.Int;
+            SqlParameter parametroExpediente = new SqlParameter("@id_Expediente", System.Data.SqlDbType.Int);
             parametroExpediente.Direction = System.Data.ParameterDirection.Input;
             parametroExpediente.Value = recluso.Expediente.Id;
             comando.Parameters.Add(parametroExpediente);
@@ -114,9 +98,9 @@ namespace Data
             conexion.Cerrar();
         }
         //Consulta la base de datos y devuelve una lista con todos los reclusos registrados en el sistema.
-        public List<Object> ConsultarReclusos()
+        public List<Recluso> ConsultarReclusos()
         {
-            List<Object> reclusos = ConsultarGeneral();
+            List<Recluso> reclusos = ConsultarGeneral();
             return reclusos;
         }
         //Consulta la base de datos y devuelve una lista de cargos que pertenezcan al expediente cuyo código recibe.
@@ -126,9 +110,7 @@ namespace Data
             SqlCommand comando = new SqlCommand();
             comando.CommandText = "spr_consultar_cargos";
             comando.CommandType = System.Data.CommandType.StoredProcedure;
-            SqlParameter parametroCedula = new SqlParameter();
-            parametroCedula.ParameterName = "@codigo_expediente";
-            parametroCedula.SqlDbType = System.Data.SqlDbType.NChar;
+            SqlParameter parametroCedula = new SqlParameter("@codigo_expediente", System.Data.SqlDbType.NChar);
             parametroCedula.Direction = System.Data.ParameterDirection.Input;
             parametroCedula.Value = codigoExpediente;
             comando.Parameters.Add(parametroCedula);
@@ -160,16 +142,16 @@ namespace Data
             return cargos;
         }
         //Consulta la base de datos y devuelve un objeto con los datos de un recluso cuya cédula sea igual al argumento.
-        public object BuscarRecluso(string cedula)
+        public Recluso BuscarRecluso(string cedula)
         {
-            List<Object> reclusos = ConsultarBusqueda(cedula);
+            List<Recluso> reclusos = ConsultarBusqueda(cedula);
             if (reclusos.Count > 0)
                 return reclusos[0];
             else
                 return null;
         }
         //Ejecuta en la base de datos una sntencia SQL dada por parámetros y devuelve una lista de reclusos correspondiente a los reultados.
-        private List<Object> ConsultarGeneral()
+        private List<Recluso> ConsultarGeneral()
         {
             SqlDataReader dr = null;
             SqlCommand comando = new SqlCommand();
@@ -190,9 +172,9 @@ namespace Data
             }
         }
         //Lee un DataReader lleno con datos de una consulta a la tabla de reclusos y devuelve una lista de Reclusos recuperados.
-        private List<Object> LeerResultados(SqlDataReader datos)
+        private List<Recluso> LeerResultados(SqlDataReader datos)
         {
-            List<Object> reclusos = new List<Object>();
+            List<Recluso> reclusos = new List<Recluso>();
             while (datos.Read())
             {
                Recluso recluso = new Recluso();
@@ -210,15 +192,13 @@ namespace Data
             return reclusos;
         }
         //Busca un recluso por su número de cédula en la base de datos y devuelve un objeto recluso.
-        private List<Object> ConsultarBusqueda(string cedula)
+        private List<Recluso> ConsultarBusqueda(string cedula)
         {
             SqlDataReader dr = null;
             SqlCommand comando = new SqlCommand();
             comando.CommandText = "spr_buscar_recluso";
             comando.CommandType = System.Data.CommandType.StoredProcedure;
-            SqlParameter parametroCedula = new SqlParameter();
-            parametroCedula.ParameterName = "@cedula_rec";
-            parametroCedula.SqlDbType = System.Data.SqlDbType.VarChar;
+            SqlParameter parametroCedula = new SqlParameter("@cedula_rec", System.Data.SqlDbType.VarChar);
             parametroCedula.Direction = System.Data.ParameterDirection.Input;
             parametroCedula.Value = cedula;
             comando.Parameters.Add(parametroCedula);

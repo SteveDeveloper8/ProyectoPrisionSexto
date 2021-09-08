@@ -19,12 +19,12 @@ namespace Control
         ///<return>Retorna una lista de cursos </return>
         public List<object> ListarCursosDistancia()
         {
-            List<Object> cursos = datosCurso.ConsultarCursosDistancia();
+            List<ActividadCurricular> cursos = datosCurso.ConsultarCursosDistancia();
 
             if (cursos.Count <= 0)
                 throw new GeneralExcepcion("No se encontraron reclusos registrados");
             else
-                return cursos;
+                return GetListaDatosCursos(cursos);
         }
 
         ///<summary>
@@ -59,14 +59,34 @@ namespace Control
         //////<return>Retorna una lista de cursos </return>
         public List<Object> FiltrarDesccripcion(string descripcion)
         {
-            List<Object> CursosCurriculares= datosCurso.BuscarDescripcionEstudio(descripcion);
+            List<ActividadCurricular> CursosCurriculares= datosCurso.BuscarDescripcionEstudio(descripcion);
             if (CursosCurriculares == null)
             {
                 throw new GeneralExcepcion("Curso no existe con esa descripcion");
             }
-            return CursosCurriculares;
+            return GetListaDatosCursos(CursosCurriculares);
         }
-
+        private List<Object> GetListaDatosCursos(List<ActividadCurricular> actividades)
+        {
+            List<Object> cargosDatos = new List<object>();
+            foreach (ActividadCurricular curso in actividades)
+            {
+                cargosDatos.Add(ConvertirAnonimo(curso));
+            }
+            return cargosDatos;
+        }
+        private Object ConvertirAnonimo(ActividadCurricular curso)
+        {
+            return new
+            {
+                cupos = curso.Cupos,
+                descripcion = curso.Descripcion,
+                modalidad=curso.Modalidad,
+                remisionTotal=curso.RemisionTotal,
+                fechaInicio=curso.FechaInicio,
+                fechaFin = curso.FechaFin
+            };
+        }
         ///<summary>
         ///Metodo que se encarga de buscar cursos a partir de su modalidad.
         ///</summary>

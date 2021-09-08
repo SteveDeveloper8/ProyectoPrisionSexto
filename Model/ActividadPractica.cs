@@ -18,7 +18,7 @@ namespace Model
         {
             this.remisionDiaria = remisionDiaria;
         }
-
+        public ActividadPractica() { }
         public int RemisionDiaria { get => remisionDiaria; set => remisionDiaria = value; }
     }
 }

@@ -74,12 +74,12 @@ namespace Control
 
         public List<Object> ListarReclusos()
         {
-            List<Object> reclusos= datosRecluso.ConsultarReclusos();
+            List<Recluso> reclusos= datosRecluso.ConsultarReclusos();
 
             if (reclusos.Count <= 0)
                 throw new GeneralExcepcion("No se encontraron reclusos registrados");
             else
-                return reclusos;
+                return GetListaDatosReclusos(reclusos);
         }
 
         public Object BuscarRecluso(string cedula)
@@ -101,7 +101,7 @@ namespace Control
             else
                 return GetListaDatosCargos(cargos);
         }
-        public List<Object> GetListaDatosCargos(List<Cargo> cargos)
+        private List<Object> GetListaDatosCargos(List<Cargo> cargos)
         {
             List<Object> cargosDatos = new List<object>();
             foreach (Cargo cargo in cargos)
@@ -110,7 +110,16 @@ namespace Control
             }
             return cargosDatos;
         }
-        public Object ConvertirAnonimo(Cargo cargo)
+        private List<Object> GetListaDatosReclusos(List<Recluso> reclusos)
+        {
+            List<Object> cargosDatos = new List<object>();
+            foreach (Recluso recluso in reclusos)
+            {
+                cargosDatos.Add(ConvertirAnonimo(recluso));
+            }
+            return cargosDatos;
+        }
+        private Object ConvertirAnonimo(Cargo cargo)
         {
             return new
             {
@@ -122,7 +131,20 @@ namespace Control
                 pais = cargo.LugarHechos.NombrePais
             };
         }
+        private Object ConvertirAnonimo(Recluso recluso)
+        {
+            return new
+            {
+                nombre = recluso.Nombre,
+                apellidos = recluso.Apellidos,
+                genero = recluso.Genero,
+                fehca = recluso.Fecha,
+                cedula = recluso.Cedula,
+                codigo = recluso.Codigo,
+                expediente = recluso.Expediente
+            };
+        }
 
-        
+
     }
 }
