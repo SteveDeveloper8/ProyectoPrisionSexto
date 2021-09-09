@@ -10,6 +10,9 @@ namespace Control
 {
     public class ControlCursosCurricular
     {
+        /// <summary>
+        /// Controlador que gestiona la información de <seealso cref="ActividadCurricular"/>.
+        /// </summary>
         DatosCursoCurricular datosCurso = new DatosCursoCurricular();
         ActividadCurricular curricular =null;
 
@@ -20,7 +23,6 @@ namespace Control
         public List<object> ListarCursosDistancia()
         {
             List<ActividadCurricular> cursos = datosCurso.ConsultarCursosDistancia();
-
             if (cursos.Count <= 0)
                 throw new GeneralExcepcion("No se encontraron reclusos registrados");
             else
@@ -66,6 +68,11 @@ namespace Control
             }
             return GetListaDatosCursos(CursosCurriculares);
         }
+        /// <summary>
+        /// Convierte una lista de objetos <seealso cref="ActividadCurricular"/> en una lista de objetos anónimos(<seealso cref="Object"/>) que la capa de vista pueda entender.
+        /// </summary>
+        /// <param name="actividades">Lista de actividades a convertir.</param>
+        /// <returns>Una lista de objetos anónimos(<seealso cref="Object"/>).</returns>
         private List<Object> GetListaDatosCursos(List<ActividadCurricular> actividades)
         {
             List<Object> cargosDatos = new List<object>();
@@ -75,6 +82,11 @@ namespace Control
             }
             return cargosDatos;
         }
+        /// <summary>
+        /// Convierte un objeto <seealso cref="ActividadCurricular"/> en un objeto anónimo(<seealso cref="Object"/>) que la capa de Vista puede entender.
+        /// </summary>
+        /// <param name="curso">Curso a convertir.</param>
+        /// <returns>Un <seealso cref="Object"/> con los datos del <paramref name="curso"/>.</returns>
         private Object ConvertirAnonimo(ActividadCurricular curso)
         {
             return new

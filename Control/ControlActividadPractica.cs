@@ -10,7 +10,9 @@ namespace Control
 {
     public class ControlActividadPractica
     {
-
+        /// <summary>
+        /// Controlador que gestiona la información de <seealso cref="ActividadPractica"/>.
+        /// </summary>
         DatosActividadPractica datosActividad = new DatosActividadPractica();
         ActividadPractica actividad = null;
 
@@ -27,7 +29,6 @@ namespace Control
             else
                 return GetListaDatosActividades(actividades);
         }
-
         ///<summary>
         ///Metodo que se encarga de guardar la actividad.
         ///</summary>
@@ -42,7 +43,6 @@ namespace Control
             datosActividad.InsertarActividad(actividad);
             return ConvertirAnonimo(actividad);
         }
-
         ///<summary>
         ///Metodo que se encarga de eliminar una actividad especifico
         ///</summary>
@@ -51,8 +51,6 @@ namespace Control
         {
             datosActividad.EliminarActividad(ActividadDelete, modalidad);
         }
-
-
         ///<summary>
         ///Metodo que se encarga de buscar actividades a partir de una descripcion.
         ///</summary>
@@ -67,8 +65,6 @@ namespace Control
             }
             return GetListaDatosActividades(actividad);
         }
-
-
         ///<summary>
         ///Metodo que se encarga de buscar actividades a partir de su modalidad.
         ///</summary>
@@ -83,7 +79,6 @@ namespace Control
             }
             return GetListaDatosActividades(actividad);
         }
-
         ///<summary>
         ///Metodo que se encarga de buscar actividades a partir de su descripcion y modalidad.
         ///</summary>
@@ -99,6 +94,11 @@ namespace Control
             }
             return GetListaDatosActividades(actividad);
         }
+        /// <summary>
+        /// Convierte una lista de objetos <seealso cref="ActividadPractica"/> en una lista de objetos anónimos(<seealso cref="Object"/>) que la capa de vista pueda entender.
+        /// </summary>
+        /// <param name="actividades">Lista de actividades a convertir.</param>
+        /// <returns>Una lista de objetos anónimos(<seealso cref="Object"/>).</returns>
         private List<Object> GetListaDatosActividades(List<ActividadPractica> actividades)
         {
             List<Object> cargosDatos = new List<object>();
@@ -108,6 +108,11 @@ namespace Control
             }
             return cargosDatos;
         }
+        /// <summary>
+        /// Convierte un objeto <seealso cref="ActividadPractica"/> en un objeto anónimo(<seealso cref="Object"/>) que la capa de Vista puede entender.
+        /// </summary>
+        /// <param name="actividad">Actividad a convertir.</param>
+        /// <returns>Un <seealso cref="Object"/> con los datos de la <paramref name="actividad"/>.</returns>
         private Object ConvertirAnonimo(ActividadPractica actividad)
         {
             return new
