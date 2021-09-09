@@ -40,7 +40,11 @@ namespace Control
                 throw new GeneralExcepcion("Contrasena incorrecta");
             }
         }
-
+        /// <summary>
+        /// Lista a todos los datos de usuarios del sistema.
+        /// </summary>
+        /// <returns>Una lista con la información de cada <see cref="Usuario"/> registrado en el sistema.</returns>
+        /// <exception cref="GeneralExcepcion">Cuando no se encontró ningún <see cref="Usuario"/> registrado en el sistema.</exception>
         public List<Object> ListarUsuarios()
         {
             List<Usuario> usuarios = datosLogin.Consultar();
@@ -50,7 +54,11 @@ namespace Control
             else
                 return GetListaDatosUsuarios(usuarios);
         }
-
+        /// <summary>
+        /// Convierte una lista de <seealso cref=Usuario"/>s en una lista de objetos anónimos(<seealso cref="Object"/>) que la capa de vista pueda entender.
+        /// </summary>
+        /// <param name="usuarios">Lista de usuarios a convertir.</param>
+        /// <returns>Una lista de objetos anónimos(<seealso cref="Object"/>).</returns>
         private List<Object> GetListaDatosUsuarios(List<Usuario> usuarios)
         {
             List<Object> cargosDatos = new List<object>();
@@ -60,7 +68,11 @@ namespace Control
             }
             return cargosDatos;
         }
-
+        /// <summary>
+        /// Convierte un objeto <seealso cref="Usuario"/> en un objeto anónimo(<seealso cref="Object"/>) que la capa de Vista puede entender.
+        /// </summary>
+        /// <param name="usuario">Usuario a convertir.</param>
+        /// <returns>Un <seealso cref="Object"/> con los datos del <paramref name="usuario"/>.</returns>
         private Object ConvertirAnonimo(Usuario usuario)
         {
             return new
@@ -72,19 +84,30 @@ namespace Control
                 rol = usuario.Rol.Descripcion
             };
         }
-
+        /// <summary>
+        /// Busca un <see cref="Recluso"/> cuyo nombre de usuario coincida con <paramref name="user"/>.
+        /// </summary>
+        /// <param name="user">Nombre de usuario del <see cref="Usuario"/> a buscar.</param>
+        /// <returns>Un <see cref="Object"/> con los datos del <see cref="Usuario"/>.</returns>
         public Object BuscarUsuario(string user)
         {
             
             return ConvertirAnonimo(datosLogin.BuscarUsuario(user));
 
         }
-
-        public void ActualizarUsuario(string nombre, string apellido, string usuario, string contrasena, string rol, string username)
+        /// <summary>
+        /// Actualiza los datos de un <see cref="Usuario"/> en específico.
+        /// </summary>
+        /// <param name="nombre">Nuevo nombre del <see cref="Usuario"/>.</param>
+        /// <param name="apellido">Nuevo apellido del <see cref="Usuario"/>.</param>
+        /// <param name="usuario">Nombre de usuario para identificar el <see cref="Usuario"/> a actualizar.</param>
+        /// <param name="contrasena">Nueva contraseña del <see cref="Usuario"/>.</param>
+        /// <param name="rol">Nuevo <see cref="Rol"/> del <see cref="Usuario"/>.</param>
+        public void ActualizarUsuario(string nombre, string apellido, string usuario, string contrasena, string rol)
         {
             role = new Rol(rol);
             user = new Usuario(nombre, apellido, usuario, contrasena, ObtenerRol(rol));
-            datosLogin.ActualizarUsuario(user,username);// username va en el where del sp
+            datosLogin.ActualizarUsuario(user);
         }
 
         /// <summary>

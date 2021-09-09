@@ -67,9 +67,44 @@ namespace Data
             return user;
         }
 
-        public void ActualizarUsuario(Usuario user, string username)// username va en el where del sp
+        public void ActualizarUsuario(Usuario user)// username va en el where del sp
         {
-            throw new NotImplementedException();
+            //Crear comando para procedimeitnos almacenados.
+            SqlCommand comando = new SqlCommand();
+            comando.CommandText = "spr_actualizar_usuario";
+            comando.CommandType = System.Data.CommandType.StoredProcedure;
+            //Lista de parámetros para el procedimeinto almacenado
+            SqlParameter parametroNombre = new SqlParameter("@nombres", System.Data.SqlDbType.VarChar);
+            parametroNombre.Direction = System.Data.ParameterDirection.Input;
+            parametroNombre.Value = user.Nombres;
+            comando.Parameters.Add(parametroNombre);
+            SqlParameter parametroApellido = new SqlParameter("@apellido", System.Data.SqlDbType.VarChar);
+            parametroApellido.Direction = System.Data.ParameterDirection.Input;
+            parametroApellido.Value = user.Apellidos;
+            comando.Parameters.Add(parametroApellido);
+            SqlParameter parametroUsername = new SqlParameter("@username", System.Data.SqlDbType.VarChar);
+            parametroUsername.Direction = System.Data.ParameterDirection.Input;
+            parametroUsername.Value = user.Username;
+            comando.Parameters.Add(parametroUsername);
+            SqlParameter parametroPassword = new SqlParameter("@password", System.Data.SqlDbType.VarChar);
+            parametroPassword.Direction = System.Data.ParameterDirection.Input;
+            parametroPassword.Value = user.Contrasena;
+            comando.Parameters.Add(parametroPassword);
+            SqlParameter parametroRol = new SqlParameter("@id_rol", System.Data.SqlDbType.Int);
+            parametroRol.Direction = System.Data.ParameterDirection.Input;
+            parametroRol.Value = user.Rol.Id;
+            comando.Parameters.Add(parametroRol);
+            try
+            {
+                conexion.Conectar();
+                comando.Connection = conexion.Cn;
+                comando.ExecuteNonQuery();
+            }
+            catch (SqlException)
+            {
+                throw new ConsultaFallida();
+            }
+            conexion.Cerrar();
         }
 
         //Lee un DataReader lleno con datos de una consulta a la tabla de usuarios y devuelve una lista de usuarios recuperados.

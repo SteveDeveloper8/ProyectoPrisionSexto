@@ -55,7 +55,7 @@ namespace Visual.Usuario
                 {
                     if (validarConfirmacion(contrasena, confirmacion))
                     {// el parametro username es el que debes especificar en el where del sp
-                        controlUsuario.ActualizarUsuario(nombre, apellido, usuario, contrasena, rol,username);
+                        controlUsuario.ActualizarUsuario(nombre, apellido, usuario, contrasena, rol);
                         MessageBox.Show("Usuario Actualizado");
                     }
                 }

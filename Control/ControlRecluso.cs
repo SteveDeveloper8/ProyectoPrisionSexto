@@ -132,15 +132,11 @@ namespace Control
             }
         }
         /// <summary>
-        /// Lista a todos los datos de reclusos del sistema.
-        /// </summary>
-        /// <returns>Una lista con la información de cada <see cref="Recluso"/> registrado en el sistema.</returns>
-        /// <exception cref="GeneralExcepcion">Cuando no se encontró ningún <see cref="Recluso"/> registrado en el sistema.</exception>
-        /// <summary>
         /// Lista los <see cref="Cargo"/>s de un <see cref="Expediente"/> cuyo código coincida con <paramref name="codigoExpediente"/>.
         /// </summary>
         /// <param name="codigoExpediente">Código del <see cref="Expediente"/> cuyos <see cref="Cargo"/>s se van a listar.</param>
         /// <returns>Una lista con la información de cada <see cref="Cargo"/> del <see cref="Expediente"/>.</returns>
+        /// <exception cref="GeneralExcepcion">Cuando no se encontró ningún <see cref="Cargo"/> registrado en ese <see cref="Expediente"/>.</exception>
         public List<Object> ListarCargos(string codigoExpediente)
         {
             List<Cargo> cargos = datosRecluso.ConsultarCargos(codigoExpediente);
