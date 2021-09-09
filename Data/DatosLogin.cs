@@ -25,10 +25,16 @@ namespace Data
             return nomina;
         }
         //Consulta la base de datos y devuelve un usuario cuyo nombre de usuario coincida con el argumento.
+        /// <summary>
+        /// Busca un <seealso cref="Usuario"/> específico en la tabla de usuarios en la base de datos.
+        /// </summary>
+        /// <param name="username">Es el nombre de usuario del <seealso cref="Usuario"/> a buscar.</param>
+        /// <returns>Un <seealso cref="Usuario"/> cuyo nombre de usuario coincida con el <paramref name="username"/>.</returns>
         public Usuario ConsultarUsuario(String username)
         {
             SqlDataReader dr = null;
             Usuario user = null;
+            List<Usuario> usuarios = new List<Usuario>();
             SqlCommand comando = new SqlCommand();
             comando.CommandText = "spr_buscar_usuario";
             comando.CommandType = System.Data.CommandType.StoredProcedure;
@@ -41,7 +47,9 @@ namespace Data
                 conexion.Conectar();
                 comando.Connection = conexion.Cn;
                 dr = comando.ExecuteReader();
-                user= LeerResultados(dr)[0];
+                usuarios = LeerResultados(dr);
+                if(usuarios.Count>0)
+                    user = usuarios[0];
             }
             catch (SqlException)
             {

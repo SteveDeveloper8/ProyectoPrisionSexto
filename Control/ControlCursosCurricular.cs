@@ -56,7 +56,7 @@ namespace Control
         ///Metodo que se encarga de buscar cursos a partir de una descripcion.
         ///</summary>
         ///<param name= "descripcion"> Descripcion del curso </param>
-        //////<return>Retorna una lista de cursos </return>
+        ///<return>Retorna una lista de cursos </return>
         public List<Object> FiltrarDesccripcion(string descripcion)
         {
             List<ActividadCurricular> CursosCurriculares= datosCurso.BuscarDescripcionEstudio(descripcion);
@@ -90,8 +90,8 @@ namespace Control
         ///<summary>
         ///Metodo que se encarga de buscar cursos a partir de su modalidad.
         ///</summary>
-        ///<param name= "modalidad"> Modalidad del curso </param>
-        ///<return>Retorna una lista de cursos </return>
+        ///<param name= "modalidad"> Modalidad del curso. </param>
+        ///<return>Retorna una lista de cursos. </return>
         public List<Object> FiltrarModalidad(string modalidad)
         {
             List<ActividadCurricular> CursosCurriculares = datosCurso.BuscarModalidadEstudio(modalidad);
@@ -106,9 +106,9 @@ namespace Control
         ///<summary>
         ///Metodo que se encarga de buscar cursos a partir de su descripcion y modalidad.
         ///</summary>
-        ///<param name= "descripcion"> Descripcion del curso </param>
-        ///<param name= "modalidad"> Modalidad del curso </param>
-        ///<return>Retorna una lista de cursos </return>
+        ///<param name= "descripcion"> Descripcion del curso. </param>
+        ///<param name= "modalidad"> Modalidad del curso. </param>
+        ///<return>Retorna una lista de cursos. </return>
         public List<Object> FiltrarDescripcionModalidad(string descripcion, string modalidad)
         {
             List<ActividadCurricular> CursosCurriculares = datosCurso.BuscarDescripcionModalidadEstudio(descripcion,modalidad);
