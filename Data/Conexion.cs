@@ -10,13 +10,23 @@ using Data.Excepciones;
 
 namespace Data
 {
+    /// <summary>
+    /// Es la clase que se encarga de establecer una conexión entre la aplicación y la base de datos.
+    /// </summary>
     public class Conexion
     {
+        /// <summary>
+        /// Es la cadena de conexión , contiene las credenciales y la dirección del servidor de base de datos.
+        /// </summary>
         private static string cadena = "Data Source=sql5059.site4now.net;Initial Catalog=db_a7961c_prision2p;Persist Security Info=True;User ID=db_a7961c_prision2p_admin;Password=prision123";
-
+        /// <summary>
+        /// Es el atributo d ela librería de MySql que usamos. 
+        /// </summary>
         private SqlConnection cn = null;
         public SqlConnection Cn { get => cn; set => cn = value; }
-
+        /// <summary>
+        /// Abre la conexión con la base de datos.
+        /// </summary>
         public void Conectar()
         {
             try
@@ -30,7 +40,9 @@ namespace Data
                 throw new ConexionFallida();
             }
         }
-
+        /// <summary>
+        /// Cierra la conexión con la base de datos.
+        /// </summary>
         public string Cerrar()
         {
             string x = "";
