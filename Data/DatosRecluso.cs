@@ -9,15 +9,30 @@ using Model;
 using Data.Excepciones;
 namespace Data
 {
+    /// <summary>
+    /// Esta clase permite el acceso a los datos de <see cref="Recluso"/> en la base de datos del sistema.
+    /// </summary>
+    /// <remarks>Esta clase ejecuta procedimientos almacenados en la base de datos.</remarks>
     public class DatosRecluso
     {
+        /// <summary>
+        /// Es la <see cref="Conexion"/> con la base de datos del sistema.
+        /// </summary>
+        /// <remarks>Es necesaria para establecer copmunicación entre la aplicación y el servidor de bases de datos.</remarks>
         Conexion conexion;
-        //Inicializa los objetos de cliente SQL necesarios.
+        /// <summary>
+        /// Inicializa la <see cref="Conexion"/>.
+        /// </summary>
         public DatosRecluso()
         {
             conexion = new Conexion();
         }
-        //Busca el expediente que tenga el número de cédula del recluso y devuelve un objeto Expediente.
+        /// <summary>
+        /// Busca un <seealso cref="Expediente"/> específico en la base de datos.
+        /// </summary>
+        /// <param name="cedula">Es la cédula de <seealso cref="Recluso"/> cuyo <seealso cref="Expediente"/> se va a consultar.</param>
+        /// <returns>Un <seealso cref="Expediente"/> cuya cédula coincida con <paramref name="cedula"/>, si no se encuentra al expediente devuelve null.</returns>
+        /// /// <exception cref="ConsultaFallida">Cuando se da un error al consultar la base de datos.</exception>
         public Expediente BuscarExpediente(string cedula)
         {
             SqlDataReader dr = null;
@@ -48,7 +63,11 @@ namespace Data
             conexion.Cerrar();
             return expediente;
         }
-        //Recibe un objeto Recluso y lo guarda en la base de datos del sistema.
+        /// <summary>
+        /// Inserta un nuevo <seealso cref="Recluso"/>(<paramref name="recluso"/>) en la base de datos del sistema.
+        /// </summary>
+        /// <param name="user">Nuevo <seealso cref="Recluso"/> a insertar en la base de datos.</param>
+        /// <exception cref="ConsultaFallida">Cuando se da un error al consultar la base de datos.</exception>
         public void InsertarRecluso(Recluso recluso)
         {
             //Crear comando para procedimeitnos almacenados.
@@ -97,13 +116,22 @@ namespace Data
             }
             conexion.Cerrar();
         }
-        //Consulta la base de datos y devuelve una lista con todos los reclusos registrados en el sistema.
+        /// <summary>
+        /// Consulta todos los reclusos del sistema.
+        /// </summary>
+        /// <returns>Una lista con todos los reclusos registrados en el sistema.</returns>
         public List<Recluso> ConsultarReclusos()
         {
             List<Recluso> reclusos = ConsultarGeneral();
             return reclusos;
         }
         //Consulta la base de datos y devuelve una lista de cargos que pertenezcan al expediente cuyo código recibe.
+        /// <summary>
+        /// Consulata todos los <see cref="Cargo"/>s asociados a un <see cref="Expediente"/> cuyo código coincida con <paramref name="codigoExpediente"/> en la base de datos.
+        /// </summary>
+        /// <param name="codigoExpediente">Es el código del <see cref="Expediente"/> a cuyos cargos queremos consultar.</param>
+        /// <returns>Una lista de <see cref="Cargo"/>s correspondientes al expediente.</returns>
+        /// <exception cref="ConsultaFallida">Cuando se da un error al consultar la base de datos.</exception>
         public List<Cargo> ConsultarCargos(string codigoExpediente)
         {
             SqlDataReader dr = null;
@@ -141,7 +169,11 @@ namespace Data
             }
             return cargos;
         }
-        //Consulta la base de datos y devuelve un objeto con los datos de un recluso cuya cédula sea igual al argumento.
+        /// <summary>
+        /// Busca un <seealso cref="Recluso"/> específico en el sistema.
+        /// </summary>
+        /// <param name="cedula">Es la cédula de <seealso cref="Recluso"/> a buscar.</param>
+        /// <returns>Un <seealso cref="Recluso"/> cuya cédula coincida con <paramref name="cedula"/>, si no se encuentra al recluso devuelve null.</returns>
         public Recluso BuscarRecluso(string cedula)
         {
             List<Recluso> reclusos = ConsultarBusqueda(cedula);
@@ -150,7 +182,11 @@ namespace Data
             else
                 return null;
         }
-        //Ejecuta en la base de datos una sntencia SQL dada por parámetros y devuelve una lista de reclusos correspondiente a los reultados.
+        /// <summary>
+        /// Consulta todos los reclusos registrados en la base de datos.
+        /// </summary>
+        /// <returns>Una lista con todos los reclusos registrados en el sistema.</returns>
+        /// <exception cref="ConsultaFallida">Cuando se da un error al consultar la base de datos.</exception>
         private List<Recluso> ConsultarGeneral()
         {
             SqlDataReader dr = null;
@@ -171,7 +207,11 @@ namespace Data
                 throw new ConsultaFallida();
             }
         }
-        //Lee un DataReader lleno con datos de una consulta a la tabla de reclusos y devuelve una lista de Reclusos recuperados.
+        /// <summary>
+        /// Lee un <see cref="SqlDataReader"/> lleno con datos y devuelve una lista de reclusos recuperados de este.
+        /// </summary>
+        /// <param name="datos">Es un <see cref="SqlDataReader"/> que contiene los resultados de una consulta previa.</param>
+        /// <returns>Una lista de <seealso cref="Recluso"/> correspondiente a todos los registros de <paramref name="datos"/>.</returns>
         private List<Recluso> LeerResultados(SqlDataReader datos)
         {
             List<Recluso> reclusos = new List<Recluso>();
@@ -191,7 +231,12 @@ namespace Data
             }
             return reclusos;
         }
-        //Busca un recluso por su número de cédula en la base de datos y devuelve un objeto recluso.
+        /// <summary>
+        /// Busca un <seealso cref="Recluso"/> específico en la base de datos.
+        /// </summary>
+        /// <param name="cedula">Es la cédula de <seealso cref="Recluso"/> a buscar.</param>
+        /// <returns>Un <seealso cref="Recluso"/> cuya cédula coincida con <paramref name="cedula"/>, si no se encuentra al recluso devuelve null.</returns>
+        /// <exception cref="ConsultaFallida">Cuando se da un error al consultar la base de datos.</exception>
         private List<Recluso> ConsultarBusqueda(string cedula)
         {
             SqlDataReader dr = null;

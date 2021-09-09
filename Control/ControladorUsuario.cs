@@ -10,14 +10,22 @@ using System.Windows.Forms;
 
 namespace Control
 {
+    /// <summary>
+    /// Controlador que gestiona la información de <see cref="Usuario">.
+    /// </summary>
     public class ControladorUsuario
     {
         /// <summary>
-        /// Controlador que gestiona la información de <see cref="Usuario">.
+        /// Atributo tipo <see cref="DatosLogin"/> que permite el acceso a la capa de Datos.
         /// </summary>
-        List<Usuario> usuarios = new List<Usuario>();
         DatosLogin datosLogin = new DatosLogin();
+        /// <summary>
+        /// Instancia de <see cref="Usuario"/> sirve como auxiliar para los métodos de control.
+        /// </summary>
         Usuario user = null;
+        /// <summary>
+        /// Instancia de <see cref="Rol"/> sirve como auxiliar para los métodos de control.
+        /// </summary>
         Rol role = null;
         /// <summary>
         /// Valida que el nombre de usuario(<paramref name="usuario"/>) y la <paramref name="contrasena"/> coincidan con un <see cref="Usuario"> registrado.
@@ -92,7 +100,7 @@ namespace Control
         public Object BuscarUsuario(string user)
         {
             
-            return ConvertirAnonimo(datosLogin.BuscarUsuario(user));
+            return ConvertirAnonimo(datosLogin.ConsultarUsuario(user));
 
         }
         /// <summary>
@@ -117,7 +125,7 @@ namespace Control
         /// <returns>El <see cref="Rol"/> del <see cref="Usuario"/> específico.</returns>
         public string RetornaRol(string usuario)
         {
-            Usuario user = null;
+            user = null;
             user = datosLogin.ConsultarUsuario(usuario);
 
             return user.Rol.Descripcion;

@@ -8,12 +8,18 @@ using System.Threading.Tasks;
 
 namespace Control
 {
+    /// <summary>
+    /// Controlador que gestiona la información de <seealso cref="ActividadCurricular"/>.
+    /// </summary>
     public class ControlCursosCurricular
     {
         /// <summary>
-        /// Controlador que gestiona la información de <seealso cref="ActividadCurricular"/>.
+        /// Atributo tipo <see cref="DatosCursoCurricular"/> que permite el acceso a la capa de Datos.
         /// </summary>
         DatosCursoCurricular datosCurso = new DatosCursoCurricular();
+        /// <summary>
+        /// Instancia de <see cref="ActividadCurricular"/> sirve como auxiliar para los métodos de control.
+        /// </summary>
         ActividadCurricular curricular =null;
 
         ///<summary>

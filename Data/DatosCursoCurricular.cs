@@ -9,14 +9,29 @@ using Model;
 
 namespace Data
 {
+    /// <summary>
+    /// Esta clase permite el acceso a los datos de <see cref="ActividadCurricular"/> en la base de datos del sistema.
+    /// </summary>
+    /// <remarks>Esta clase ejecuta procedimientos almacenados en la base de datos.</remarks>
     public class DatosCursoCurricular
     {
+        /// <summary>
+        /// Es la <see cref="Conexion"/> con la base de datos del sistema.
+        /// </summary>
+        /// <remarks>Es necesaria para establecer copmunicación entre la aplicación y el servidor de bases de datos.</remarks>
         Conexion conexion;
-        //Inicializa los objetos de cliente SQL necesarios.
+        /// <summary>
+        /// Inicializa la <see cref="Conexion"/>.
+        /// </summary>
         public DatosCursoCurricular()
         {
             conexion = new Conexion();
         }
+        /// <summary>
+        /// Inserta una nueva <seealso cref="ActividadCurricular"/>(<paramref name="actividad"/>) en la base de datos del sistema.
+        /// </summary>
+        /// <param name="actividad">Nueva <seealso cref="ActividadCurricular"/> a insertar en la base de datos.</param>
+        /// <exception cref="ConsultaFallida">Cuando se da un error al consultar la base de datos.</exception>
         public void InsertarEstudio(ActividadCurricular actividad)
         {
             //Crear comando para procedimeitnos almacenados.
@@ -61,7 +76,12 @@ namespace Data
             }
             conexion.Cerrar();
         }
-
+        /// <summary>
+        /// Eliina un registro de <seealso cref="ActividadCurricular"/> de la base de datos del sistema cuya <paramref name="descripcion"/> y <paramref name="modalidad"/> coincidan.
+        /// </summary>
+        /// <param name="descripcion">Nombre de la <seealso cref="ActividadCurricular"/>.</param>
+        /// <param name="modalidad">Modalidad en que se realiza la <seealso cref="ActividadCurricular"/>.</param>
+        /// <exception cref="ConsultaFallida">Cuando se da un error al consultar la base de datos.</exception>
         public void EliminarEstudio(string descripcion, string modalidad)
         {
             SqlCommand comando = new SqlCommand();
@@ -89,7 +109,7 @@ namespace Data
             conexion.Cerrar();
         }
         /// <summary>
-        /// Consulta la tabla Estudio y trae los datos de las actividades que coincidan con la <paramref name="descripcion"/>.
+        /// Consulta la base de datos y trae las actividades que coincidan con la <paramref name="descripcion"/>.
         /// </summary>
         /// <param name="descripcion">Es el nombre de la actividad curricular.</param>
         /// <returns>Una lista de obejetos con los datos de cada <seealso cref="ActividadCurricular"/>.</returns>
@@ -118,7 +138,11 @@ namespace Data
             }
             return actividades;
         }
-        
+        /// <summary>
+        /// Lee un <see cref="SqlDataReader"/> lleno con datos y devuelve una lista de actividades curriculares recuperadas de este.
+        /// </summary>
+        /// <param name="datos">Es un <see cref="SqlDataReader"/> que contiene los resultados de una consulta previa.</param>
+        /// <returns>Una lista de <seealso cref="ActividadCurricular"/> correspondiente a todos los registros de <paramref name="datos"/>.</returns>
         private List<ActividadCurricular> LeerResultados(SqlDataReader datos)
         {
             ActividadCurricular actividad = null;
@@ -137,6 +161,11 @@ namespace Data
             }
             return actividades;
         }
+        /// <summary>
+        /// Consulta todas las actividades curriculares registradas en la base de datos.
+        /// </summary>
+        /// <returns>Una lista con todas las actividades curriculares registradas en el sistema.</returns>
+        /// <exception cref="ConsultaFallida">Cuando se da un error al consultar la base de datos.</exception>
         public List<ActividadCurricular> ConsultarCursosDistancia()
         {
             SqlDataReader dr = null;
@@ -158,7 +187,12 @@ namespace Data
             }
             return cursos;
         }
-
+        /// <summary>
+        /// Busca una <seealso cref="ActividadCurricular"/> específica en la base de datos.
+        /// </summary>
+        /// <param name="modalidad">La modalidad de la <seealso cref="ActividadCurricular"/> buscada.</param>
+        /// <returns>Una lista de <seealso cref="ActividadCurricular"/> cuya modalidad coincida con <paramref name="modalidad"/>, si no se encuentra la actividad curricular devuelve null.</returns>
+        /// <exception cref="ConsultaFallida">Cuando se da un error al consultar la base de datos.</exception>
         public List<ActividadCurricular> BuscarModalidadEstudio(string modalidad)
         {
             SqlDataReader dr = null;
@@ -184,7 +218,13 @@ namespace Data
             }
             return actividades;
         }
-
+        /// <summary>
+        /// Busca una <seealso cref="ActividadCurricular"/> específica en la base de datos.
+        /// </summary>
+        /// <param name="modalidad">La modalidad de la <seealso cref="ActividadCurricular"/> buscada.</param>
+        /// <param name="descripcion">La descripcion de la <seealso cref="ActividadCurricular"/> buscada.</param>
+        /// <returns>Una lista de <seealso cref="ActividadCurricular"/> cuya <paramref name="modalidad"/> y <paramref name="descripcion"/> coincidan, si no se encuentra la actividad curricular devuelve null.</returns>
+        /// <exception cref="ConsultaFallida">Cuando se da un error al consultar la base de datos.</exception>
         public List<ActividadCurricular> BuscarDescripcionModalidadEstudio(string descripcion, string modalidad)
         {
             SqlDataReader dr = null;

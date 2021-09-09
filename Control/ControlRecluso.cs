@@ -11,13 +11,18 @@ using Control.Excepciones;
 
 namespace Control
 {
+    /// <summary>
+    /// Controlador que gestiona la información de <seealso cref="Recluso"/>.
+    /// </summary>
     public class ControlRecluso
     {
         /// <summary>
-        /// Controlador que gestiona la información de <seealso cref="Recluso"/>.
+        /// Atributo tipo <see cref="DatosRecluso"/> que permite el acceso a la capa de Datos.
         /// </summary>
         DatosRecluso datosRecluso = new DatosRecluso();
-        List<Recluso> reclusos = new List<Recluso>();
+        /// <summary>
+        /// Instancia de <see cref="Recluso"/> sirve como auxiliar para los métodos de control.
+        /// </summary>
         Recluso recluso = null;
         /// <summary>
         /// Valida que la longitud del <paramref name="codigo"/> sea igual a 10.
@@ -40,7 +45,7 @@ namespace Control
         /// <returns>Si el <paramref name="codigo"/> ya está registrado devuelve <see cref="true"/>,si no, devlueve <see cref="false"/>.</returns>
         public bool existeCodigo(string codigo)
         {
-            ValidarCodigo("");
+            List<Recluso> reclusos = datosRecluso.ConsultarReclusos();
             foreach (Recluso recluso in reclusos)
             {
                 if (recluso.Codigo.Equals(codigo))

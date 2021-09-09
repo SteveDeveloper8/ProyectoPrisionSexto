@@ -10,33 +10,39 @@ using Data.Excepciones;
 
 namespace Data
 {
+    /// <summary>
+    /// Esta clase permite el acceso a los datos de <see cref="Usuario"/> en la base de datos del sistema.
+    /// </summary>
+    /// <remarks>Esta clase ejecuta procedimientos almacenados en la base de datos.</remarks>
     public class DatosLogin
     {
+        /// <summary>
+        /// Es la <see cref="Conexion"/> con la base de datos del sistema.
+        /// </summary>
+        /// <remarks>Es necesaria para establecer copmunicación entre la aplicación y el servidor de bases de datos.</remarks>
         Conexion conexion = new Conexion();
-        //Inicializa los objetos de cliente SQL necesarios.
+        /// <summary>
+        /// Inicializa la <see cref="Conexion"/>.
+        /// </summary>
         public DatosLogin()
         {
             conexion = new Conexion();
         }
-        //Consulta la base de datos y devuelve una lista con todos los usuarios.
+        /// <summary>
+        /// Consulta todos los usuarios del sistema.
+        /// </summary>
+        /// <returns>Una lista con todos los usuarios registrados en el sistema.</returns>
         public List<Usuario> Consultar()
         {
             List<Usuario> nomina = ConsultarGeneral();
             return nomina;
         }
-
-        public Usuario BuscarUsuario(string user)
-        {
-            Usuario usuario = ConsultarUsuario(user);
-            return usuario;
-        }
-
-        //Consulta la base de datos y devuelve un usuario cuyo nombre de usuario coincida con el argumento.
         /// <summary>
-        /// Busca un <seealso cref="Usuario"/> específico en la tabla de usuarios en la base de datos.
+        /// Busca un <seealso cref="Usuario"/> específico en la base de datos.
         /// </summary>
         /// <param name="username">Es el nombre de usuario del <seealso cref="Usuario"/> a buscar.</param>
-        /// <returns>Un <seealso cref="Usuario"/> cuyo nombre de usuario coincida con el <paramref name="username"/>.</returns>
+        /// <returns>Un <seealso cref="Usuario"/> cuyo nombre de usuario coincida con el <paramref name="username"/>, si no se encuentra al usuario devuelve null.</returns>
+        /// <exception cref="ConsultaFallida">Cuando se da un error al consultar la base de datos.</exception>
         public Usuario ConsultarUsuario(String username)
         {
             SqlDataReader dr = null;
@@ -45,6 +51,7 @@ namespace Data
             SqlCommand comando = new SqlCommand();
             comando.CommandText = "spr_buscar_usuario";
             comando.CommandType = System.Data.CommandType.StoredProcedure;
+            //Parámetro para el procedimeinto almacenado.
             SqlParameter parametroUsuario = new SqlParameter("@nombre_usuario", System.Data.SqlDbType.VarChar);
             parametroUsuario.Direction = System.Data.ParameterDirection.Input;
             parametroUsuario.Value = username;
@@ -66,14 +73,19 @@ namespace Data
             
             return user;
         }
-
+        /// <summary>
+        /// Actualiza toods los datos de un <seealso cref="Usuario"/> específico, a excepción del nombre de usuario, en la tabla de usuarios en la base de datos.
+        /// </summary>
+        /// <param name="user">Es un objeto de tipo <seealso cref="Usuario"/> que contiene los nuevos datos a actualizar.</param>
+        /// <remarks>Se actualizará unicamente el registro cuyo nombre de usuario coincida con el de <paramref name="user"/>.</remarks>
+        /// <exception cref="ConsultaFallida">Cuando se da un error al consultar la base de datos.</exception>
         public void ActualizarUsuario(Usuario user)// username va en el where del sp
         {
             //Crear comando para procedimeitnos almacenados.
             SqlCommand comando = new SqlCommand();
             comando.CommandText = "spr_actualizar_usuario";
             comando.CommandType = System.Data.CommandType.StoredProcedure;
-            //Lista de parámetros para el procedimeinto almacenado
+            //Lista de parámetros para el procedimeinto almacenado.
             SqlParameter parametroNombre = new SqlParameter("@nombres", System.Data.SqlDbType.VarChar);
             parametroNombre.Direction = System.Data.ParameterDirection.Input;
             parametroNombre.Value = user.Nombres;
@@ -106,8 +118,11 @@ namespace Data
             }
             conexion.Cerrar();
         }
-
-        //Lee un DataReader lleno con datos de una consulta a la tabla de usuarios y devuelve una lista de usuarios recuperados.
+        /// <summary>
+        /// Lee un <see cref="SqlDataReader"/> lleno con datos y devuelve una lista de usuarios recuperados de este.
+        /// </summary>
+        /// <param name="datos">Es un <see cref="SqlDataReader"/> que contiene los resultados de una consulta previa.</param>
+        /// <returns>Una lista de <seealso cref="Usuario"/> correspondiente a todos los registros de <paramref name="datos"/>.</returns>
         private List<Usuario> LeerResultados(SqlDataReader datos)
         {
             Usuario user = null;
@@ -126,12 +141,18 @@ namespace Data
             }
             return usuarios;
         }
-        //Consulta la base de datos y devuelve un rol cuya descripción coincida con el argumento. 
+        /// <summary>
+        /// Busca un <seealso cref="Rol"/> cuya descripción coincida con <paramref name="rol"/> en la base de datos.
+        /// </summary>
+        /// <param name="rol">Nombre del <seealso cref="Rol"/> a buscar.</param>
+        /// <returns>Un <seealso cref="Rol"/>.</returns>
+        /// <exception cref="ConsultaFallida">Cuando se da un error al consultar la base de datos.</exception>
         public Rol ConsultarRol(string rol)
         {
             SqlCommand comando = new SqlCommand();
             comando.CommandText = "spr_buscar_rol";
             comando.CommandType = System.Data.CommandType.StoredProcedure;
+            //Parámetro para el procedimeinto almacenado.
             SqlParameter parametroRol = new SqlParameter("@nombre_rol", System.Data.SqlDbType.VarChar);
             parametroRol.Direction = System.Data.ParameterDirection.Input;
             parametroRol.Value = rol;
@@ -160,7 +181,11 @@ namespace Data
 
             return role;
         }
-        //Recibe un usuario  e inserta al usuario en la base de datos del sistema.
+        /// <summary>
+        /// Inserta un nuevo <seealso cref="Usuario"/>(<paramref name="user"/>) en la base de datos del sistema.
+        /// </summary>
+        /// <param name="user">Nuevo <seealso cref="Usuario"/> a insertar en la base de datos.</param>
+        /// <exception cref="ConsultaFallida">Cuando se da un error al consultar la base de datos.</exception>
         public void InsertarUsuario(Usuario user)
         {
             //Crear comando para procedimeitnos almacenados.
@@ -200,7 +225,11 @@ namespace Data
             }
             conexion.Cerrar();
         }
-        //Ejecuta en la base de datos una sentencia SQL dada como argumento y devuelve una lista con toods los usuarios registrados. 
+        /// <summary>
+        /// Consulta todos los usuarios registrados en la base de datos.
+        /// </summary>
+        /// <returns>Una lista con todos los usuarios registrados en el sistema.</returns>
+        /// <exception cref="ConsultaFallida">Cuando se da un error al consultar la base de datos.</exception>
         private List<Usuario> ConsultarGeneral()
         {
             SqlDataReader dr = null;

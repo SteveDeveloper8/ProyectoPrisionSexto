@@ -8,12 +8,18 @@ using System.Threading.Tasks;
 
 namespace Control
 {
+    /// <summary>
+    /// Controlador que gestiona la información de <seealso cref="ActividadPractica"/>.
+    /// </summary>
     public class ControlActividadPractica
     {
         /// <summary>
-        /// Controlador que gestiona la información de <seealso cref="ActividadPractica"/>.
+        /// Atributo tipo <see cref="DatosActividadPractica"/> que permite el acceso a la capa de Datos.
         /// </summary>
         DatosActividadPractica datosActividad = new DatosActividadPractica();
+        /// <summary>
+        /// Instancia de <see cref="ActividadPractica"/> sirve como auxiliar para los métodos de control.
+        /// </summary>
         ActividadPractica actividad = null;
 
         ///<summary>

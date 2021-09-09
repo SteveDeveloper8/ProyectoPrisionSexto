@@ -9,14 +9,29 @@ using Model;
 
 namespace Data
 {
+    /// <summary>
+    /// Esta clase permite el acceso a los datos de <see cref="ActividadPractica"/> en la base de datos del sistema.
+    /// </summary>
+    /// <remarks>Esta clase ejecuta procedimientos almacenados en la base de datos.</remarks>
     public class DatosActividadPractica
     {
+        /// <summary>
+        /// Es la <see cref="Conexion"/> con la base de datos del sistema.
+        /// </summary>
+        /// <remarks>Es necesaria para establecer copmunicación entre la aplicación y el servidor de bases de datos.</remarks>
         Conexion conexion;
-        //Inicializa los objetos de cliente SQL necesarios.
+        /// <summary>
+        /// Inicializa la <see cref="Conexion"/>.
+        /// </summary>
         public DatosActividadPractica()
         {
             conexion = new Conexion();
         }
+        /// <summary>
+        /// Inserta una nueva <seealso cref="ActividadPractica"/>(<paramref name="actividad"/>) en la base de datos del sistema.
+        /// </summary>
+        /// <param name="actividad">Nueva <seealso cref="ActividadPractica"/> a insertar en la base de datos.</param>
+        /// <exception cref="ConsultaFallida">Cuando se da un error al consultar la base de datos.</exception>
         public void InsertarActividad(ActividadPractica actividad)
         {
             //Crear comando para procedimeitnos almacenados.
@@ -53,7 +68,12 @@ namespace Data
             }
             conexion.Cerrar();
         }
-
+        /// <summary>
+        /// Eliina un registro de <seealso cref="ActividadPractica"/> de la base de datos del sistema cuya <paramref name="descripcion"/> y <paramref name="modalidad"/> coincidan.
+        /// </summary>
+        /// <param name="descripcion">Nombre de la <seealso cref="ActividadPractica"/>.</param>
+        /// <param name="modalidad">Modalidad en que se realiza la <seealso cref="ActividadPractica"/>.</param>
+        /// <exception cref="ConsultaFallida">Cuando se da un error al consultar la base de datos.</exception>
         public void EliminarActividad(string descripcion, string modalidad)
         {
             SqlCommand comando = new SqlCommand();
@@ -80,7 +100,11 @@ namespace Data
             }
             conexion.Cerrar();
         }
-
+        /// <summary>
+        /// Consulta todas las actividades prácticas registradas en la base de datos.
+        /// </summary>
+        /// <returns>Una lista con todas las actividades prácticas registradas en el sistema.</returns>
+        /// <exception cref="ConsultaFallida">Cuando se da un error al consultar la base de datos.</exception>
         public List<ActividadPractica> ConsultarActvidadPractica()
         {
             SqlDataReader dr = null;
@@ -102,7 +126,12 @@ namespace Data
             }
             return actividades;
         }
-
+        /// <summary>
+        /// Busca una <seealso cref="ActividadPractica"/> específica en la base de datos.
+        /// </summary>
+        /// <param name="descripcion">La descripción de la <seealso cref="ActividadPractica"/> buscada.</param>
+        /// <returns>Una lista de <seealso cref="ActividadPractica"/> cuya descripción coincida con <paramref name="descripcion"/>, si no se encuentra la actividad práctica devuelve null.</returns>
+        /// <exception cref="ConsultaFallida">Cuando se da un error al consultar la base de datos.</exception>
         public List<ActividadPractica> BuscarDescripcionActividad(string descripcion)
         {
             SqlDataReader dr = null;
@@ -128,7 +157,12 @@ namespace Data
             }
             return actividades;
         }
-
+        /// <summary>
+        /// Busca una <seealso cref="ActividadPractica"/> específica en la base de datos.
+        /// </summary>
+        /// <param name="modalidad">La modalidad de la <seealso cref="ActividadPractica"/> buscada.</param>
+        /// <returns>Una lista de <seealso cref="ActividadPractica"/> cuya modalidad coincida con <paramref name="modalidad"/>, si no se encuentra la actividad práctica devuelve null.</returns>
+        /// <exception cref="ConsultaFallida">Cuando se da un error al consultar la base de datos.</exception>
         public List<ActividadPractica> BuscarModalidadActividad(string modalidad)
         {
             SqlDataReader dr = null;
@@ -154,7 +188,13 @@ namespace Data
             }
             return actividades;
         }
-
+        /// <summary>
+        /// Busca una <seealso cref="ActividadPractica"/> específica en la base de datos.
+        /// </summary>
+        /// <param name="modalidad">La modalidad de la <seealso cref="ActividadPractica"/> buscada.</param>
+        /// <param name="descripcion">La descripcion de la <seealso cref="ActividadPractica"/> buscada.</param>
+        /// <returns>Una lista de <seealso cref="ActividadPractica"/> cuya <paramref name="modalidad"/> y <paramref name="descripcion"/> coincidan, si no se encuentra la actividad práctica devuelve null.</returns>
+        /// <exception cref="ConsultaFallida">Cuando se da un error al consultar la base de datos.</exception>
         public List<ActividadPractica> BuscarDescripcionModalidadActividad(string descripcion, string modalidad)
         {
             SqlDataReader dr = null;
@@ -184,6 +224,11 @@ namespace Data
             }
             return actividades;
         }
+        /// <summary>
+        /// Lee un <see cref="SqlDataReader"/> lleno con datos y devuelve una lista de actividades prácticas recuperadas de este.
+        /// </summary>
+        /// <param name="datos">Es un <see cref="SqlDataReader"/> que contiene los resultados de una consulta previa.</param>
+        /// <returns>Una lista de <seealso cref="ActividadPractica"/> correspondiente a todos los registros de <paramref name="datos"/>.</returns>
         private List<ActividadPractica> LeerResultados(SqlDataReader datos)
         {
             ActividadPractica actividad = null;
