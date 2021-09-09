@@ -62,6 +62,7 @@ namespace Data
             SqlParameter parametroDescripcion = new SqlParameter("@descripcion", System.Data.SqlDbType.VarChar);
             parametroDescripcion.Direction = System.Data.ParameterDirection.Input;
             parametroDescripcion.Value = descripcion;
+            comando.Parameters.Add(parametroDescripcion);
             SqlParameter parametroModalidad = new SqlParameter("@modalidad", System.Data.SqlDbType.VarChar);
             parametroModalidad.Direction = System.Data.ParameterDirection.Input;
             parametroModalidad.Value = modalidad;
@@ -164,6 +165,7 @@ namespace Data
             SqlParameter parametroDescripcion = new SqlParameter("@descripcion", System.Data.SqlDbType.VarChar);
             parametroDescripcion.Direction = System.Data.ParameterDirection.Input;
             parametroDescripcion.Value = descripcion;
+            comando.Parameters.Add(parametroDescripcion);
             SqlParameter parametroModalidad = new SqlParameter("@modalidad", System.Data.SqlDbType.VarChar);
             parametroModalidad.Direction = System.Data.ParameterDirection.Input;
             parametroModalidad.Value = modalidad;

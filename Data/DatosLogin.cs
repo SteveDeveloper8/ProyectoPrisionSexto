@@ -24,6 +24,13 @@ namespace Data
             List<Usuario> nomina = ConsultarGeneral();
             return nomina;
         }
+
+        public Object BuscarUsuario(string user)
+        {
+            Usuario usuario = ConsultarUsuario(user);
+            return usuario;
+        }
+
         //Consulta la base de datos y devuelve un usuario cuyo nombre de usuario coincida con el argumento.
         /// <summary>
         /// Busca un <seealso cref="Usuario"/> específico en la tabla de usuarios en la base de datos.
@@ -59,6 +66,12 @@ namespace Data
             
             return user;
         }
+
+        public void ActualizarUsuario(Usuario user, string username)// username va en el where del sp
+        {
+            throw new NotImplementedException();
+        }
+
         //Lee un DataReader lleno con datos de una consulta a la tabla de usuarios y devuelve una lista de usuarios recuperados.
         private List<Usuario> LeerResultados(SqlDataReader datos)
         {
@@ -69,6 +82,8 @@ namespace Data
 
                 user = new Usuario();
                 user.Id = Convert.ToInt32(datos["Id_Usuario"]);
+                user.Nombres = datos["Nombres"].ToString();
+                user.Apellidos = datos["Apellidos"].ToString();
                 user.Username = datos["UserName"].ToString();
                 user.Contrasena = datos["Password"].ToString();
                 user.Rol.Descripcion = datos["Descripcion"].ToString();

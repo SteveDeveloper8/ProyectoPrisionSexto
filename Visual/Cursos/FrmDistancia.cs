@@ -90,6 +90,7 @@ namespace Visual
                 string modalidad = dgvDistancia.CurrentRow.Cells[1].Value.ToString();
                 controlCursos.EliminarEstudio(estudioDelete,modalidad);
                 dgvDistancia.Rows.RemoveAt(pos);
+                MessageBox.Show("Curso Eliminado con Exito");
             }
             else
             {

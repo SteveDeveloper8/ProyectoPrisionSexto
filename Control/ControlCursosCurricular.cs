@@ -47,9 +47,9 @@ namespace Control
         ///Metodo que se encarga de eliminar un curso especifico
         ///</summary>
         ///<param name= "estudioDelete"> Nombre del curso </param>
-        public void EliminarEstudio(string estudioDelete, string modalidad)
+        public void EliminarEstudio(string Descripcion, string modalidad)
         {
-            datosCurso.EliminarEstudio(estudioDelete,modalidad);
+            datosCurso.EliminarEstudio(Descripcion, modalidad);
         }
 
         ///<summary>

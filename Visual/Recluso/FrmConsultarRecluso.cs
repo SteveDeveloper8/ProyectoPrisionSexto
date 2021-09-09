@@ -13,6 +13,7 @@ namespace Visual.Recluso
 {
     public partial class FrmConsultarRecluso : Form
     {
+        ControladorUsuario controlUser = new ControladorUsuario();
         ControlRecluso controlRecluso=new ControlRecluso();
         //Muestra los datos de todos los relusos registrados al abrir el formulario.
         public FrmConsultarRecluso()
@@ -109,6 +110,12 @@ namespace Visual.Recluso
         private void btnMostrar_Click(object sender, EventArgs e)
         {
             consultarReclusos();
+        }
+
+        private void dgvReclusos_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            string cedulaRecluso = dgvReclusos.CurrentRow.Cells[3].Value.ToString();
+           // controlUser.BuscarUsuario()
         }
     }
 }

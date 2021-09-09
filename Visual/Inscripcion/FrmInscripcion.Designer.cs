@@ -35,9 +35,9 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.btnLimpiar = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.dtpFechaInicio = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.btnSeleccioneRecluso = new Guna.UI2.WinForms.Guna2Button();
+            this.btnSeleccioneCurso = new Guna.UI2.WinForms.Guna2Button();
+            this.dtpFechaRegistro = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.txtCodigo = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -63,6 +63,7 @@
             this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnMinimizar.TabIndex = 45;
             this.btnMinimizar.TabStop = false;
+            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
             // 
             // btnCerrar
             // 
@@ -78,6 +79,7 @@
             this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnCerrar.TabIndex = 44;
             this.btnCerrar.TabStop = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // guna2HtmlLabel7
             // 
@@ -126,67 +128,68 @@
             this.guna2HtmlLabel3.Text = "Seleccione Curso:";
             this.guna2HtmlLabel3.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
             // 
-            // btnLimpiar
+            // btnSeleccioneRecluso
             // 
-            this.btnLimpiar.BackColor = System.Drawing.Color.Transparent;
-            this.btnLimpiar.BorderRadius = 5;
-            this.btnLimpiar.CheckedState.Parent = this.btnLimpiar;
-            this.btnLimpiar.CustomImages.Parent = this.btnLimpiar;
-            this.btnLimpiar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnLimpiar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnLimpiar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnLimpiar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnLimpiar.DisabledState.Parent = this.btnLimpiar;
-            this.btnLimpiar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnLimpiar.ForeColor = System.Drawing.Color.Black;
-            this.btnLimpiar.HoverState.Parent = this.btnLimpiar;
-            this.btnLimpiar.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnLimpiar.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnLimpiar.Location = new System.Drawing.Point(58, 189);
-            this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.ShadowDecoration.Parent = this.btnLimpiar;
-            this.btnLimpiar.Size = new System.Drawing.Size(107, 23);
-            this.btnLimpiar.TabIndex = 69;
-            this.btnLimpiar.Text = "Detalles";
+            this.btnSeleccioneRecluso.BackColor = System.Drawing.Color.Transparent;
+            this.btnSeleccioneRecluso.BorderRadius = 5;
+            this.btnSeleccioneRecluso.CheckedState.Parent = this.btnSeleccioneRecluso;
+            this.btnSeleccioneRecluso.CustomImages.Parent = this.btnSeleccioneRecluso;
+            this.btnSeleccioneRecluso.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSeleccioneRecluso.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSeleccioneRecluso.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSeleccioneRecluso.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSeleccioneRecluso.DisabledState.Parent = this.btnSeleccioneRecluso;
+            this.btnSeleccioneRecluso.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnSeleccioneRecluso.ForeColor = System.Drawing.Color.Black;
+            this.btnSeleccioneRecluso.HoverState.Parent = this.btnSeleccioneRecluso;
+            this.btnSeleccioneRecluso.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnSeleccioneRecluso.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnSeleccioneRecluso.Location = new System.Drawing.Point(58, 189);
+            this.btnSeleccioneRecluso.Name = "btnSeleccioneRecluso";
+            this.btnSeleccioneRecluso.ShadowDecoration.Parent = this.btnSeleccioneRecluso;
+            this.btnSeleccioneRecluso.Size = new System.Drawing.Size(107, 23);
+            this.btnSeleccioneRecluso.TabIndex = 69;
+            this.btnSeleccioneRecluso.Text = "Detalles";
+            this.btnSeleccioneRecluso.Click += new System.EventHandler(this.btnSeleccioneRecluso_Click);
             // 
-            // guna2Button1
+            // btnSeleccioneCurso
             // 
-            this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.BorderRadius = 5;
-            this.guna2Button1.CheckedState.Parent = this.guna2Button1;
-            this.guna2Button1.CustomImages.Parent = this.guna2Button1;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.DisabledState.Parent = this.guna2Button1;
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.guna2Button1.ForeColor = System.Drawing.Color.Black;
-            this.guna2Button1.HoverState.Parent = this.guna2Button1;
-            this.guna2Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button1.ImageSize = new System.Drawing.Size(25, 25);
-            this.guna2Button1.Location = new System.Drawing.Point(57, 250);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.ShadowDecoration.Parent = this.guna2Button1;
-            this.guna2Button1.Size = new System.Drawing.Size(107, 23);
-            this.guna2Button1.TabIndex = 70;
-            this.guna2Button1.Text = "Detalles";
+            this.btnSeleccioneCurso.BackColor = System.Drawing.Color.Transparent;
+            this.btnSeleccioneCurso.BorderRadius = 5;
+            this.btnSeleccioneCurso.CheckedState.Parent = this.btnSeleccioneCurso;
+            this.btnSeleccioneCurso.CustomImages.Parent = this.btnSeleccioneCurso;
+            this.btnSeleccioneCurso.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSeleccioneCurso.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSeleccioneCurso.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSeleccioneCurso.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSeleccioneCurso.DisabledState.Parent = this.btnSeleccioneCurso;
+            this.btnSeleccioneCurso.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnSeleccioneCurso.ForeColor = System.Drawing.Color.Black;
+            this.btnSeleccioneCurso.HoverState.Parent = this.btnSeleccioneCurso;
+            this.btnSeleccioneCurso.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnSeleccioneCurso.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnSeleccioneCurso.Location = new System.Drawing.Point(57, 250);
+            this.btnSeleccioneCurso.Name = "btnSeleccioneCurso";
+            this.btnSeleccioneCurso.ShadowDecoration.Parent = this.btnSeleccioneCurso;
+            this.btnSeleccioneCurso.Size = new System.Drawing.Size(107, 23);
+            this.btnSeleccioneCurso.TabIndex = 70;
+            this.btnSeleccioneCurso.Text = "Detalles";
             // 
-            // dtpFechaInicio
+            // dtpFechaRegistro
             // 
-            this.dtpFechaInicio.CheckedState.Parent = this.dtpFechaInicio;
-            this.dtpFechaInicio.FillColor = System.Drawing.Color.White;
-            this.dtpFechaInicio.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.dtpFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaInicio.HoverState.Parent = this.dtpFechaInicio;
-            this.dtpFechaInicio.Location = new System.Drawing.Point(58, 321);
-            this.dtpFechaInicio.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtpFechaInicio.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtpFechaInicio.Name = "dtpFechaInicio";
-            this.dtpFechaInicio.ShadowDecoration.Parent = this.dtpFechaInicio;
-            this.dtpFechaInicio.Size = new System.Drawing.Size(136, 19);
-            this.dtpFechaInicio.TabIndex = 72;
-            this.dtpFechaInicio.Value = new System.DateTime(2021, 9, 2, 8, 54, 14, 481);
+            this.dtpFechaRegistro.CheckedState.Parent = this.dtpFechaRegistro;
+            this.dtpFechaRegistro.FillColor = System.Drawing.Color.White;
+            this.dtpFechaRegistro.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dtpFechaRegistro.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaRegistro.HoverState.Parent = this.dtpFechaRegistro;
+            this.dtpFechaRegistro.Location = new System.Drawing.Point(58, 321);
+            this.dtpFechaRegistro.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpFechaRegistro.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtpFechaRegistro.Name = "dtpFechaRegistro";
+            this.dtpFechaRegistro.ShadowDecoration.Parent = this.dtpFechaRegistro;
+            this.dtpFechaRegistro.Size = new System.Drawing.Size(136, 19);
+            this.dtpFechaRegistro.TabIndex = 72;
+            this.dtpFechaRegistro.Value = new System.DateTime(2021, 9, 2, 8, 54, 14, 481);
             // 
             // label3
             // 
@@ -276,6 +279,7 @@
             this.guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.guna2TextBox1.DisabledState.Parent = this.guna2TextBox1;
             this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.guna2TextBox1.Enabled = false;
             this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2TextBox1.FocusedState.Parent = this.guna2TextBox1;
             this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -285,7 +289,7 @@
             this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2TextBox1.Name = "guna2TextBox1";
             this.guna2TextBox1.PasswordChar = '\0';
-            this.guna2TextBox1.PlaceholderText = "Codigo";
+            this.guna2TextBox1.PlaceholderText = "Sin seleccionar";
             this.guna2TextBox1.SelectedText = "";
             this.guna2TextBox1.ShadowDecoration.Parent = this.guna2TextBox1;
             this.guna2TextBox1.Size = new System.Drawing.Size(115, 23);
@@ -302,6 +306,7 @@
             this.guna2TextBox2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.guna2TextBox2.DisabledState.Parent = this.guna2TextBox2;
             this.guna2TextBox2.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.guna2TextBox2.Enabled = false;
             this.guna2TextBox2.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2TextBox2.FocusedState.Parent = this.guna2TextBox2;
             this.guna2TextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -311,7 +316,7 @@
             this.guna2TextBox2.Margin = new System.Windows.Forms.Padding(4);
             this.guna2TextBox2.Name = "guna2TextBox2";
             this.guna2TextBox2.PasswordChar = '\0';
-            this.guna2TextBox2.PlaceholderText = "Codigo";
+            this.guna2TextBox2.PlaceholderText = "Sin Seleccionar";
             this.guna2TextBox2.SelectedText = "";
             this.guna2TextBox2.ShadowDecoration.Parent = this.guna2TextBox2;
             this.guna2TextBox2.Size = new System.Drawing.Size(115, 23);
@@ -328,10 +333,10 @@
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.guna2HtmlLabel1);
-            this.Controls.Add(this.dtpFechaInicio);
+            this.Controls.Add(this.dtpFechaRegistro);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.guna2Button1);
-            this.Controls.Add(this.btnLimpiar);
+            this.Controls.Add(this.btnSeleccioneCurso);
+            this.Controls.Add(this.btnSeleccioneRecluso);
             this.Controls.Add(this.guna2HtmlLabel3);
             this.Controls.Add(this.guna2HtmlLabel2);
             this.Controls.Add(this.pictureBox1);
@@ -341,7 +346,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmInscripcion";
             this.Text = "FrmInscripcion";
-            this.Load += new System.EventHandler(this.FrmInscripcion_Load);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FrmInscripcion_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -358,9 +363,9 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
-        private Guna.UI2.WinForms.Guna2Button btnLimpiar;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
-        private Guna.UI2.WinForms.Guna2DateTimePicker dtpFechaInicio;
+        private Guna.UI2.WinForms.Guna2Button btnSeleccioneRecluso;
+        private Guna.UI2.WinForms.Guna2Button btnSeleccioneCurso;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dtpFechaRegistro;
         private System.Windows.Forms.Label label3;
         private Guna.UI2.WinForms.Guna2TextBox txtCodigo;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;

@@ -33,6 +33,50 @@ namespace Control
             }
         }
 
+        public List<Object> ListarUsuarios()
+        {
+            List<Usuario> usuarios = datosLogin.Consultar();
+
+            if (usuarios.Count <= 0)
+                throw new GeneralExcepcion("No se encontraron usuarios registrados");
+            else
+                return GetListaDatosUsuarios(usuarios);
+        }
+
+        private List<Object> GetListaDatosUsuarios(List<Usuario> usuarios)
+        {
+            List<Object> cargosDatos = new List<object>();
+            foreach(Usuario usuario in usuarios)
+            {
+                cargosDatos.Add(ConvertirAnonimo(usuario));
+            }
+            return cargosDatos;
+        }
+
+        private Object ConvertirAnonimo(Usuario usuario)
+        {
+            return new
+            {
+                nombres = usuario.Nombres,
+                apellidos = usuario.Apellidos,
+                usuario = usuario.Username,
+                contrasena = usuario.Contrasena,
+                rol = usuario.Rol.Descripcion
+            };
+        }
+
+        public Object BuscarUsuario(string user)
+        {
+            return datosLogin.BuscarUsuario(user);
+        }
+
+        public void ActualizarUsuario(string nombre, string apellido, string usuario, string contrasena, string rol, string username)
+        {
+            role = new Rol(rol);
+            user = new Usuario(nombre, apellido, usuario, contrasena, ObtenerRol(rol));
+            datosLogin.ActualizarUsuario(user,username);// username va en el where del sp
+        }
+
         public string RetornaRol(string usuario)
         {
             Usuario user = null;

@@ -32,7 +32,7 @@
             this.btnMinimizar = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.btnCerrar = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.btnRegistrar = new Guna.UI2.WinForms.Guna2Button();
+            this.btnActualizar = new Guna.UI2.WinForms.Guna2Button();
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.txtNombre = new Guna.UI2.WinForms.Guna2TextBox();
@@ -97,28 +97,28 @@
             this.guna2HtmlLabel7.TabIndex = 52;
             this.guna2HtmlLabel7.Text = "Actualizar Usuario";
             this.guna2HtmlLabel7.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            this.guna2HtmlLabel7.Click += new System.EventHandler(this.guna2HtmlLabel7_Click);
             // 
-            // btnRegistrar
+            // btnActualizar
             // 
-            this.btnRegistrar.BackColor = System.Drawing.Color.Transparent;
-            this.btnRegistrar.BorderRadius = 10;
-            this.btnRegistrar.CheckedState.Parent = this.btnRegistrar;
-            this.btnRegistrar.CustomImages.Parent = this.btnRegistrar;
-            this.btnRegistrar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnRegistrar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnRegistrar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnRegistrar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnRegistrar.DisabledState.Parent = this.btnRegistrar;
-            this.btnRegistrar.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistrar.ForeColor = System.Drawing.Color.White;
-            this.btnRegistrar.HoverState.Parent = this.btnRegistrar;
-            this.btnRegistrar.Location = new System.Drawing.Point(341, 432);
-            this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.ShadowDecoration.Parent = this.btnRegistrar;
-            this.btnRegistrar.Size = new System.Drawing.Size(135, 33);
-            this.btnRegistrar.TabIndex = 50;
-            this.btnRegistrar.Text = "Actualizar";
+            this.btnActualizar.BackColor = System.Drawing.Color.Transparent;
+            this.btnActualizar.BorderRadius = 10;
+            this.btnActualizar.CheckedState.Parent = this.btnActualizar;
+            this.btnActualizar.CustomImages.Parent = this.btnActualizar;
+            this.btnActualizar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnActualizar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnActualizar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnActualizar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnActualizar.DisabledState.Parent = this.btnActualizar;
+            this.btnActualizar.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizar.ForeColor = System.Drawing.Color.White;
+            this.btnActualizar.HoverState.Parent = this.btnActualizar;
+            this.btnActualizar.Location = new System.Drawing.Point(341, 432);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.ShadowDecoration.Parent = this.btnActualizar;
+            this.btnActualizar.Size = new System.Drawing.Size(135, 33);
+            this.btnActualizar.TabIndex = 50;
+            this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // guna2GroupBox1
             // 
@@ -410,7 +410,7 @@
             this.Controls.Add(this.btnMinimizar);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.guna2HtmlLabel7);
-            this.Controls.Add(this.btnRegistrar);
+            this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.guna2GroupBox1);
             this.Controls.Add(this.guna2GroupBox2);
             this.Controls.Add(this.guna2PictureBox1);
@@ -434,7 +434,7 @@
         private Guna.UI2.WinForms.Guna2CirclePictureBox btnMinimizar;
         private Guna.UI2.WinForms.Guna2CirclePictureBox btnCerrar;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel7;
-        private Guna.UI2.WinForms.Guna2Button btnRegistrar;
+        private Guna.UI2.WinForms.Guna2Button btnActualizar;
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox1;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2TextBox txtNombre;

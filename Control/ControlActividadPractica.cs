@@ -115,7 +115,7 @@ namespace Control
                 cupos = actividad.Cupos,
                 descripcion = actividad.Descripcion,
                 modalidad = actividad.Modalidad,
-                remisionTotal = actividad.RemisionDiaria
+                remisionDiaria= actividad.RemisionDiaria
             };
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Control;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,14 +13,74 @@ namespace Visual.Usuario
 {
     public partial class FrmActualizarUsuario : Form
     {
-        public FrmActualizarUsuario()
+        private  string username;
+        ControladorUsuario controlUsuario = new ControladorUsuario();
+        public FrmActualizarUsuario(string usuario)
         {
             InitializeComponent();
+            this.username = usuario;
+            Inicializar();
         }
 
-        private void guna2HtmlLabel7_Click(object sender, EventArgs e)
+        private void Inicializar()
+        {
+            Object usuario = BuscarUsuario();
+            Type tipo = usuario.GetType();
+            txtNombre.Text = (string)tipo.GetProperty("nombres").GetValue(usuario);
+            txtApellido.Text = (string)tipo.GetProperty("apellidos").GetValue(usuario);
+            txtUsuario.Text = (string)tipo.GetProperty("usuario").GetValue(usuario);
+            txtContrasena.Text = (string)tipo.GetProperty("contrasena").GetValue(usuario);
+            cmbRol.Text = (string)tipo.GetProperty("rol").GetValue(usuario);
+        }
+
+        private Object BuscarUsuario()
+        {
+            Object usuario = controlUsuario.BuscarUsuario(username);
+            return usuario;
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            string nombre = txtNombre.Text.Trim();
+            string apellido = txtApellido.Text.Trim();
+            string usuario = txtUsuario.Text.Trim();
+            string contrasena = txtContrasena.Text.Trim();
+            string confirmacion = txtConfimacion.Text.Trim();
+            string rol = cmbRol.Text.Trim();
+
+            if (!esVacio(nombre, apellido, usuario, contrasena, confirmacion, rol))
+            {
+                try
+                {
+                    if (validarConfirmacion(contrasena, confirmacion))
+                    {// el parametro username es el que debes especificar en el where del sp
+                        controlUsuario.ActualizarUsuario(nombre, apellido, usuario, contrasena, rol,username);
+                        MessageBox.Show("Usuario Actualizado");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+            }
+        }
+
+        //Valida que todos los campos del formulario esten llenos.
+        private bool esVacio(string nombre, string apellido, string usuario, string contrasena, string confirmacion, string rol)
         {
 
+            return String.IsNullOrEmpty(nombre) || String.IsNullOrEmpty(apellido) || String.IsNullOrEmpty(usuario) || String.IsNullOrEmpty(contrasena) ||
+                String.IsNullOrEmpty(confirmacion) || String.IsNullOrEmpty(rol);
+        }
+
+        //Valida si el usuario confirmó la contraseña correctamente.
+        private bool validarConfirmacion(string contrasena, string confirmacion)
+        {
+            if (contrasena.Equals(confirmacion))
+                return true;
+            else
+                return false;
         }
     }
 }

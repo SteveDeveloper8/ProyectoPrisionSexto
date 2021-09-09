@@ -169,6 +169,7 @@ namespace Visual
                 string modalidad = dgvActividades.CurrentRow.Cells[1].Value.ToString();
                 controlActividad.EliminarActividad(ActividadDelete, modalidad);
                 dgvActividades.Rows.RemoveAt(pos);
+                MessageBox.Show("Actividad Eliminada con Exito");
             }
             else
             {

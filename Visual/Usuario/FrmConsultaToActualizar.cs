@@ -11,11 +11,10 @@ using System.Windows.Forms;
 
 namespace Visual.Usuario
 {
-    public partial class FrmConsultarUsuario : Form
+    public partial class FrmConsultaToActualizar : Form
     {
         ControladorUsuario controlUsuario = new ControladorUsuario();
-
-        public FrmConsultarUsuario()
+        public FrmConsultaToActualizar()
         {
             InitializeComponent();
             ConsultarUsuarios();
@@ -48,7 +47,7 @@ namespace Visual.Usuario
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            string user= txtUsuario.Text.Trim();
+            string user = txtUsuario.Text.Trim();
 
             if (!EsVacio(user))
             {
@@ -60,10 +59,10 @@ namespace Visual.Usuario
             {
                 MessageBox.Show("Favor ingrese un apellido");
             }
-           
+
         }
 
-        private void InsertarFila(Object usuario)
+        private void InsertarFila(object usuario)
         {
             Type tipo = usuario.GetType();
             string nombres = (string)tipo.GetProperty("nombres").GetValue(usuario);
@@ -88,6 +87,12 @@ namespace Visual.Usuario
         private void btnMostrarTodos_Click(object sender, EventArgs e)
         {
             ConsultarUsuarios();
+        }
+
+        private void dgvUsuarios_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            string usuario = dgvUsuarios.CurrentRow.Cells[2].Value.ToString();
+            FrmActualizarUsuario actualiza = new FrmActualizarUsuario(usuario);
         }
     }
 }

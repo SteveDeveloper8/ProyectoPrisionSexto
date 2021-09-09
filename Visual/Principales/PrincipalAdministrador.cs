@@ -93,7 +93,14 @@ namespace Visual
 
         private void toolStripMenuItem8_Click(object sender, EventArgs e)
         {
-         
+            FrmConsultarUsuario usuarios = new FrmConsultarUsuario();
+            usuarios.ShowDialog();
+        }
+
+        private void toolStripMenuItem7_Click(object sender, EventArgs e)
+        {
+            FrmConsultaToActualizar actualiza = new FrmConsultaToActualizar();
+            actualiza.ShowDialog();
         }
     }
 }

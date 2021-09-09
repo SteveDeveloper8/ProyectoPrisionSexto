@@ -32,10 +32,10 @@
             this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblBienvenida = new System.Windows.Forms.Label();
+            this.lbl = new System.Windows.Forms.Label();
             this.btnHome = new Guna.UI2.WinForms.Guna2Button();
             this.panelPrincipal = new System.Windows.Forms.Panel();
-            this.lbl = new System.Windows.Forms.Label();
-            this.lblBienvenida = new System.Windows.Forms.Label();
             this.PanelMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -120,6 +120,30 @@
             this.panel1.Size = new System.Drawing.Size(148, 94);
             this.panel1.TabIndex = 0;
             // 
+            // lblBienvenida
+            // 
+            this.lblBienvenida.AutoSize = true;
+            this.lblBienvenida.BackColor = System.Drawing.Color.Transparent;
+            this.lblBienvenida.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBienvenida.ForeColor = System.Drawing.Color.Black;
+            this.lblBienvenida.Location = new System.Drawing.Point(15, 25);
+            this.lblBienvenida.Name = "lblBienvenida";
+            this.lblBienvenida.Size = new System.Drawing.Size(80, 18);
+            this.lblBienvenida.TabIndex = 55;
+            this.lblBienvenida.Text = "Bienvenido";
+            // 
+            // lbl
+            // 
+            this.lbl.AutoSize = true;
+            this.lbl.BackColor = System.Drawing.Color.Transparent;
+            this.lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl.ForeColor = System.Drawing.Color.Black;
+            this.lbl.Location = new System.Drawing.Point(12, 5);
+            this.lbl.Name = "lbl";
+            this.lbl.Size = new System.Drawing.Size(112, 20);
+            this.lbl.TabIndex = 54;
+            this.lbl.Text = "Bienvenido/a";
+            // 
             // btnHome
             // 
             this.btnHome.CheckedState.Parent = this.btnHome;
@@ -153,30 +177,6 @@
             this.panelPrincipal.Size = new System.Drawing.Size(593, 445);
             this.panelPrincipal.TabIndex = 4;
             // 
-            // lbl
-            // 
-            this.lbl.AutoSize = true;
-            this.lbl.BackColor = System.Drawing.Color.Transparent;
-            this.lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl.ForeColor = System.Drawing.Color.Black;
-            this.lbl.Location = new System.Drawing.Point(12, 5);
-            this.lbl.Name = "lbl";
-            this.lbl.Size = new System.Drawing.Size(112, 20);
-            this.lbl.TabIndex = 54;
-            this.lbl.Text = "Bienvenido/a";
-            // 
-            // lblBienvenida
-            // 
-            this.lblBienvenida.AutoSize = true;
-            this.lblBienvenida.BackColor = System.Drawing.Color.Transparent;
-            this.lblBienvenida.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBienvenida.ForeColor = System.Drawing.Color.Black;
-            this.lblBienvenida.Location = new System.Drawing.Point(15, 25);
-            this.lblBienvenida.Name = "lblBienvenida";
-            this.lblBienvenida.Size = new System.Drawing.Size(80, 18);
-            this.lblBienvenida.TabIndex = 55;
-            this.lblBienvenida.Text = "Bienvenido";
-            // 
             // EstudioRegistro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -184,7 +184,6 @@
             this.ClientSize = new System.Drawing.Size(741, 445);
             this.Controls.Add(this.panelPrincipal);
             this.Controls.Add(this.PanelMenu);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "EstudioRegistro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EstudioRegistro";
