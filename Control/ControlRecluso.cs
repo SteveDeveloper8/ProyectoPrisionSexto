@@ -13,9 +13,17 @@ namespace Control
 {
     public class ControlRecluso
     {
+        /// <summary>
+        /// Controlador que gestiona la información de <seealso cref="Recluso"/>.
+        /// </summary>
         DatosRecluso datosRecluso = new DatosRecluso();
         List<Recluso> reclusos = new List<Recluso>();
         Recluso recluso = null;
+        /// <summary>
+        /// Valida que la longitud del <paramref name="codigo"/> sea igual a 10.
+        /// </summary>
+        /// <param name="codigo"></param>
+        /// <returns>Si la lóngitud es igual a 10 devuelve <see cref="true"/>,si no, devlueve <see cref="false"/>.</returns>
         internal bool ValidarCodigo(string codigo)
         {
             bool x = true;
@@ -25,9 +33,14 @@ namespace Control
             }
             return x;
         }
-        
+        /// <summary>
+        /// Valida que no exista un <see cref="Recluso"> con el mismo <paramref name="codigo"/> registrado.
+        /// </summary>
+        /// <param name="codigo">Código del nuevo <see cref="Recluso"/> a insertar.</param>
+        /// <returns>Si el <paramref name="codigo"/> ya está registrado devuelve <see cref="true"/>,si no, devlueve <see cref="false"/>.</returns>
         public bool existeCodigo(string codigo)
         {
+            ValidarCodigo("");
             foreach (Recluso recluso in reclusos)
             {
                 if (recluso.Codigo.Equals(codigo))
@@ -38,7 +51,11 @@ namespace Control
             }
             return false;
         }
-
+        /// <summary>
+        /// Busca busca el expediente del recluso cuya cpedula coincida con <paramref name="cedula"/>.
+        /// </summary>
+        /// <param name="cedula">Cédula del <see cref="Recluso"/> cuyo <see cref="Expediente"/> se busca.</param>
+        /// <returns>Un <see cref="Expediente"/>.</returns>
         public Object buscarExpediente(string cedula)
         {
             Expediente expediente = null;
@@ -54,8 +71,18 @@ namespace Control
                 return expediente;
             }
         }
-
-
+        /// <summary>
+        /// Guarda los datos de un nuevo <see cref="Recluso"/>.
+        /// </summary>
+        /// <param name="codigo">Código del nuevo <see cref="Recluso"/>.</param>
+        /// <param name="nombre">Nombres del nuevo <see cref="Recluso"/>.</param>
+        /// <param name="apellido">Apelidos del nuevo <see cref="Recluso"/>.</param>
+        /// <param name="genero">Género del nuevo <see cref="Recluso"/>.</param>
+        /// <param name="fecha">Fecha de nacimiento del nuevo <see cref="Recluso"/>.</param>
+        /// <param name="idExpediente">ID del <see cref="Expediente"/> del nuevo <see cref="Recluso"/>.</param>
+        /// <param name="cedula">Cédula del nuevo <see cref="Recluso"/>.</param>
+        /// <returns>Si el <see cref="Recluso"/> se registró correctamente devuelve <see cref="true"/>,si no, devlueve <see cref="false"/>.</returns>
+        /// <exception cref="CedulaRepetidaException">Cuando ya existe un <see cref="Recluso"/> registrado con esa <paramref name="cedula"/></exception>
         public bool GuardarRecluso(string codigo, string nombre, string apellido, string genero, DateTime fecha, int idExpediente, string cedula)
         {
             if (BuscarRecluso(cedula) == null)
@@ -70,8 +97,11 @@ namespace Control
                 throw new CedulaRepetidaException();
             }
         }
-
-
+        /// <summary>
+        /// Lista a todos los datos de reclusos del sistema.
+        /// </summary>
+        /// <returns>Una lista con la información de cada <see cref="Recluso"/> registrado en el sistema.</returns>
+        /// <exception cref="GeneralExcepcion">Cuando no se encontró ningún <see cref="Recluso"/> registrado en el sistema.</exception>
         public List<Object> ListarReclusos()
         {
             List<Recluso> reclusos= datosRecluso.ConsultarReclusos();
@@ -81,17 +111,36 @@ namespace Control
             else
                 return GetListaDatosReclusos(reclusos);
         }
-
+        /// <summary>
+        /// Busca un <see cref="Recluso"/> cuya cédula coincida con <paramref name="cedula"/>.
+        /// </summary>
+        /// <param name="cedula">Cédula del <see cref="Recluso"/> a buscar.</param>
+        /// <returns>Un <see cref="Object"/> con los datos del <see cref="Recluso"/>.</returns>
         public Object BuscarRecluso(string cedula)
         {
             return datosRecluso.BuscarRecluso(cedula);
         }
+        /// <summary>
+        /// Valida que no exista un <see cref="Recluso"/> con la misma <paramref name="cedula"/>.
+        /// </summary>
+        /// <param name="cedula">Cédula a validar.</param>
+        /// <exception cref="Exception">Cuando ya existe un <see cref="Recluso"/> registrado con esa <paramref name="cedula"/>.</exception>
         public void ValidarRecluso(string cedula)
         {
             if (BuscarRecluso(cedula)!=null) {
                 throw new Exception("Cedula Repetida");
             }
         }
+        /// <summary>
+        /// Lista a todos los datos de reclusos del sistema.
+        /// </summary>
+        /// <returns>Una lista con la información de cada <see cref="Recluso"/> registrado en el sistema.</returns>
+        /// <exception cref="GeneralExcepcion">Cuando no se encontró ningún <see cref="Recluso"/> registrado en el sistema.</exception>
+        /// <summary>
+        /// Lista los <see cref="Cargo"/>s de un <see cref="Expediente"/> cuyo código coincida con <paramref name="codigoExpediente"/>.
+        /// </summary>
+        /// <param name="codigoExpediente">Código del <see cref="Expediente"/> cuyos <see cref="Cargo"/>s se van a listar.</param>
+        /// <returns>Una lista con la información de cada <see cref="Cargo"/> del <see cref="Expediente"/>.</returns>
         public List<Object> ListarCargos(string codigoExpediente)
         {
             List<Cargo> cargos = datosRecluso.ConsultarCargos(codigoExpediente);
@@ -101,6 +150,11 @@ namespace Control
             else
                 return GetListaDatosCargos(cargos);
         }
+        /// <summary>
+        /// Convierte una lista de <seealso cref="Cargo"/>s en una lista de objetos anónimos(<seealso cref="Object"/>) que la capa de vista pueda entender.
+        /// </summary>
+        /// <param name="cargos">Lista de cargos a convertir.</param>
+        /// <returns>Una lista de objetos anónimos(<seealso cref="Object"/>).</returns>
         private List<Object> GetListaDatosCargos(List<Cargo> cargos)
         {
             List<Object> cargosDatos = new List<object>();
@@ -110,6 +164,11 @@ namespace Control
             }
             return cargosDatos;
         }
+        /// <summary>
+        /// Convierte una lista de <seealso cref="Recluso"/>s en una lista de objetos anónimos(<seealso cref="Object"/>) que la capa de vista pueda entender.
+        /// </summary>
+        /// <param name="reclusos">Lista de reclusos a convertir.</param>
+        /// <returns>Una lista de objetos anónimos(<seealso cref="Object"/>).</returns>
         private List<Object> GetListaDatosReclusos(List<Recluso> reclusos)
         {
             List<Object> cargosDatos = new List<object>();
@@ -119,6 +178,11 @@ namespace Control
             }
             return cargosDatos;
         }
+        /// <summary>
+        /// Convierte un objeto <seealso cref="Cargo"/> en un objeto anónimo(<seealso cref="Object"/>) que la capa de Vista puede entender.
+        /// </summary>
+        /// <param name="cargo">Cargo a convertir.</param>
+        /// <returns>Un <seealso cref="Object"/> con los datos del <paramref name="cargo"/>.</returns>
         private Object ConvertirAnonimo(Cargo cargo)
         {
             return new
@@ -131,6 +195,11 @@ namespace Control
                 pais = cargo.LugarHechos.NombrePais
             };
         }
+        /// <summary>
+        /// Convierte un objeto <seealso cref="Recluso"/> en un objeto anónimo(<seealso cref="Object"/>) que la capa de Vista puede entender.
+        /// </summary>
+        /// <param name="recluso">Cargo a convertir.</param>
+        /// <returns>Un <seealso cref="Object"/> con los datos del <paramref name="recluso"/>.</returns>
         private Object ConvertirAnonimo(Recluso recluso)
         {
             return new

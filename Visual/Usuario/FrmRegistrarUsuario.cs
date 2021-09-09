@@ -70,5 +70,21 @@ namespace Visual.Usuario
         {
             this.Close();
         }
+
+        int posY = 0;
+        int posX = 0;
+        private void guna2Panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left)
+            {
+                posX = e.X;
+                posY = e.Y;
+            }
+            else
+            {
+                Left = Left + (e.X - posX);
+                Top = Top + (e.Y - posY);
+            }
+        }
     }
 }

@@ -76,6 +76,7 @@
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
             this.guna2Panel1.Size = new System.Drawing.Size(497, 475);
             this.guna2Panel1.TabIndex = 48;
+            this.guna2Panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.guna2Panel1_MouseMove);
             // 
             // btnMinimizar
             // 

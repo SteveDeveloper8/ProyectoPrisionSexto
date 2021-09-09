@@ -52,15 +52,27 @@ namespace Visual.Usuario
 
             if (!EsVacio(user))
             {
-                LimpiarTabla();
-                Object usuario = controlUsuario.BuscarUsuario(user);
-                InsertarFila(usuario);
+                BuscarUsuario(user);
             }
             else
             {
                 MessageBox.Show("Favor ingrese un apellido");
             }
            
+        }
+
+        private void BuscarUsuario(string user)
+        {
+            LimpiarTabla();
+            try
+            {
+                Object usuario = controlUsuario.BuscarUsuario(user);
+                InsertarFila(usuario);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Usuario no encontrado");
+            }
         }
 
         private void InsertarFila(Object usuario)
@@ -88,6 +100,32 @@ namespace Visual.Usuario
         private void btnMostrarTodos_Click(object sender, EventArgs e)
         {
             ConsultarUsuarios();
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        int posY = 0;
+        int posX = 0;
+        private void FrmConsultarUsuario_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left)
+            {
+                posX = e.X;
+                posY = e.Y;
+            }
+            else
+            {
+                Left = Left + (e.X - posX);
+                Top = Top + (e.Y - posY);
+            }
         }
     }
 }

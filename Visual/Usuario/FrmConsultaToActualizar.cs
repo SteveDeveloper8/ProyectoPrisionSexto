@@ -93,6 +93,34 @@ namespace Visual.Usuario
         {
             string usuario = dgvUsuarios.CurrentRow.Cells[2].Value.ToString();
             FrmActualizarUsuario actualiza = new FrmActualizarUsuario(usuario);
+            actualiza.ShowDialog();
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        int posY = 0;
+        int posX = 0;
+
+        private void FrmConsultaToActualizar_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left)
+            {
+                posX = e.X;
+                posY = e.Y;
+            }
+            else
+            {
+                Left = Left + (e.X - posX);
+                Top = Top + (e.Y - posY);
+            }
         }
     }
 }

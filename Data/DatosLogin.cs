@@ -25,7 +25,7 @@ namespace Data
             return nomina;
         }
 
-        public Object BuscarUsuario(string user)
+        public Usuario BuscarUsuario(string user)
         {
             Usuario usuario = ConsultarUsuario(user);
             return usuario;
