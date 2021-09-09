@@ -50,13 +50,13 @@ namespace Visual.Cursos
         private void InsertarFila(Object recluso)
         {
             Type tipo = recluso.GetType();
-            string codigo = (string)tipo.GetProperty("Codigo").GetValue(recluso);
-            string nombre = (string)tipo.GetProperty("Nombre").GetValue(recluso);
-            string apellidos = (string)tipo.GetProperty("Apellidos").GetValue(recluso);
-            string genero = (string)tipo.GetProperty("Genero").GetValue(recluso);
-            string fecha = ((DateTime)tipo.GetProperty("Fecha").GetValue(recluso)).ToString("dd/MM/yyyy");
-            string cedula = (string)tipo.GetProperty("Cedula").GetValue(recluso);
-            dgvReclusos.Rows.Add(codigo, nombre, apellidos, cedula, genero, fecha, "Ver expediente");
+            string codigo = (string)tipo.GetProperty("codigo").GetValue(recluso);
+            string nombre = (string)tipo.GetProperty("nombre").GetValue(recluso);
+            string apellidos = (string)tipo.GetProperty("apellidos").GetValue(recluso);
+            string genero = (string)tipo.GetProperty("genero").GetValue(recluso);
+            string fecha = ((DateTime)tipo.GetProperty("fecha").GetValue(recluso)).ToString("dd/MM/yyyy");
+            string cedula = (string)tipo.GetProperty("cedula").GetValue(recluso);
+            dgvReclusos.Rows.Add(codigo, nombre, apellidos, cedula, genero, fecha);
         }
 
         private void LimpiarTabla()

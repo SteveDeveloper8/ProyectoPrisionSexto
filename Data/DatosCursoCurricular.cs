@@ -46,7 +46,7 @@ namespace Data
             comando.Parameters.Add(parametroFechaInicio);
             SqlParameter parametroFechaFin = new SqlParameter("@fechaFin", System.Data.SqlDbType.DateTime);
             parametroFechaFin.Direction = System.Data.ParameterDirection.Input;
-            parametroFechaFin.Value = actividad.FechaInicio;
+            parametroFechaFin.Value = actividad.FechaFin;
             comando.Parameters.Add(parametroFechaFin);
 
             try
@@ -130,7 +130,7 @@ namespace Data
                 actividad.Descripcion = datos["Descripcion"].ToString();
                 actividad.RemisionTotal = Convert.ToInt32(datos["RemisionCondena"]);
                 actividad.Cupos = Convert.ToInt32(datos["CuposDisponibles"]);
-                actividad.FechaInicio = Convert.ToDateTime(datos["FechaInicia"]);
+                actividad.FechaInicio = Convert.ToDateTime(datos["FechaInicio"]);
                 actividad.FechaFin = Convert.ToDateTime(datos["FechaFin"]);
                 actividades.Add(actividad);
             }
@@ -194,6 +194,7 @@ namespace Data
             SqlParameter parametroDescripcion = new SqlParameter("@descripcion", System.Data.SqlDbType.VarChar);
             parametroDescripcion.Direction = System.Data.ParameterDirection.Input;
             parametroDescripcion.Value = descripcion;
+            comando.Parameters.Add(parametroDescripcion);
             SqlParameter parametroModalidad = new SqlParameter("@modalidad", System.Data.SqlDbType.VarChar);
             parametroModalidad.Direction = System.Data.ParameterDirection.Input;
             parametroModalidad.Value = modalidad;
@@ -206,8 +207,9 @@ namespace Data
 
                 actividades = LeerResultados(dr);
             }
-            catch (SqlException)
+            catch (SqlException ex)
             {
+                Console.WriteLine(ex.Message);
                 throw new ConsultaFallida();
             }
             return actividades;

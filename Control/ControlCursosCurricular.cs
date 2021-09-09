@@ -40,7 +40,7 @@ namespace Control
         {
             curricular = new ActividadCurricular(cupos, descripcion,modalidad, remision, fechaInicio, fechaFin);
             datosCurso.InsertarEstudio(curricular);
-            return curricular;
+            return ConvertirAnonimo(curricular);
         }
 
         ///<summary>

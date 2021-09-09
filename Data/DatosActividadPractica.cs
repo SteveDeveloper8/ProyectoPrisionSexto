@@ -21,7 +21,7 @@ namespace Data
         {
             //Crear comando para procedimeitnos almacenados.
             SqlCommand comando = new SqlCommand();
-            comando.CommandText = "spr_ingresar_recluso";
+            comando.CommandText = "spr_ingresar_oficio";
             comando.CommandType = System.Data.CommandType.StoredProcedure;
             //Lista de parámetros para el procedimeinto almacenado.
             SqlParameter parametroModalidad = new SqlParameter("@modalidad", System.Data.SqlDbType.VarChar);

@@ -41,7 +41,6 @@ namespace Data
                 conexion.Conectar();
                 comando.Connection = conexion.Cn;
                 dr = comando.ExecuteReader();
-
                 user= LeerResultados(dr)[0];
             }
             catch (SqlException)

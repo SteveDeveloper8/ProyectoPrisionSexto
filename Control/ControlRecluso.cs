@@ -138,7 +138,7 @@ namespace Control
                 nombre = recluso.Nombre,
                 apellidos = recluso.Apellidos,
                 genero = recluso.Genero,
-                fehca = recluso.Fecha,
+                fecha = recluso.Fecha,
                 cedula = recluso.Cedula,
                 codigo = recluso.Codigo,
                 expediente = recluso.Expediente

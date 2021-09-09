@@ -14,7 +14,6 @@ namespace Visual
 {
     public partial class EstudioRegistro : Form
     {
-        private string usuario;
         public EstudioRegistro(string usuario)
         {
             InitializeComponent();

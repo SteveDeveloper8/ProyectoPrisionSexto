@@ -40,7 +40,7 @@ namespace Control
         {
             actividad = new ActividadPractica(cupos, descripcion, modalidad, remision);
             datosActividad.InsertarActividad(actividad);
-            return actividad;
+            return ConvertirAnonimo(actividad);
         }
 
         ///<summary>
