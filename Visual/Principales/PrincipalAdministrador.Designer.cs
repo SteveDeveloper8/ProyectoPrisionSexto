@@ -189,6 +189,7 @@
             this.guna2PictureBox1.TabIndex = 20;
             this.guna2PictureBox1.TabStop = false;
             this.guna2PictureBox1.Tag = "Cerrar Sesion";
+            this.guna2PictureBox1.Click += new System.EventHandler(this.guna2PictureBox1_Click);
             this.guna2PictureBox1.MouseLeave += new System.EventHandler(this.guna2PictureBox1_MouseLeave);
             this.guna2PictureBox1.MouseHover += new System.EventHandler(this.guna2PictureBox1_MouseHover);
             // 

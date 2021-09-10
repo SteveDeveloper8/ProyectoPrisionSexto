@@ -102,5 +102,12 @@ namespace Visual
             FrmConsultaToActualizar actualiza = new FrmConsultaToActualizar();
             actualiza.ShowDialog();
         }
+
+        private void guna2PictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FrmLogin login = new FrmLogin();
+            login.ShowDialog();
+         }
     }
 }
