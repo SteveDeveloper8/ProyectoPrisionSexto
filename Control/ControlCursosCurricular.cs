@@ -1,4 +1,5 @@
 ﻿using Data;
+using Data.Excepciones;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -55,9 +56,17 @@ namespace Control
         ///Metodo que se encarga de eliminar un curso especifico
         ///</summary>
         ///<param name= "estudioDelete"> Nombre del curso </param>
-        public void EliminarEstudio(string Descripcion, string modalidad)
+        public bool EliminarEstudio(string Descripcion, string modalidad)
         {
-            datosCurso.EliminarEstudio(Descripcion, modalidad);
+            try
+            {
+                datosCurso.EliminarEstudio(Descripcion, modalidad);
+                return true;
+            }
+            catch(ConsultaFallida)
+            {
+                return false;
+            }
         }
 
         ///<summary>

@@ -29,7 +29,7 @@ namespace Visual
                 actividades = controlActividad.ListarActividadesPracticas();
                 LlenarTablaActividadesPracticas(actividades);
             }
-            catch (GeneralExcepcion ex)
+            catch (GeneralExcepcion)
             {
                 MessageBox.Show("No hay reclusos registrados en el sistema.");
             }

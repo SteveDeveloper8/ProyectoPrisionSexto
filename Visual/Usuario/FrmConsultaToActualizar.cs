@@ -28,7 +28,7 @@ namespace Visual.Usuario
                 usuarios = controlUsuario.ListarUsuarios();
                 LlenarTablaUsuarios(usuarios);
             }
-            catch (GeneralExcepcion ex)
+            catch (GeneralExcepcion)
             {
                 MessageBox.Show("No hay usuarios registrados en el sistema.");
             }

@@ -1,4 +1,5 @@
 using Data;
+using Data.Excepciones;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -33,7 +34,7 @@ namespace Control
         /// <param name="usuario">Nombre de usuario ingresado.</param>
         /// <param name="contrasena">Contraseña ingresada.</param>
         /// <exception cref="GeneralExcepcion">Cuando el <paramref name="usuario"/> y la <paramref name="contrasena"/> son incorrectos, o cuando solo la <paramref name="contrasena"/> lo es.</exception>
-        public void validarLogin(string usuario, string contrasena)
+        public bool validarLogin(string usuario, string contrasena)
         {
 
             Usuario user = null;
@@ -42,11 +43,14 @@ namespace Control
             if (user == null)
             {
                 throw new GeneralExcepcion("Usuario y/o contrasena incorrecta");
+                return false;
             }
             else if (user.Contrasena!=contrasena)
             {
                 throw new GeneralExcepcion("Contrasena incorrecta");
+                return false;
             }
+            return true;
         }
         /// <summary>
         /// Lista a todos los datos de usuarios del sistema.
@@ -111,11 +115,20 @@ namespace Control
         /// <param name="usuario">Nombre de usuario para identificar el <see cref="Usuario"/> a actualizar.</param>
         /// <param name="contrasena">Nueva contraseña del <see cref="Usuario"/>.</param>
         /// <param name="rol">Nuevo <see cref="Rol"/> del <see cref="Usuario"/>.</param>
-        public void ActualizarUsuario(string nombre, string apellido, string usuario, string contrasena, string rol)
+        /// <returns>True si se actualizó correctamente, caso contrario devuelver false.</returns>
+        public bool ActualizarUsuario(string nombre, string apellido, string usuario, string contrasena, string rol)
         {
             role = new Rol(rol);
             user = new Usuario(nombre, apellido, usuario, contrasena, ObtenerRol(rol));
-            datosLogin.ActualizarUsuario(user);
+            try
+            {
+                datosLogin.ActualizarUsuario(user);
+                return true;
+            }
+            catch (ConsultaFallida)
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -152,12 +165,20 @@ namespace Control
         /// <param name="usuario">Nombre de suario del nuevo <see cref="Usuario"/>.</param>
         /// <param name="contrasena">Contraseña del nuevo <see cref="Usuario"/>.</param>
         /// <param name="rol">Rol del nuevo <see cref="Usuario"/>.</param>
-        public void GuardarUsuario(string nombre, string apellido, string usuario, string contrasena, string rol)
+        /// <returns>True si se insertó correctamente, caso contrario devuelver false.</returns>
+        public bool GuardarUsuario(string nombre, string apellido, string usuario, string contrasena, string rol)
         {
             role = new Rol(rol);
             user = new Usuario(nombre, apellido,usuario, contrasena, ObtenerRol(rol));
-            datosLogin.InsertarUsuario(user);
-            
+            try
+            {
+                datosLogin.InsertarUsuario(user);
+                return true;
+            }
+            catch (ConsultaFallida)
+            {
+                return false;
+            }
         }
         /// <summary>
         /// Busca un rol cuya descripción coincida con <paramref name="rol"/>.

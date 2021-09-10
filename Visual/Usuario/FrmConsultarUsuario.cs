@@ -29,7 +29,7 @@ namespace Visual.Usuario
                 usuarios = controlUsuario.ListarUsuarios();
                 LlenarTablaUsuarios(usuarios);
             }
-            catch (GeneralExcepcion ex)
+            catch (GeneralExcepcion)
             {
                 MessageBox.Show("No hay usuarios registrados en el sistema.");
             }
@@ -69,7 +69,7 @@ namespace Visual.Usuario
                 Object usuario = controlUsuario.BuscarUsuario(user);
                 InsertarFila(usuario);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 MessageBox.Show("Usuario no encontrado");
             }

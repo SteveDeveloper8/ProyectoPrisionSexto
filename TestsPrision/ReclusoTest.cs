@@ -12,8 +12,10 @@ namespace TestsPrision
     public class ReclusoTest
     {
         ControlRecluso controlRecluso = new ControlRecluso();
+        /// <summary>
+        /// CP-02
+        /// </summary>
         [TestMethod]
-        //Prueba que al guardar un recluso devuelve true.
         public void GuardarRecluso_Exitoso()
         {
             var resultadoObtenido = controlRecluso.GuardarRecluso("HFHD-7582", "Alejandro Manuel", "Maldonado Perez", "Masculino", Convert.ToDateTime("08/07/1987"), 8, "0910126713");
@@ -21,18 +23,18 @@ namespace TestsPrision
             Assert.AreEqual(resultadoEsperado, resultadoObtenido);
         }
 
-
+        /// <summary>
+        /// CP-03
+        /// </summary>
         [TestMethod]
-        //Prueba que al buscar  una lista de cargos existente a partir del codigo del recluso devuelva una lista de objetos
         public void ListarCargos_Exitoso()
         {
             var resultadoObtenido = controlRecluso.ListarCargos("8965-58");
             Assert.IsNotNull(resultadoObtenido);
         }
-
-
-
-        //Prueba que al buscar un recluso existente devuelva un objeto.
+        /// <summary>
+        /// CP-04
+        /// </summary>
         [TestMethod]
         public void BuscarRecluso_Exitoso()
         {

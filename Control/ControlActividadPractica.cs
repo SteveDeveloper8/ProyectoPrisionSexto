@@ -1,4 +1,5 @@
 ﻿using Data;
+using Data.Excepciones;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -53,9 +54,17 @@ namespace Control
         ///Metodo que se encarga de eliminar una actividad especifico
         ///</summary>
         ///<param name= "estudioDelete"> Nombre de la actividad </param>
-        public void EliminarActividad(string ActividadDelete, string modalidad)
+        public bool EliminarActividad(string ActividadDelete, string modalidad)
         {
-            datosActividad.EliminarActividad(ActividadDelete, modalidad);
+            try
+            {
+                datosActividad.EliminarActividad(ActividadDelete, modalidad);
+                return true;
+            }
+            catch (ConsultaFallida)
+            {
+                return false;
+            }
         }
         ///<summary>
         ///Metodo que se encarga de buscar actividades a partir de una descripcion.

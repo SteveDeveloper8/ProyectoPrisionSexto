@@ -29,7 +29,7 @@ namespace Visual.Recluso
             {
                 reclusos = controlRecluso.ListarReclusos();
                 LlenarTablaReclusos(reclusos);
-            }catch (GeneralExcepcion ex)
+            }catch (GeneralExcepcion)
             {
                 MessageBox.Show("No hay reclusos registrados en el sistema.");
             }

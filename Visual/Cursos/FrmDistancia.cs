@@ -33,7 +33,7 @@ namespace Visual
                 reclusos = controlCursos.ListarCursosDistancia();
                 LlenarTablaCursosDistancia(reclusos);
             }
-            catch (GeneralExcepcion ex)
+            catch (GeneralExcepcion)
             {
                 MessageBox.Show("No hay reclusos registrados en el sistema.");
             }
