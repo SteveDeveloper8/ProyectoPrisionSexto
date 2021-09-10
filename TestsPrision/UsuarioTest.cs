@@ -23,9 +23,7 @@ namespace TestsPrision
              //Assert.AreEqual(resultadoEsperado, resultadoObtenido);
          }
 
-
         [TestMethod]
-        //Prueba que al ingresar un usuario y contrasena valide que existe en la base y retorne true
         public void ValidarLogin_Exitoso()
          {
              //var resultadoObtenido = controlUsuario.validarLogin("daniel08","junio2000");
